@@ -146,7 +146,7 @@ export default function TokenInspector() {
         aria-controls="token-inspector"
         aria-label="Inspect design tokens"
         onClick={() => setOpen((o) => !o)}
-        className={`uppercase underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:text-accent hover:decoration-current ${
+        className={`md:uppercase underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:text-accent hover:decoration-current ${
           open ? "text-accent decoration-current" : ""
         }`}
       >
@@ -158,8 +158,7 @@ export default function TokenInspector() {
         id="token-inspector"
         role="region"
         aria-label="Design tokens"
-        hidden={!open}
-        className="absolute bottom-[calc(100%+12px)] right-16 z-30 flex max-h-[min(calc(100svh-240px),720px)] w-[min(607px,calc(100vw-32px))] flex-col border border-default bg-surface normal-case tracking-normal text-primary shadow-2 md:right-32"
+        className={`${open ? "flex" : "hidden"} absolute bottom-[calc(100%+12px)] right-16 z-30 max-h-[min(calc(100svh-240px),720px)] w-[min(607px,calc(100vw-32px))] flex-col border border-default bg-surface normal-case tracking-normal text-primary shadow-2 md:right-32`}
       >
         <div className="flex items-start justify-between gap-16 p-24 pb-16">
           <div>
