@@ -1,0 +1,89 @@
+/*
+ * Design tokens, generated from the Figma "Portfolio Redesign" variables.
+ * Collection "Color": modes Light (default) and Dark. The FD mode is not shipped.
+ * Do not edit by hand: change the variable in Figma, then ask Claude to "sync tokens".
+ * Names mirror the Figma variable paths (semantic/ prefix dropped).
+ */
+
+:root {
+  /* primitive */
+  --primitive-black: #0a0a0a;
+  --primitive-white: #ffffff;
+  --primitive-neutral-900: #1c1c1c;
+  --primitive-neutral-800: #212529;
+  --primitive-neutral-700: #343a40;
+  --primitive-neutral-600: #495057;
+  --primitive-neutral-500: #6c757d;
+  --primitive-neutral-400: #adb5bd;
+  --primitive-neutral-300: #ced4da;
+  --primitive-neutral-200: #e9ecef;
+  --primitive-neutral-100: #f8f9fa;
+  --primitive-red-400: #ff2e2e;
+  --primitive-red-500: #e51310;
+  --primitive-yellow-400: #ffea2e;
+  --primitive-yellow-500: #ffc927;
+  --primitive-blue-400: #2e62ff;
+  --primitive-blue-500: #0e3dc8;
+  --primitive-blue-600: #0b2e99;
+  --primitive-purple-400: #b22eff;
+  --primitive-purple-500: #8110e5;
+  --primitive-teal-200: #96d9d3;
+  --primitive-teal-400: #0d9488;
+  --primitive-teal-500: #005047;
+  --primitive-green-950: #04110b;
+  --primitive-green-900: #0a1d14;
+  --primitive-green-800: #1a3527;
+  --primitive-green-700: #2a5a40;
+  --primitive-green-400: #9db8a8;
+  --primitive-green-100: #ecf3ee;
+  --primitive-lime-400: #b8f25a;
+
+  /* semantic, Light mode */
+  color-scheme: light;
+  --background-page: var(--primitive-white);
+  --background-surface: var(--primitive-neutral-100);
+  --background-overlay: var(--primitive-neutral-200);
+  --background-action: var(--primitive-teal-400);
+  --background-inverse: var(--primitive-neutral-900);
+  --text-primary: var(--primitive-neutral-900);
+  --text-secondary: var(--primitive-neutral-500);
+  --text-muted: var(--primitive-neutral-200);
+  --text-inverse: var(--primitive-white);
+  --text-action: var(--primitive-neutral-900);
+  --text-accent: var(--primitive-teal-500);
+  --border-default: var(--primitive-neutral-300);
+  --border-subtle: var(--primitive-teal-200);
+  --border-strong: var(--primitive-neutral-700);
+  --border-accent: var(--primitive-teal-400);
+  --action-primary: var(--primitive-neutral-900);
+  --action-primary-text: var(--primitive-neutral-100);
+  --action-accent: var(--primitive-teal-500);
+  --nav-background: var(--background-page);
+  --nav-text: var(--action-primary);
+  --nav-text-active: var(--action-accent);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --background-page: var(--primitive-green-950);
+  --background-surface: var(--primitive-green-900);
+  --background-overlay: var(--primitive-green-800);
+  --background-action: var(--primitive-lime-400);
+  --background-inverse: var(--primitive-green-100);
+  --text-primary: var(--primitive-green-100);
+  --text-secondary: var(--primitive-green-400);
+  --text-muted: var(--primitive-green-800);
+  --text-inverse: var(--primitive-green-950);
+  --text-action: var(--primitive-green-950);
+  --text-accent: var(--primitive-lime-400);
+  --border-default: var(--primitive-green-800);
+  --border-subtle: var(--primitive-green-700);
+  --border-strong: var(--primitive-green-400);
+  --border-accent: var(--primitive-lime-400);
+  --action-primary: var(--primitive-green-100);
+  --action-primary-text: var(--primitive-green-950);
+  --action-accent: var(--primitive-lime-400);
+  --nav-background: var(--primitive-green-950);
+  --nav-text: var(--primitive-green-400);
+  --nav-text-active: var(--primitive-lime-400);
+}

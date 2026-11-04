@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Not in next/font's list, loaded by <link> in layout.tsx */
+    --font-display: "Zalando Sans Expanded";
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-page text-primary font-sans font-light antialiased;
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+
+  ::selection {
+    background: var(--background-action);
+    color: var(--text-action);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--border-accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+  }
+}
+
+/*
+ * Figma text styles, one class per style, named after the Figma style path
+ * (Display/MD -> .type-display-md). Desktop sizes are the Figma values at 1440px;
+ * display and heading sizes scale down with the viewport.
+ */
+@layer components {
+  /* Highlight: Barlow Semi Condensed Black Italic, uppercase */
+  .type-highlight-2xl, .type-highlight-xl, .type-highlight-lg, .type-highlight-md {
+    font-family: var(--font-highlight), sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+  }
+  .type-highlight-2xl { font-size: clamp(72px, 11.1vw, 160px); line-height: 0.85; }
+  .type-highlight-xl  { font-size: clamp(48px, 6.67vw, 96px);  line-height: 0.92; }
+  .type-highlight-lg  { font-size: clamp(44px, 5.56vw, 80px);  line-height: 0.9; }
+  .type-highlight-md  { font-size: clamp(40px, 5vw, 72px);     line-height: 0.89; }
+
+  /* Display: Zalando Sans Expanded Black Italic, uppercase */
+  .type-display-2xl, .type-display-xl, .type-display-lg,
+  .type-display-md, .type-display-sm, .type-display-xs {
+    font-family: var(--font-display), sans-serif;
+    font-weight: 900;
+    font-style: italic;
+    text-transform: uppercase;
+    overflow-wrap: break-word;
+  }
+  .type-display-2xl { font-size: clamp(72px, 13.9vw, 200px); line-height: 0.88; letter-spacing: -0.03em; }
+  .type-display-xl  { font-size: clamp(64px, 11.1vw, 160px); line-height: 0.85; letter-spacing: -0.02em; }
+  .type-display-lg  { font-size: clamp(44px, 6.67vw, 96px);  line-height: 0.92; letter-spacing: -0.01em; }
+  /* Mobile minimums sized so the longest single words in the copy ("INFRASTRUCTURE") fit 343px */
+  .type-display-md  { font-size: clamp(28px, 5vw, 72px);     line-height: 0.92; letter-spacing: -0.01em; }
+  .type-display-sm  { font-size: clamp(34px, 4.03vw, 58px);  line-height: 0.95; letter-spacing: -0.01em; }
+  .type-display-xs  { font-size: clamp(26px, 3.33vw, 48px);  line-height: 0.95; letter-spacing: -0.01em; }
+
+  /* Heading: Zalando Sans Expanded Black Italic */
+  .type-heading-xl, .type-heading-lg, .type-heading-md, .type-heading-sm, .type-heading-xs {
+    font-family: var(--font-display), sans-serif;
+    font-weight: 900;
+    font-style: italic;
+  }
+  .type-heading-xl { font-size: clamp(30px, 3.06vw, 44px); line-height: 1.05; letter-spacing: -0.01em; }
+  .type-heading-lg { font-size: clamp(30px, 2.92vw, 42px); line-height: 0.95; letter-spacing: -0.01em; }
+  .type-heading-md { font-size: clamp(28px, 2.64vw, 38px); line-height: 0.95; }
+  .type-heading-sm { font-size: clamp(26px, 2.5vw, 36px);  line-height: 1; }
+  .type-heading-xs { font-size: clamp(22px, 1.94vw, 28px); line-height: 1; }
+
+  /* Label: Zalando Sans Expanded Bold */
+  .type-label-lg, .type-label-md, .type-label-sm, .type-label-xs {
+    font-family: var(--font-display), sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+  .type-label-lg { font-size: 24px; line-height: 26.4px; }
+  .type-label-md { font-size: 20px; line-height: 24.2px; }
+  .type-label-sm { font-size: 18px; line-height: 22px; }
+  .type-label-xs { font-size: 14px; line-height: 20px; }
+
+  /* Body: Public Sans Light / Medium */
+  .type-body-lg, .type-body-md, .type-body-sm, .type-body-xs, .type-body-2xs {
+    font-family: var(--font-body), sans-serif;
+    font-weight: 300;
+  }
+  .type-body-lg  { font-size: 22px; line-height: 34px; }
+  .type-body-md  { font-size: 18px; line-height: 32px; }
+  .type-body-sm  { font-size: 16px; line-height: 28px; }
+  .type-body-xs  { font-size: 14px; line-height: 22px; }
+  .type-body-2xs { font-size: 12px; line-height: 18px; }
+  .type-body-sm-medium { font-family: var(--font-body), sans-serif; font-weight: 500; font-size: 16px; line-height: 28px; }
+  .type-body-xs-medium { font-family: var(--font-body), sans-serif; font-weight: 500; font-size: 14px; line-height: 22px; }
+
+  /* Mono: Kode Mono */
+  .type-mono-lg, .type-mono-lg-bold, .type-mono-md, .type-mono-md-bold,
+  .type-mono-sm, .type-mono-sm-bold, .type-mono-xs, .type-mono-xs-bold, .type-mono-xs-med,
+  .type-caption-md, .type-caption-sm, .type-caption-xs, .type-caption-2xs, .type-caption-3xs,
+  .type-tag-md {
+    font-family: var(--font-mono), monospace;
+    font-weight: 400;
+  }
+  .type-mono-lg      { font-size: 18px; line-height: 29.25px; }
+  .type-mono-lg-bold { font-size: 18px; line-height: 29.25px; font-weight: 700; }
+  .type-mono-md      { font-size: 16px; line-height: 22.75px; }
+  .type-mono-md-bold { font-size: 16px; line-height: 22.75px; font-weight: 700; }
+  .type-mono-sm      { font-size: 14px; line-height: 20px; letter-spacing: 1.4px; }
+  .type-mono-sm-bold { font-size: 14px; line-height: 20px; letter-spacing: 1.4px; font-weight: 700; }
+  .type-mono-xs      { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; }
+  .type-mono-xs-bold { font-size: 12px; line-height: 16px; font-weight: 700; }
+  .type-mono-xs-med  { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; font-weight: 500; }
+
+  .type-caption-md  { font-size: 14px; line-height: 19.5px; letter-spacing: -0.26px; font-weight: 500; }
+  .type-caption-sm  { font-size: 12px; line-height: 16.5px; letter-spacing: 1.54px; }
+  .type-caption-xs  { font-size: 10px; line-height: 16.5px; letter-spacing: 0.44px; }
+  .type-caption-2xs { font-size: 9px;  line-height: 15px;   letter-spacing: 1.8px; }
+  .type-caption-3xs { font-size: 8px;  line-height: 13.5px; letter-spacing: 1.62px; }
+
+  .type-tag-md { font-size: 14px; line-height: 16.5px; letter-spacing: 0.22px; }
+
+  /* Page container: Figma content frame is 1344 wide with 32px side padding */
+  .container-page {
+    @apply mx-auto w-full max-w-content px-16 md:px-32;
+  }
+}
+
+@layer utilities {
+  /* Intro: film grain, an intro-only treatment */
+  .intro-grain {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.07;
+    mix-blend-mode: multiply;
+  }
+}
