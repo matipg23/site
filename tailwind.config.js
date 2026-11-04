@@ -13,6 +13,9 @@ module.exports = {
         page: "var(--background-page)",
         surface: "var(--background-surface)",
         overlay: "var(--background-overlay)",
+        "overlay-transparent": "var(--background-overlay-transparent)",
+        fog: "var(--background-fog)",
+        shade: "var(--background-shade)",
         action: "var(--background-action)",
         inverse: "var(--background-inverse)",
         "action-primary": "var(--action-primary)",
@@ -30,6 +33,7 @@ module.exports = {
         inverse: "var(--text-inverse)",
         action: "var(--text-action)",
         accent: "var(--text-accent)",
+        online: "var(--text-online)",
         "action-accent": "var(--action-accent)",
         "action-primary-text": "var(--action-primary-text)",
         nav: "var(--nav-text)",
@@ -104,14 +108,37 @@ module.exports = {
         112: "112px",
         128: "128px",
         gutter: "clamp(16px, 7vw, 128px)",
+        // Semantic spacing, values in tokens.css (defined in code, not yet in Figma)
+        section: "var(--space-section)",
+        eyebrow: "var(--space-eyebrow)",
+        title: "var(--space-title)",
+        lead: "var(--space-lead)",
+        block: "var(--space-block)",
+        paragraph: "var(--space-paragraph)",
+        action: "var(--space-action)",
+        card: "var(--space-card)",
+        "card-stack": "var(--space-card-stack)",
       },
       maxWidth: {
         // Figma content frame: 1344 wide with 32px side padding (1280 of content)
         content: "1344px",
         prose: "640px",
       },
+      // Radius scale, values in tokens.css (defined in code, not yet in Figma)
       borderRadius: {
-        DEFAULT: "2px",
+        DEFAULT: "var(--radius-xs)",
+        xs: "var(--radius-xs)",
+        sm: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
+        xl: "var(--radius-xl)",
+        "2xl": "var(--radius-2xl)",
+        full: "var(--radius-full)",
+      },
+      // Figma effect styles "Shadow" and "Shadow 2"
+      boxShadow: {
+        1: "var(--shadow-1)",
+        2: "var(--shadow-2)",
       },
       transitionTimingFunction: {
         out: "cubic-bezier(0.23, 1, 0.32, 1)",

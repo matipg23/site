@@ -56,9 +56,10 @@ one Figma style.
 |---|---|---|
 | Display, Heading | Zalando Sans Expanded, Black Italic | `display-2xl` to `display-xs` (uppercase), `heading-xl` to `heading-xs` |
 | Label | Zalando Sans Expanded, Bold | `label-lg` to `label-xs` |
+| Title | Zalando Sans Expanded, Bold, -2% tracking | `title-lg`, `title-md` |
 | Highlight | Barlow Semi Condensed, Black Italic | `highlight-2xl` to `highlight-md` (uppercase, stat numerals) |
 | Body | Public Sans, Light / Medium | `body-lg` to `body-2xs`, `body-sm-medium`, `body-xs-medium` |
-| Mono, Caption, Tag | Kode Mono | `mono-*`, `caption-*`, `tag-md` |
+| Mono, Caption, Tag | Kode Mono | `mono-*` (incl. `mono-xs-caps`, `mono-xs-med-caps`, uppercase), `caption-*`, `tag-md` |
 
 Display, heading and highlight sizes scale with the viewport using `clamp()`. The maximum is the
 Figma value at 1440px. The minimum is chosen so the longest single word in the copy fits a phone.
