@@ -12,14 +12,16 @@ export default function Header() {
 
   useEffect(() => setOpen(false), [pathname]);
 
-  // Figma nav variants: Home page has three links, internal pages add "Home" first.
-  // Contact lives on Home and About; case pages send it to the Home section.
-  const isHome = pathname === "/";
+  // Figma nav variants: the Home page has three links, every other page adds "Home" first.
+  // Contact lives on Home, About and the index; case pages send it to the Home section.
+  const path = pathname.replace(/\/$/, "") || "/";
+  const showHome = path !== "/";
+  const onCase = path.startsWith("/work/");
   const links = [
-    ...(isHome ? [] : [{ href: "/", label: "Home" }]),
-    { href: "/#work", label: "Work" },
+    ...(showHome ? [{ href: "/", label: "Home" }] : []),
+    { href: "/work/", label: "Work" },
     { href: "/about/", label: "About me" },
-    { href: pathname.startsWith("/work") ? "/#contact" : "#contact", label: "Contact" },
+    { href: onCase ? "/#contact" : "#contact", label: "Contact" },
   ];
   const isCurrent = (href: string) => pathname.replace(/\/$/, "") === href.replace(/\/$/, "");
 
