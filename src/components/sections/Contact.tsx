@@ -3,66 +3,91 @@ import { links } from "@/content/links";
 
 type Icon = "speech" | "external" | "download";
 
-const channels: { label: string; icon: Icon; value: string; href: string | null }[] = [
+// `platform` is the extra word the phone layout shows before the handle ("LinkedIn /matipeinado")
+const channels: { label: string; icon: Icon; platform?: string; value: string; href: string | null }[] = [
   { label: "Talk", icon: "speech", value: links.email, href: `mailto:${links.email}` },
-  { label: "Connect", icon: "external", value: "/matipeinado", href: links.linkedin },
-  { label: "Read", icon: "external", value: "@mpg23", href: links.medium },
+  { label: "Connect", icon: "external", platform: "LinkedIn", value: "/matipeinado", href: links.linkedin },
+  { label: "Read", icon: "external", platform: "Medium", value: "@mpg23", href: links.medium },
   { label: "Resume", icon: "download", value: "Download PDF", href: links.cv },
 ];
 
-// Figma: Home - Refined > Contact (surface). Shared by Home and About.
+// Figma: Home - Refined > Contact (surface) at lg and up; About Me - Mobile (Option A) > Contact below lg.
+// Shared by Home and About.
 export default function Contact() {
   return (
     <section id="contact" className="bg-surface">
-      <div className="container-page py-section">
-        <Chip>Contact</Chip>
-        <div className="flex flex-col gap-48 pt-title lg:flex-row lg:justify-between lg:gap-56">
-          <div>
-            <h2 className="type-display-lg text-primary">
-              Let&apos;s <span className="text-accent">talk</span>
-            </h2>
-            <p className="type-body-md max-w-[520px] pt-lead text-primary">
-              Open to conversations about design systems, product craft, and what good design infrastructure looks like
-              in practice. If you&apos;re building something great and thinking about how it scales, let&apos;s talk
-              about it.
-            </p>
+      <div className="container-page pb-48 pt-64 lg:py-section">
+        <div className="flex flex-col gap-24 lg:gap-0">
+          <Chip>Contact</Chip>
+          <div className="flex flex-col gap-24 lg:flex-row lg:justify-between lg:gap-56 lg:pt-title">
+            <div className="flex flex-col gap-24 lg:gap-0">
+              {/* Figma phone size for Display/SM is 58 and the title breaks over two lines */}
+              <h2 className="type-display-lg text-primary max-lg:text-[58px]">
+                Let&apos;s <br className="lg:hidden" />
+                <span className="text-accent">talk</span>
+              </h2>
+              <p className="type-body-sm max-w-[520px] text-primary lg:type-body-md lg:pt-lead">
+                Open to conversations about design systems, product craft, and what good design infrastructure looks
+                like in practice. If you&apos;re building something great and thinking about how it scales, let&apos;s
+                talk about it.
+              </p>
+            </div>
+            <ul className="flex flex-col border-t border-subtle lg:w-[205px] lg:gap-24 lg:border-t-0">
+              {channels.map((c) => (
+                <li key={c.label} className="border-b border-subtle lg:border-b-0">
+                  {c.href ? (
+                    <a
+                      href={c.href}
+                      className="group flex items-center justify-between gap-16 py-[14px] lg:block lg:py-0"
+                      {...(c.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
+                      {...(c.icon === "download" ? { download: "" } : {})}
+                    >
+                      <ChannelBody {...c} />
+                    </a>
+                  ) : (
+                    // TODO(content): no CV file yet, so this renders as plain text, not a dead link
+                    <div className="flex items-center justify-between gap-16 py-[14px] lg:block lg:py-0">
+                      <ChannelBody {...c} />
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ul>
           </div>
-          <ul className="flex flex-col gap-24 lg:w-[205px]">
-            {channels.map((c) => (
-              <li key={c.label}>
-                {c.href ? (
-                  <a
-                    href={c.href}
-                    className="group block"
-                    {...(c.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
-                    {...(c.icon === "download" ? { download: "" } : {})}
-                  >
-                    <ChannelBody {...c} />
-                  </a>
-                ) : (
-                  // TODO(content): no CV file yet, so this renders as plain text, not a dead link
-                  <div>
-                    <ChannelBody {...c} />
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </section>
   );
 }
 
-function ChannelBody({ label, icon, value }: { label: string; icon: Icon; value: string }) {
+// Phones: label and value stacked, icon at the right edge. Desktop: icon sits next to the label.
+function ChannelBody({
+  label,
+  icon,
+  platform,
+  value,
+}: {
+  label: string;
+  icon: Icon;
+  platform?: string;
+  value: string;
+}) {
   return (
     <>
-      <span className="type-mono-md-bold flex items-center gap-[6px] text-accent">
-        {label}
-        <ChannelIcon icon={icon} />
+      <span className="flex flex-col gap-[2px] lg:block">
+        <span className="type-mono-md-bold flex items-center gap-[6px] text-accent">
+          {label}
+          <span className="hidden lg:inline">
+            <ChannelIcon icon={icon} />
+          </span>
+        </span>
+        <span className="type-body-sm block text-primary underline decoration-transparent underline-offset-4 transition-colors duration-150 group-hover:text-accent group-hover:decoration-current lg:type-body-md">
+          {platform && <span className="lg:hidden">{platform} </span>}
+          {value}
+        </span>
       </span>
-      <span className="type-body-md block text-secondary underline decoration-transparent underline-offset-4 transition-colors duration-150 group-hover:text-primary group-hover:decoration-current">
-        {value}
+      <span className="shrink-0 text-accent lg:hidden">
+        <ChannelIcon icon={icon} />
       </span>
     </>
   );
