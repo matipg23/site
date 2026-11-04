@@ -12,8 +12,11 @@ export default function Header() {
 
   useEffect(() => setOpen(false), [pathname]);
 
-  // Contact lives on Home and About; case pages send it to the Home section
+  // Figma nav variants: Home page has three links, internal pages add "Home" first.
+  // Contact lives on Home and About; case pages send it to the Home section.
+  const isHome = pathname === "/";
   const links = [
+    ...(isHome ? [] : [{ href: "/", label: "Home" }]),
     { href: "/#work", label: "Work" },
     { href: "/about/", label: "About me" },
     { href: pathname.startsWith("/work") ? "/#contact" : "#contact", label: "Contact" },
