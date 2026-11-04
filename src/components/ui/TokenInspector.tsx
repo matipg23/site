@@ -37,7 +37,7 @@ function readTokens(): Row[] {
   });
 }
 
-// Figma: HOME > "Sidebar - Token proof", opened from the "/>" button in the hero
+// Figma: "Sidebar - Token proof", opened from "Inspect" in the footer ("Themed by its own tokens · Inspect")
 export default function TokenInspector() {
   const [open, setOpen] = useState(false);
   const [rows, setRows] = useState<Row[]>([]);
@@ -62,29 +62,28 @@ export default function TokenInspector() {
   }, [open]);
 
   return (
-    // Static on phones so the panel anchors to the parent row and stays on screen
-    <div ref={ref} className="sm:relative">
+    // Not positioned: the panel anchors to the footer container so it stays on screen at every width
+    <span ref={ref}>
       <button
         type="button"
         aria-expanded={open}
         aria-controls="token-inspector"
         aria-label="Inspect design tokens"
         onClick={() => setOpen((o) => !o)}
-        className={`type-body-md flex h-[33px] w-32 items-center justify-center rounded border bg-page transition-colors duration-150 ${
-          open
-            ? "border-accent text-action-accent"
-            : "border-default text-secondary hover:border-accent hover:text-action-accent"
+        className={`uppercase underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:text-accent hover:decoration-current ${
+          open ? "text-accent decoration-current" : ""
         }`}
       >
-        /&gt;
+        Inspect
       </button>
 
+      {/* Opens upwards: the trigger sits in the footer */}
       <div
         id="token-inspector"
         role="region"
         aria-label="Design tokens"
         hidden={!open}
-        className="absolute left-0 top-[calc(100%+12px)] sm:left-auto sm:right-0 z-30 w-[min(607px,calc(100vw-32px))] origin-top-right border border-default bg-surface p-24"
+        className="absolute bottom-[calc(100%+12px)] right-16 z-30 w-[min(607px,calc(100vw-32px))] border border-default bg-surface p-24 normal-case tracking-normal shadow-2 md:right-32"
       >
         <p className="type-mono-sm-bold uppercase text-accent">This page runs on tokens</p>
         <p className="type-body-sm pt-8 text-secondary">
@@ -102,7 +101,7 @@ export default function TokenInspector() {
           ))}
         </ul>
       </div>
-    </div>
+    </span>
   );
 }
 

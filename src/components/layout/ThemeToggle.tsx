@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark";
 
-// Sun / switch / moon control from the Figma Home header.
+// Sun / switch / moon control from the Figma nav (a raster placeholder there, built here on the tokens).
 // The initial theme is set before paint by the inline script in layout.tsx.
 export default function ThemeToggle() {
   const [theme, setTheme] = useState<Theme | null>(null);
@@ -37,7 +37,7 @@ export default function ThemeToggle() {
         <circle cx="8" cy="8" r="3" />
         <path d="M8 1v1.5M8 13.5V15M1 8h1.5M13.5 8H15M3 3l1 1M12 12l1 1M3 13l1-1M12 4l1-1" />
       </svg>
-      <span className="relative h-20 w-[36px] rounded-full border border-default bg-surface">
+      <span className="relative h-20 w-[36px] rounded-full border border-default bg-page transition-colors duration-150 group-hover:border-accent">
         <span
           className={`absolute left-2 top-2 h-[14px] w-[14px] rounded-full bg-action-accent transition-transform duration-200 ease-out ${
             isDark ? "translate-x-16" : "translate-x-0"

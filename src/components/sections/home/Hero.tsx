@@ -1,6 +1,5 @@
 import Button from "@/components/ui/Button";
 import SocialLinks from "@/components/ui/SocialLinks";
-import TokenInspector from "@/components/ui/TokenInspector";
 
 // Figma: Home - Revised > Section (hero): fixed 900px tall, py-96, button row pinned to the bottom
 export default function Hero() {
@@ -35,7 +34,6 @@ export default function Hero() {
         </div>
         <div className="relative flex items-center gap-[28px]">
           <SocialLinks />
-          <TokenInspector />
         </div>
       </div>
     </section>

@@ -1,11 +1,15 @@
-// Figma: Home - Revised > Footer (64px, top border, three Mono/XS items)
+import TokenInspector from "@/components/ui/TokenInspector";
+
+// Figma: Home - Refined > Footer (top border, three Mono/XS-Caps items)
 export default function Footer() {
   return (
     <footer className="border-t border-default">
-      <div className="container-page flex flex-col gap-12 py-24 md:flex-row md:items-center md:justify-between">
-        <p className="type-mono-xs text-secondary">© 2026 Mati Peinado Greco</p>
-        <p className="type-mono-xs text-secondary">Themed by its own tokens</p>
-        <p className="type-mono-xs text-secondary">Product Design / Design Systems</p>
+      <div className="container-page type-mono-xs-caps relative flex flex-col gap-12 py-24 text-secondary md:flex-row md:items-center md:justify-between">
+        <p>© 2026 Matias Peinado Greco</p>
+        <div>
+          Themed by its own tokens · <TokenInspector />
+        </div>
+        <p>Product design · Design systems</p>
       </div>
     </footer>
   );

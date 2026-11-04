@@ -5,32 +5,36 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
-const links = [
-  { href: "/#work", label: "My Work" },
-  { href: "/about/", label: "About Me" },
-];
-
-// Figma: Home - Revised > Header (80px, bottom border, Mono/SM links)
+// Figma: Home - Refined > Nav (64px, surface, bottom border, Shadow 2, Label/XS links centred)
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   useEffect(() => setOpen(false), [pathname]);
 
+  // Contact lives on Home and About; case pages send it to the Home section
+  const links = [
+    { href: "/#work", label: "Work" },
+    { href: "/about/", label: "About me" },
+    { href: pathname.startsWith("/work") ? "/#contact" : "#contact", label: "Contact" },
+  ];
+  const isCurrent = (href: string) => pathname.replace(/\/$/, "") === href.replace(/\/$/, "");
+
   return (
-    <header className="sticky top-0 z-40 border-b border-default bg-nav">
-      <div className="container-page flex h-[79px] items-center justify-between">
-        <nav aria-label="Primary" className="flex items-center gap-32">
-          <Link href="/" className="type-mono-sm-bold text-accent">
-            MPG
-          </Link>
-          <ul className="hidden items-center gap-32 md:flex">
+    <header className="sticky top-0 z-40 border-b border-default bg-surface shadow-2">
+      <div className="grid h-64 grid-cols-[1fr_auto_1fr] items-center px-16 md:px-24">
+        <Link href="/" className="type-mono-sm-bold justify-self-start text-accent">
+          MPG
+        </Link>
+
+        <nav aria-label="Primary" className="hidden md:block">
+          <ul className="flex items-center gap-24">
             {links.map((l) => (
-              <li key={l.href}>
+              <li key={l.label}>
                 <Link
                   href={l.href}
-                  aria-current={pathname.replace(/\/$/, "") === l.href.replace(/\/$/, "") ? "page" : undefined}
-                  className="type-mono-sm text-secondary transition-colors duration-150 hover:text-primary aria-[current=page]:text-nav-active"
+                  aria-current={isCurrent(l.href) ? "page" : undefined}
+                  className="type-label-xs text-secondary transition-colors duration-150 hover:text-primary aria-[current=page]:text-nav-active"
                 >
                   {l.label}
                 </Link>
@@ -39,14 +43,14 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-24">
+        <div className="col-start-3 flex items-center gap-24 justify-self-end">
           <ThemeToggle />
           <button
             type="button"
             aria-expanded={open}
             aria-controls="mobile-nav"
             onClick={() => setOpen((o) => !o)}
-            className="type-mono-sm-bold text-primary md:hidden"
+            className="type-label-xs text-primary md:hidden"
           >
             {open ? "Close" : "Menu"}
           </button>
@@ -54,15 +58,22 @@ export default function Header() {
       </div>
 
       {open && (
-        <ul id="mobile-nav" className="container-page flex flex-col border-t border-default pb-24 md:hidden">
-          {links.map((l) => (
-            <li key={l.href} className="border-b border-default">
-              <Link href={l.href} onClick={() => setOpen(false)} className="type-label-md block py-16 text-primary">
-                {l.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <nav aria-label="Primary" id="mobile-nav" className="border-t border-default px-16 pb-24 md:hidden">
+          <ul className="flex flex-col">
+            {links.map((l) => (
+              <li key={l.label} className="border-b border-default">
+                <Link
+                  href={l.href}
+                  aria-current={isCurrent(l.href) ? "page" : undefined}
+                  onClick={() => setOpen(false)}
+                  className="type-label-md block py-16 text-primary aria-[current=page]:text-nav-active"
+                >
+                  {l.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
       )}
     </header>
   );
