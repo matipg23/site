@@ -78,11 +78,11 @@
   .type-display-sm  { font-size: clamp(34px, 4.03vw, 58px);  line-height: 0.95; letter-spacing: -0.01em; }
   .type-display-xs  { font-size: clamp(26px, 3.33vw, 48px);  line-height: 0.95; letter-spacing: -0.01em; }
 
-  /* Heading: Zalando Sans Expanded Black Italic */
+  /* Heading: Zalando Sans Expanded Black (upright, as in Figma) */
   .type-heading-xl, .type-heading-lg, .type-heading-md, .type-heading-sm, .type-heading-xs {
     font-family: var(--font-display), sans-serif;
     font-weight: 900;
-    font-style: italic;
+    font-style: normal;
   }
   .type-heading-xl { font-size: clamp(30px, 3.06vw, 44px); line-height: 1.05; letter-spacing: -0.01em; }
   .type-heading-lg { font-size: clamp(30px, 2.92vw, 42px); line-height: 0.95; letter-spacing: -0.01em; }
@@ -101,6 +101,16 @@
   .type-label-sm { font-size: 18px; line-height: 22px; }
   .type-label-xs { font-size: 14px; line-height: 20px; }
 
+  /* Title: Zalando Sans Expanded Bold, tight tracking */
+  .type-title-lg, .type-title-md {
+    font-family: var(--font-display), sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    letter-spacing: -0.02em;
+  }
+  .type-title-lg { font-size: 24px; line-height: 26.4px; }
+  .type-title-md { font-size: 20px; line-height: 24.2px; }
+
   /* Body: Public Sans Light / Medium */
   .type-body-lg, .type-body-md, .type-body-sm, .type-body-xs, .type-body-2xs {
     font-family: var(--font-body), sans-serif;
@@ -117,6 +127,7 @@
   /* Mono: Kode Mono */
   .type-mono-lg, .type-mono-lg-bold, .type-mono-md, .type-mono-md-bold,
   .type-mono-sm, .type-mono-sm-bold, .type-mono-xs, .type-mono-xs-bold, .type-mono-xs-med,
+  .type-mono-xs-upper, .type-mono-xs-med-upper,
   .type-caption-md, .type-caption-sm, .type-caption-xs, .type-caption-2xs, .type-caption-3xs,
   .type-tag-md {
     font-family: var(--font-mono), monospace;
@@ -131,6 +142,8 @@
   .type-mono-xs      { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; }
   .type-mono-xs-bold { font-size: 12px; line-height: 16px; font-weight: 700; }
   .type-mono-xs-med  { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; font-weight: 500; }
+  .type-mono-xs-upper     { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; text-transform: uppercase; }
+  .type-mono-xs-med-upper { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; font-weight: 500; text-transform: uppercase; }
 
   .type-caption-md  { font-size: 14px; line-height: 19.5px; letter-spacing: -0.26px; font-weight: 500; }
   .type-caption-sm  { font-size: 12px; line-height: 16.5px; letter-spacing: 1.54px; }

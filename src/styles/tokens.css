@@ -1,6 +1,7 @@
 /*
  * Design tokens, generated from the Figma "Portfolio Redesign" variables.
  * Collection "Color": modes Light (default) and Dark. The FD mode is not shipped.
+ * Effect styles "Shadow" and "Shadow 2" are --shadow-1 and --shadow-2.
  * Do not edit by hand: change the variable in Figma, then ask Claude to "sync tokens".
  * Names mirror the Figma variable paths (semantic/ prefix dropped).
  */
@@ -37,20 +38,25 @@
   --primitive-green-400: #9db8a8;
   --primitive-green-100: #ecf3ee;
   --primitive-lime-400: #b8f25a;
+  --primitive-lime-500: #88d807;
 
   /* semantic, Light mode */
   color-scheme: light;
   --background-page: var(--primitive-white);
   --background-surface: var(--primitive-neutral-100);
   --background-overlay: var(--primitive-neutral-200);
+  --background-overlay-transparent: color-mix(in srgb, var(--primitive-neutral-200) 30%, transparent);
   --background-action: var(--primitive-teal-400);
   --background-inverse: var(--primitive-neutral-900);
+  --background-fog: color-mix(in srgb, var(--primitive-white) 15%, transparent);
+  --background-shade: color-mix(in srgb, var(--primitive-neutral-900) 15%, transparent);
   --text-primary: var(--primitive-neutral-900);
   --text-secondary: var(--primitive-neutral-500);
   --text-muted: var(--primitive-neutral-200);
   --text-inverse: var(--primitive-white);
   --text-action: var(--primitive-neutral-900);
   --text-accent: var(--primitive-teal-500);
+  --text-online: var(--primitive-lime-500);
   --border-default: var(--primitive-neutral-300);
   --border-subtle: var(--primitive-teal-200);
   --border-strong: var(--primitive-neutral-700);
@@ -61,6 +67,45 @@
   --nav-background: var(--background-page);
   --nav-text: var(--action-primary);
   --nav-text-active: var(--action-accent);
+
+  /* effect styles (not moded in Figma): "Shadow" and "Shadow 2" */
+  --shadow-1: 0 12px 32px 0 color-mix(in srgb, var(--primitive-teal-500) 10%, transparent);
+  --shadow-2: 0 24px 48px -16px color-mix(in srgb, var(--primitive-black) 5%, transparent),
+    inset 0 1px 0 0 color-mix(in srgb, var(--primitive-white) 70%, transparent);
+}
+
+/*
+ * Defined in code, not yet in Figma. Create matching Figma collections from these values,
+ * then this block moves into the synced section above.
+ */
+:root {
+  /* radius */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
+  --radius-2xl: 40px;
+  --radius-full: 999px;
+
+  /* spacing: vertical rhythm settled on Home */
+  --space-section: 96px;        /* section padding, top and bottom */
+  --space-eyebrow: 12px;        /* eyebrow label to its rule or next line */
+  --space-title: 40px;          /* eyebrow to title */
+  --space-lead: 32px;           /* title to lead text */
+  --space-block: 64px;          /* lead text to content block */
+  --space-paragraph: 24px;      /* paragraph to paragraph */
+  --space-action: 40px;         /* text to button */
+  --space-card: 24px;           /* card padding */
+  --space-card-stack: 12px;     /* between text lines in a card */
+
+  /* Thesis band: a fixed dark "liquid glass" panel, identical in Light and Dark.
+     Gradient colours are raw values from Figma, not primitives yet. */
+  --band-from: #0b3b34;
+  --band-to: #0e0f0f;
+  --glass-fill: color-mix(in srgb, var(--primitive-white) 4%, transparent);
+  --glass-stroke: color-mix(in srgb, var(--primitive-white) 8%, transparent);
+  --glass-highlight: color-mix(in srgb, var(--primitive-white) 12%, transparent);
 }
 
 [data-theme="dark"] {
@@ -68,14 +113,18 @@
   --background-page: var(--primitive-green-950);
   --background-surface: var(--primitive-green-900);
   --background-overlay: var(--primitive-green-800);
+  --background-overlay-transparent: color-mix(in srgb, var(--primitive-green-800) 30%, transparent);
   --background-action: var(--primitive-lime-400);
   --background-inverse: var(--primitive-green-100);
+  --background-fog: color-mix(in srgb, var(--primitive-white) 15%, transparent);
+  --background-shade: color-mix(in srgb, var(--primitive-neutral-900) 15%, transparent);
   --text-primary: var(--primitive-green-100);
   --text-secondary: var(--primitive-green-400);
   --text-muted: var(--primitive-green-800);
   --text-inverse: var(--primitive-green-950);
   --text-action: var(--primitive-green-950);
   --text-accent: var(--primitive-lime-400);
+  --text-online: var(--primitive-lime-400);
   --border-default: var(--primitive-green-800);
   --border-subtle: var(--primitive-green-700);
   --border-strong: var(--primitive-green-400);

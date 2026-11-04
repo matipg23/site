@@ -1,153 +1,242 @@
 import Link from "next/link";
-import ImageSlot from "@/components/ui/ImageSlot";
+import Arrow from "@/components/ui/Arrow";
+import Chip from "@/components/ui/Chip";
 import Reveal from "@/components/ui/Reveal";
-import SectionLabel from "@/components/ui/SectionLabel";
 import { caseHref } from "@/content/cases";
 
-// Figma: Home - Revised > Section "SELECTED WORK"
+// Figma: Home - Refined > Selected. A 1px hairline grid: one featured card, two stacked cards, two wide cards.
+// TODO(content): Figma has an "All case studies" link here. There is no case study index route yet, so it is left out.
 export default function SelectedWork() {
   return (
-    <section id="work" className="container-page py-64 md:py-96">
-      <SectionLabel as="h2">Selected work</SectionLabel>
-      <p className="type-body-md max-w-[520px] pt-40 text-secondary">
-        Each piece opens into a full case study: the decisions, the trade-offs, and what I&apos;d do differently.
-      </p>
-
-      {/* Row 1: two feature cards, 770 / 486 at desktop */}
-      <div className="grid gap-48 pt-64 md:grid-cols-[770fr_486fr] md:gap-24">
-        <Reveal>
-          <FeatureCard
-            href={caseHref("nutmeg")}
-            meta="Case Study / Nutmeg · 2019–20"
-            title="Mobile onboarding and native investing"
-            body="The dedicated mobile designer through a period of rapid growth. New investment journeys from concept to launch, and the foundations for dark mode across iOS and Android."
-            visual={<ImageSlot caption="Nutmeg onboarding, device recording" className="aspect-[770/522]" />}
-          />
-        </Reveal>
-        <Reveal delay={1}>
-          <FeatureCard
-            href={caseHref("fd-ai-readiness")}
-            meta="Case Study / FanDuel · 2026"
-            title="The system becomes shared AI infrastructure"
-            body="AI agents were already building with the design system before anyone had decided what good looks like. Proven, not shipped. Yet."
-            visual={
-              <div className="flex aspect-[486/522] flex-col justify-between bg-action-accent p-24 text-action-primary-text">
-                <p className="type-mono-xs uppercase">Pass rate with governed schema</p>
-                <p className="type-display-lg">
-                  0 →<br />
-                  87%
-                </p>
-                <p className="type-mono-xs uppercase">11x cheaper per correct output · 4 components</p>
-              </div>
-            }
-          />
-        </Reveal>
+    <section id="work" className="container-page py-section">
+      <div className="flex flex-col gap-24">
+        <Chip as="h2">Selected work</Chip>
+        <p className="type-body-md max-w-[788px] text-secondary">
+          Each piece opens into a full case study: the decisions, the trade-offs, and what I’d do differently.
+        </p>
       </div>
 
-      {/* Row 2: three compact cards */}
-      <div className="grid gap-24 pt-64 md:grid-cols-3">
-        <Reveal>
-          <CompactCard
-            href={caseHref("newskit-account")}
-            meta="News UK · 2021–22 · Product"
-            title="One account, many mastheads"
-            body="Settings, subscriptions and notifications designed once and served across the News UK mastheads, built on NewsKit."
-            visual={<ImageSlot caption="Account settings across brands" className="h-full border-0" />}
-          />
-        </Reveal>
-        <Reveal delay={1}>
-          <CompactCard
-            href={caseHref("fd-alignment-program")}
-            meta="FanDuel · 2024–25 · Systems"
-            title="Design system alignment program"
-            body="Scaling trust, not just components. Three embedded specialists, twenty-plus designers, and zero detractors at the end."
-            visual={
-              <div className="flex h-full flex-col justify-between p-24">
-                <p className="type-mono-xs uppercase text-secondary">Product verticals, 12 months</p>
-                <p className="type-display-md text-accent">5</p>
-              </div>
-            }
-          />
-        </Reveal>
-        <Reveal delay={2}>
-          <CompactCard
-            meta="FanDuel · 2022 · Systems"
-            title="Token-powered colour system"
-            body="Hardcoded colour was blocking dark mode and a rebrand. The architecture became the backbone of the multi-brand system."
-            visual={
-              <div className="flex h-full flex-col justify-between p-24">
-                <p className="type-mono-xs uppercase text-secondary">Reference → Semantic → Component</p>
-                {/* Live swatches: these follow the active theme, as in Figma */}
-                <div className="grid h-[84px] grid-cols-5 gap-4">
-                  <span className="bg-inverse" />
-                  <span className="bg-text-secondary" />
-                  <span className="bg-border-subtle" />
-                  <span className="bg-action-accent" />
-                  <span className="border border-default bg-page" />
-                </div>
-              </div>
-            }
-          />
-        </Reveal>
-      </div>
+      <Reveal className="mt-56 flex flex-col gap-1 border border-default bg-border-default p-1">
+        <div className="grid gap-1 lg:grid-cols-[852fr_425fr]">
+          <Featured />
+          <div className="flex flex-col gap-1">
+            <AiCard />
+            <ColourCard />
+          </div>
+        </div>
+        <div className="grid gap-1 md:grid-cols-2">
+          <NewsUkCard />
+          <NutmegCard />
+        </div>
+      </Reveal>
     </section>
   );
 }
 
-function FeatureCard({
-  href,
-  meta,
-  title,
-  body,
-  visual,
-}: {
-  href: string;
-  meta: string;
-  title: string;
-  body: string;
-  visual: React.ReactNode;
-}) {
+function Featured() {
   return (
-    <Link href={href} className="group flex flex-col gap-12">
-      <div className="overflow-hidden">
-        <div className="transition-transform duration-500 ease-out group-hover:scale-[1.015]">{visual}</div>
+    <Link
+      href={caseHref("fd-alignment-program")}
+      className="group flex min-w-0 flex-col justify-between gap-64 bg-action-accent p-24 text-inverse md:p-48"
+    >
+      <div className="flex flex-col gap-24">
+        <p className="type-mono-xs-med-upper">FanDuel / 2024–25 / Systems, leadership</p>
+        <h3 className="type-display-xs">Design system alignment program</h3>
       </div>
-      <p className="type-mono-sm-bold pt-4 text-accent">{meta}</p>
-      <h3 className="type-heading-xs uppercase text-primary">{title}</h3>
-      <p className="type-body-sm max-w-prose text-secondary">{body}</p>
+      <div className="flex flex-col gap-40">
+        <div className="grid grid-cols-2 gap-24 border-t border-current pt-24 xl:grid-cols-[2fr_2fr_2fr_auto] xl:gap-x-0">
+          <Stat value="5" label="verticals aligned" />
+          <Stat value="20+" label="CONSUMER designers" />
+          <Stat value="3" label="embedded specialists" />
+          <Stat value="1" label="DESIGN SYSTEM" />
+        </div>
+        <div className="flex flex-col gap-24 sm:flex-row sm:items-end sm:justify-between">
+          <p className="type-body-sm max-w-[440px]">
+            Scaling trust, not just components. Three embedded specialists, twenty-plus designers, and one adoption
+            goal.
+          </p>
+          <span className="type-mono-md inline-flex shrink-0 items-center gap-8 whitespace-nowrap">
+            Read case study
+            <Arrow />
+          </span>
+        </div>
+      </div>
     </Link>
   );
 }
 
-function CompactCard({
+function Stat({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="flex flex-col gap-8">
+      <p className="type-heading-sm">{value}</p>
+      <p className="type-mono-xs-med-upper xl:whitespace-nowrap">{label}</p>
+    </div>
+  );
+}
+
+// Compact card with a text-only face: meta, visual, title row with arrow
+function SideCard({
+  href,
+  meta,
+  title,
+  children,
+}: {
+  href?: string;
+  meta: string;
+  title: string;
+  children: React.ReactNode;
+}) {
+  const body = (
+    <>
+      <p className="type-mono-xs-med-upper text-secondary">{meta}</p>
+      {children}
+      <div className="flex items-end justify-between gap-16">
+        <h3 className="type-label-md max-w-[300px] text-primary transition-colors duration-150 group-hover:text-accent">
+          {title}
+        </h3>
+        {href && <Arrow className="mb-4 text-primary" />}
+      </div>
+    </>
+  );
+  const cls = "flex min-h-[320px] min-w-0 flex-col justify-between gap-24 bg-page p-32";
+  return href ? (
+    <Link href={href} className={`group ${cls}`}>
+      {body}
+    </Link>
+  ) : (
+    <div className={cls}>{body}</div>
+  );
+}
+
+function AiCard() {
+  return (
+    <SideCard href={caseHref("fd-ai-readiness")} meta="FanDuel / 2026 / Systems, AI" title="The system becomes shared AI infrastructure">
+      {/* Diagram: one parent node fanning out to four parts, as in Figma */}
+      <div aria-hidden className="relative">
+        <div className="mx-auto flex w-[291px] max-w-full flex-col items-center gap-8 rounded-sm border border-subtle bg-surface px-12 py-8 shadow-1">
+          <svg width="18" height="18" viewBox="0 0 18 18" className="text-action-accent" fill="currentColor">
+            <rect x="1" y="1" width="7" height="9" />
+            <rect x="10" y="1" width="7" height="5" />
+            <rect x="10" y="8" width="7" height="9" />
+            <rect x="1" y="12" width="7" height="5" />
+          </svg>
+          <span className="type-label-xs text-primary">AI-READY DESIGN SYSTEM</span>
+        </div>
+        <svg viewBox="0 0 296 45" className="mx-auto block h-[45px] w-[296px] max-w-full text-secondary" fill="none" stroke="currentColor" strokeDasharray="1.5 2.5">
+          <path d="M148 0C148 22 33 20 33 45M148 0C148 22 105 20 105 45M148 0C148 22 188 20 188 45M148 0C148 22 270 20 270 45" />
+        </svg>
+        <div className="flex flex-wrap justify-between gap-y-8">
+          {["foundations", "guidelines", "components", "tokens"].map((t) => (
+            <span key={t} className="type-mono-xs-bold border border-subtle bg-surface px-4 py-2 text-primary">
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+    </SideCard>
+  );
+}
+
+function ColourCard() {
+  return (
+    <SideCard meta="FanDuel / 2022 / Systems" title="Token-powered colour system">
+      {/* Live swatches: these follow the active theme, as in Figma */}
+      <div aria-hidden className="grid h-[64px] grid-cols-5">
+        <span className="bg-inverse" />
+        <span className="bg-text-secondary" />
+        <span className="bg-border-subtle" />
+        <span className="bg-action-accent" />
+        <span className="border border-default bg-page" />
+      </div>
+    </SideCard>
+  );
+}
+
+function WideCard({
   href,
   meta,
   title,
   body,
   visual,
+  visualClass,
 }: {
-  href?: string;
+  href: string;
   meta: string;
-  title: string;
+  title: React.ReactNode;
   body: string;
   visual: React.ReactNode;
+  visualClass: string;
 }) {
-  const inner = (
-    <>
-      <div className="h-[200px] border-b border-default bg-surface">{visual}</div>
-      <div className="flex flex-col gap-12 p-24">
-        <p className="type-mono-xs-bold text-accent">{meta}</p>
-        <h3 className="type-label-md uppercase text-primary">{title}</h3>
-        <p className="type-body-xs text-secondary">{body}</p>
+  return (
+    <Link href={href} className="group flex min-w-0 flex-col bg-page">
+      <div className={`flex h-[320px] items-center justify-center overflow-hidden ${visualClass}`}>{visual}</div>
+      <div className="flex flex-1 flex-col gap-[10px] px-32 pb-32 pt-[28px]">
+        <p className="type-mono-xs-med-upper text-secondary">{meta}</p>
+        <h3 className="type-label-lg max-w-[420px] text-primary transition-colors duration-150 group-hover:text-accent">
+          {title}
+        </h3>
+        <div className="flex items-end justify-between gap-16">
+          <p className="type-body-sm max-w-[480px] text-secondary">{body}</p>
+          <Arrow className="mb-4 shrink-0 text-primary" />
+        </div>
       </div>
-    </>
-  );
-  const cls = "flex h-full flex-col border border-default";
-  return href ? (
-    <Link href={href} className={`${cls} group transition-colors duration-200 hover:border-accent`}>
-      {inner}
     </Link>
-  ) : (
-    <div className={cls}>{inner}</div>
+  );
+}
+
+function NewsUkCard() {
+  return (
+    <WideCard
+      href={caseHref("newskit-account")}
+      meta="News UK / 2021–22 / Product"
+      title={
+        <>
+          One account,
+          <br /> multiple brands
+        </>
+      }
+      body="Settings, subscriptions and notifications designed once, served across every masthead on NewsKit."
+      visualClass="bg-surface"
+      visual={
+        <div aria-hidden className="flex w-full items-center justify-center px-16 [&>*:not(:first-child)]:-ml-8">
+          <Masthead label="Brand A" className="bg-inverse text-muted" />
+          <Masthead label="Brand B" className="rotate-2 bg-page text-primary" />
+          <Masthead label="Brand C" className="-rotate-2 bg-action-accent text-inverse" />
+        </div>
+      }
+    />
+  );
+}
+
+function Masthead({ label, className }: { label: string; className: string }) {
+  return (
+    <div
+      className={`flex h-[90px] w-[182px] min-w-0 shrink flex-col justify-center gap-8 border-[1.5px] border-strong py-20 pl-12 pr-8 xl:pl-24 xl:pr-[44px] ${className}`}
+    >
+      <span className="type-label-md">{label}</span>
+      <span className="h-[8px] w-full max-w-[110px] bg-current" />
+    </div>
+  );
+}
+
+function NutmegCard() {
+  return (
+    <WideCard
+      href={caseHref("nutmeg")}
+      meta="Nutmeg / 2019–20 / Product"
+      title="Mobile onboarding and native investing"
+      body="New investment journeys from concept to launch, and dark mode foundations across iOS and Android."
+      visualClass="bg-overlay"
+      visual={
+        // TODO(content): device recording not exported from Figma yet
+        <div
+          role="img"
+          aria-label="Device recording placeholder"
+          className="flex h-[235px] w-[170px] rotate-[4deg] items-center justify-center border-[1.5px] border-default bg-page"
+        >
+          <span className="type-caption-xs text-secondary">[device recording]</span>
+        </div>
+      }
+    />
   );
 }

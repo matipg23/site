@@ -13,12 +13,18 @@ module.exports = {
         page: "var(--background-page)",
         surface: "var(--background-surface)",
         overlay: "var(--background-overlay)",
+        "overlay-transparent": "var(--background-overlay-transparent)",
+        fog: "var(--background-fog)",
+        shade: "var(--background-shade)",
         action: "var(--background-action)",
         inverse: "var(--background-inverse)",
+        online: "var(--text-online)",
+        glass: "var(--glass-fill)",
         "action-primary": "var(--action-primary)",
         "action-accent": "var(--action-accent)",
         // Swatch strip on the token card uses these as fills, as in Figma
         "text-secondary": "var(--text-secondary)",
+        "border-default": "var(--border-default)",
         "border-subtle": "var(--border-subtle)",
         "border-accent": "var(--border-accent)",
         nav: "var(--nav-background)",
@@ -30,6 +36,7 @@ module.exports = {
         inverse: "var(--text-inverse)",
         action: "var(--text-action)",
         accent: "var(--text-accent)",
+        online: "var(--text-online)",
         "action-accent": "var(--action-accent)",
         "action-primary-text": "var(--action-primary-text)",
         nav: "var(--nav-text)",
@@ -40,9 +47,14 @@ module.exports = {
         subtle: "var(--border-subtle)",
         strong: "var(--border-strong)",
         accent: "var(--border-accent)",
+        glass: "var(--glass-stroke)",
       },
       outlineColor: {
         accent: "var(--border-accent)",
+      },
+      // Thesis band: radial glow from Figma (centre 67% / 87.5%, radii 42% x 31%)
+      backgroundImage: {
+        band: "radial-gradient(ellipse 41.7% 31.3% at 66.7% 87.5%, var(--band-from) 0%, var(--band-to) 100%)",
       },
       // Primitives kept only for the Intro motion piece (src/components/sections/Intro.tsx)
       colors: {
@@ -104,14 +116,38 @@ module.exports = {
         112: "112px",
         128: "128px",
         gutter: "clamp(16px, 7vw, 128px)",
+        // Semantic spacing, values in tokens.css (defined in code, not yet in Figma)
+        section: "var(--space-section)",
+        eyebrow: "var(--space-eyebrow)",
+        title: "var(--space-title)",
+        lead: "var(--space-lead)",
+        block: "var(--space-block)",
+        paragraph: "var(--space-paragraph)",
+        action: "var(--space-action)",
+        card: "var(--space-card)",
+        "card-stack": "var(--space-card-stack)",
       },
       maxWidth: {
         // Figma content frame: 1344 wide with 32px side padding (1280 of content)
         content: "1344px",
         prose: "640px",
       },
+      // Radius scale, values in tokens.css (defined in code, not yet in Figma)
       borderRadius: {
-        DEFAULT: "2px",
+        DEFAULT: "var(--radius-xs)",
+        xs: "var(--radius-xs)",
+        sm: "var(--radius-sm)",
+        md: "var(--radius-md)",
+        lg: "var(--radius-lg)",
+        xl: "var(--radius-xl)",
+        "2xl": "var(--radius-2xl)",
+        full: "var(--radius-full)",
+      },
+      // Figma effect styles "Shadow" and "Shadow 2"
+      boxShadow: {
+        1: "var(--shadow-1)",
+        2: "var(--shadow-2)",
+        glass: "inset 0 1px 0 0 var(--glass-highlight)",
       },
       transitionTimingFunction: {
         out: "cubic-bezier(0.23, 1, 0.32, 1)",

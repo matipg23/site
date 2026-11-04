@@ -36,10 +36,12 @@ const items: { label: string; href: string; parts: { x: number; y: number; d: st
   },
 ];
 
-export default function SocialLinks() {
+// `only` picks and orders icons by label; Home shows LinkedIn and Medium, About shows all three.
+export default function SocialLinks({ only }: { only?: string[] }) {
+  const shown = only ? only.flatMap((l) => items.filter((i) => i.label === l)) : items;
   return (
     <ul className="flex items-center gap-[28px]">
-      {items.map((i) => (
+      {shown.map((i) => (
         <li key={i.label}>
           <a
             href={i.href}
