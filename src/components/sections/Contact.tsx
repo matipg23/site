@@ -4,7 +4,7 @@ import { links } from "@/content/links";
 type Icon = "speech" | "external" | "download";
 
 // `platform` is the extra word the phone layout shows before the handle ("LinkedIn /matipeinado")
-const channels: { label: string; icon: Icon; platform?: string; value: string; href: string | null }[] = [
+const channels: { label: string; icon: Icon; platform?: string; value: string; href: string }[] = [
   { label: "Talk", icon: "speech", value: links.email, href: `mailto:${links.email}` },
   { label: "Connect", icon: "external", platform: "LinkedIn", value: "/matipeinado", href: links.linkedin },
   { label: "Read", icon: "external", platform: "Medium", value: "@mpg23", href: links.medium },
@@ -35,21 +35,14 @@ export default function Contact() {
             <ul className="flex flex-col border-t border-subtle lg:w-[205px] lg:gap-24 lg:border-t-0">
               {channels.map((c) => (
                 <li key={c.label} className="border-b border-subtle lg:border-b-0">
-                  {c.href ? (
-                    <a
-                      href={c.href}
-                      className="group flex items-center justify-between gap-16 py-[14px] lg:block lg:py-0"
-                      {...(c.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
-                      {...(c.icon === "download" ? { download: "" } : {})}
-                    >
-                      <ChannelBody {...c} />
-                    </a>
-                  ) : (
-                    // TODO(content): no CV file yet, so this renders as plain text, not a dead link
-                    <div className="flex items-center justify-between gap-16 py-[14px] lg:block lg:py-0">
-                      <ChannelBody {...c} />
-                    </div>
-                  )}
+                  <a
+                    href={c.href}
+                    className="group flex items-center justify-between gap-16 py-[14px] lg:block lg:py-0"
+                    {...(c.href.startsWith("http") ? { target: "_blank", rel: "noreferrer" } : {})}
+                    {...(c.icon === "download" ? { download: "" } : {})}
+                  >
+                    <ChannelBody {...c} />
+                  </a>
                 </li>
               ))}
             </ul>
