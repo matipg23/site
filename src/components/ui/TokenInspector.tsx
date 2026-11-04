@@ -146,7 +146,7 @@ export default function TokenInspector() {
         aria-controls="token-inspector"
         aria-label="Inspect design tokens"
         onClick={() => setOpen((o) => !o)}
-        className={`md:uppercase underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:text-accent hover:decoration-current ${
+        className={`lg:uppercase underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:text-accent hover:decoration-current ${
           open ? "text-accent decoration-current" : ""
         }`}
       >

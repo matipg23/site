@@ -55,7 +55,7 @@ function Featured() {
             Scaling trust, not just components. Three embedded specialists, twenty-plus designers, and one adoption
             goal.
           </p>
-          <span className="type-mono-md inline-flex items-center gap-8">
+          <span className="type-mono-md inline-flex shrink-0 items-center gap-8 whitespace-nowrap">
             Read case study
             <Arrow />
           </span>
@@ -211,7 +211,7 @@ function NewsUkCard() {
 function Masthead({ label, className }: { label: string; className: string }) {
   return (
     <div
-      className={`flex h-[90px] w-[182px] min-w-0 shrink flex-col justify-center gap-8 border-[1.5px] border-strong py-20 pl-12 pr-8 sm:pl-24 sm:pr-[44px] ${className}`}
+      className={`flex h-[90px] w-[182px] min-w-0 shrink flex-col justify-center gap-8 border-[1.5px] border-strong py-20 pl-12 pr-8 xl:pl-24 xl:pr-[44px] ${className}`}
     >
       <span className="type-label-md">{label}</span>
       <span className="h-[8px] w-full max-w-[110px] bg-current" />
