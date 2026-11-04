@@ -5,15 +5,23 @@ import Reveal from "@/components/ui/Reveal";
 import { caseHref } from "@/content/cases";
 
 // Figma: Home - Refined > Selected. A 1px hairline grid: one featured card, two stacked cards, two wide cards.
-// TODO(content): Figma has an "All case studies" link here. There is no case study index route yet, so it is left out.
 export default function SelectedWork() {
   return (
     <section id="work" className="container-page py-section">
-      <div className="flex flex-col gap-24">
-        <Chip as="h2">Selected work</Chip>
-        <p className="type-body-md max-w-[788px] text-secondary">
-          Each piece opens into a full case study: the decisions, the trade-offs, and what I’d do differently.
-        </p>
+      <div className="flex flex-col gap-24 lg:flex-row lg:items-end lg:justify-between lg:gap-40">
+        <div className="flex flex-col gap-24">
+          <Chip as="h2">Selected work</Chip>
+          <p className="type-body-md max-w-[788px] text-secondary">
+            Each piece opens into a full case study: the decisions, the trade-offs, and what I’d do differently.
+          </p>
+        </div>
+        <Link
+          href="/work/"
+          className="type-mono-md group inline-flex shrink-0 items-center gap-8 text-action-accent underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:decoration-current"
+        >
+          All case studies
+          <Arrow direction="up-right" size={12} />
+        </Link>
       </div>
 
       <Reveal className="mt-56 flex flex-col gap-1 border border-default bg-border-default p-1">
