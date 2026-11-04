@@ -15,7 +15,8 @@ export const metadata: Metadata = {
     "One configurable account pattern for The Sun, The Times and Virgin Radio, built on NewsKit: three sections, nine edit flows and thirteen subscription and billing states.",
 };
 
-const img = (name: string) => `/images/newskit-account/${name}.png`;
+const img = (name: string, ext = "png") => `/images/newskit-account/${name}.${ext}`;
+const vid = (name: string) => `/videos/newskit-account/${name}.mp4`;
 
 // Figma: latest iterations > Case 03 - NewsKit Account (Revised v5) (321:177)
 export default function Page() {
@@ -129,21 +130,22 @@ export default function Page() {
               live on at least two brands. That answers adoption, but it can&apos;t confirm anything about retention.
             </p>
           </Prose>
-          <p className="type-body-md pt-24 text-secondary">*Last checked: The Sun and The Times account, Sep 2026</p>
+          <p className="type-body-md pt-24 text-secondary">*Last checked: The Sun and The Times account - Sep 2026</p>
         </Split>
         <div className="flex flex-col gap-64 pt-64">
           <Figure
             src={img("overview")}
             alt="Wireframes, the NewsKit theme, and the Sun, Times and Virgin Radio versions of the same account page"
             caption="Wireframes, the NewsKit theme, and the Sun, Times and Virgin Radio versions of the same account page."
-            width={2626}
-            height={1028}
+            width={2700}
+            height={1118}
+            className="md:px-24"
           />
           <figure className="flex flex-col gap-16">
             <div className="grid gap-24 md:grid-cols-3">
-              <Panel label="01 / The Times, live" src={img("live-times")} alt="The Times account page, live" width={876} height={956} />
-              <Panel label="02 / The Sun, live" src={img("live-sun")} alt="The Sun account page, live" width={876} height={955} />
-              <Panel label="03 / NewsKit docs" src={img("live-newskit")} alt="Account Solution in the NewsKit documentation" width={876} height={955} />
+              <Panel label="01 / The Times, live" src={img("live-times")} alt="The Times account page, live" width={1643} height={1793} />
+              <Panel label="02 / The Sun, live" src={img("live-sun")} alt="The Sun account page, live" width={1643} height={1791} />
+              <Panel label="03 / NewsKit docs" src={img("live-newskit")} alt="Account Solution in the NewsKit documentation" width={1643} height={1791} />
             </div>
             <figcaption className="type-mono-xs text-secondary">
               Live today: the account pages on The Times and The Sun, and the Account Solution in the NewsKit
@@ -198,10 +200,20 @@ export default function Page() {
           principle to Tokens Studio but tailored to NewsKit.
         </p>
         <figure className="flex flex-col gap-16 pt-24">
-          <div className="grid gap-24 md:grid-cols-[874fr_436fr] md:gap-64">
-            {/* Figma holds a screen recording here; the video file needs adding to /public */}
-            <Figure alt="Theme switcher demonstration on the Account page, screen recording" width={874} height={768} />
-            <Figure src={img("theme-mobile")} alt="Theme switcher demo on mobile" width={846} height={1537} />
+          <div className="grid gap-24 md:grid-cols-[819fr_397fr] md:gap-64">
+            <Figure
+              video={{ src: vid("theme-switcher"), poster: img("poster-theme-switcher") }}
+              alt="Theme switcher demonstration on the Account page, screen recording"
+              width={1574}
+              height={1384}
+            />
+            {/* TODO(content): the mobile recording is only 282x512 (a GIF), so it is soft at this size. A higher-resolution recording would sharpen it. */}
+            <Figure
+              video={{ src: vid("theme-mobile"), poster: img("theme-mobile") }}
+              alt="Theme switcher demo on mobile, screen recording"
+              width={282}
+              height={512}
+            />
           </div>
           <figcaption className="type-mono-xs text-secondary">
             Left: Theme switcher demonstration on the Account page live in production. / Right: Theme switcher demo on
@@ -226,8 +238,8 @@ export default function Page() {
               src={img("scenarios")}
               alt="Account subscription scenarios table"
               caption="Account subscription scenarios table: 13 scenarios, each written as a user story."
-              width={2719}
-              height={693}
+              width={4091}
+              height={1043}
               className="pt-40"
             />
           </div>
@@ -250,8 +262,8 @@ export default function Page() {
             </Prose>
             <figure className="flex flex-col gap-16">
               <div className="grid gap-24 md:grid-cols-2 md:gap-64">
-                <Panel label="01 / Reset password" src={img("flow-reset-password")} alt="Reset password flow and screens" width={1297} height={929} />
-                <Panel label="02 / Edit email" src={img("flow-edit-email")} alt="Edit email flow and screens" width={1297} height={929} />
+                <Panel label="01 / Reset password" src={img("flow-reset-password", "jpg")} alt="Reset password flow and screens" width={2200} height={1444} />
+                <Panel label="02 / Edit email" src={img("flow-edit-email", "jpg")} alt="Edit email flow and screens" width={2200} height={1484} />
               </div>
               <figcaption className="type-mono-xs text-secondary">
                 &lsquo;Reset Password&rsquo; and &lsquo;Edit Email&rsquo; journeys: logical and conditional flows and
@@ -270,13 +282,13 @@ export default function Page() {
               templates use swappable blocks, and each template was specified from XS to XL.
             </p>
             <figure className="flex flex-col gap-24">
-              <div className="grid gap-24 md:grid-cols-[392fr_905fr] md:gap-64">
-                <Panel label="01 / Slots" src={img("slots")} alt="Slot component" width={784} height={712} />
-                <Panel label="02 / Content blocks" src={img("content-blocks")} alt="Content blocks that fill the slots" width={1810} height={722} />
+              <div className="grid gap-24 md:grid-cols-[392fr_824fr] md:gap-64">
+                <Panel label="01 / Slots" src={img("slots")} alt="Slot component" width={1600} height={1453} />
+                <Panel label="02 / Content blocks" src={img("content-blocks")} alt="Content blocks that fill the slots" width={2800} height={1555} />
               </div>
               <div className="grid gap-24 md:grid-cols-2 md:gap-64">
-                <Panel label="03 / Base template, XS to XL" src={img("template-base")} alt="Base template across XS to XL" width={1297} height={1146} />
-                <Panel label="04 / Display page, XS to XL" src={img("template-display")} alt="Display page across XS to XL" width={1297} height={1144} />
+                <Panel label="03 / Base template, XS to XL" src={img("template-base")} alt="Base template across XS to XL" width={2000} height={1609} />
+                <Panel label="04 / Display page, XS to XL" src={img("template-display")} alt="Display page across XS to XL" width={2000} height={1765} />
               </div>
               <figcaption className="type-mono-xs text-secondary">
                 Row one: the base template, where each block can be swapped for a library component, and the Display Page
@@ -296,12 +308,19 @@ export default function Page() {
               The file behind the cancellation journey, page by page: Final UI, Components, Handoff, Pages, Flow and the
               prototypes. One file, multiple themes, the full lifecycle.
             </p>
+            {/* Slide 1 is the Final UI page. Figma's mock shows 8 slides; there are 9 exports, so the counter reads 01 / 09. */}
             <Gallery
               width={3838}
               height={2158}
-              slides={Array.from({ length: 8 }, (_, i) => ({
+              frame={{
+                src: img("macbook-frame"),
+                width: 2400,
+                height: 1389,
+                screenClass: "left-[10.88%] top-[4.39%] h-[84.38%] w-[78.13%]",
+              }}
+              slides={Array.from({ length: 9 }, (_, i) => ({
                 src: img(`handoff-0${i + 1}`),
-                alt: `Cancellation journey Figma file, page ${i + 1} of 8`,
+                alt: `Cancellation journey Figma file, page ${i + 1} of 9`,
                 caption: i === 0 ? "Final UI: the cancellation journey in five steps, every state." : undefined,
               }))}
             />
@@ -319,9 +338,20 @@ export default function Page() {
             </p>
             <figure className="flex flex-col gap-16 pt-40">
               <div className="grid gap-24 md:grid-cols-2 md:gap-48">
-                {/* Prototype recordings in Figma; the video files need adding to /public */}
-                <Panel label="01 / NewsKit theme" alt="Cancellation journey in the NewsKit theme, prototype recording" width={657} height={465} />
-                <Panel label="02 / The Times theme" alt="Cancellation journey in the Times theme, prototype recording" width={657} height={465} />
+                <Panel
+                  label="01 / NewsKit theme"
+                  video={{ src: vid("prototype-newskit"), poster: img("poster-prototype-newskit", "jpg") }}
+                  alt="Cancellation journey in the NewsKit theme, prototype recording"
+                  width={1400}
+                  height={992}
+                />
+                <Panel
+                  label="02 / The Times theme"
+                  video={{ src: vid("prototype-times"), poster: img("poster-prototype-times", "jpg") }}
+                  alt="Cancellation journey in the Times theme, prototype recording"
+                  width={1400}
+                  height={992}
+                />
               </div>
               <figcaption className="type-mono-xs text-secondary">
                 The same cancellation journey in the NewsKit and Times themes. Prototype recordings.
