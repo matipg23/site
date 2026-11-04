@@ -127,7 +127,7 @@
   /* Mono: Kode Mono */
   .type-mono-lg, .type-mono-lg-bold, .type-mono-md, .type-mono-md-bold,
   .type-mono-sm, .type-mono-sm-bold, .type-mono-xs, .type-mono-xs-bold, .type-mono-xs-med,
-  .type-mono-xs-caps, .type-mono-xs-med-caps,
+  .type-mono-xs-upper, .type-mono-xs-med-upper,
   .type-caption-md, .type-caption-sm, .type-caption-xs, .type-caption-2xs, .type-caption-3xs,
   .type-tag-md {
     font-family: var(--font-mono), monospace;
@@ -142,8 +142,8 @@
   .type-mono-xs      { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; }
   .type-mono-xs-bold { font-size: 12px; line-height: 16px; font-weight: 700; }
   .type-mono-xs-med  { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; font-weight: 500; }
-  .type-mono-xs-caps     { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; text-transform: uppercase; }
-  .type-mono-xs-med-caps { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; font-weight: 500; text-transform: uppercase; }
+  .type-mono-xs-upper     { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; text-transform: uppercase; }
+  .type-mono-xs-med-upper { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; font-weight: 500; text-transform: uppercase; }
 
   .type-caption-md  { font-size: 14px; line-height: 19.5px; letter-spacing: -0.26px; font-weight: 500; }
   .type-caption-sm  { font-size: 12px; line-height: 16.5px; letter-spacing: 1.54px; }

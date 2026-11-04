@@ -4,7 +4,7 @@ import TokenInspector from "@/components/ui/TokenInspector";
 export default function Footer() {
   return (
     <footer className="border-t border-default">
-      <div className="container-page type-mono-xs-caps relative flex flex-col gap-12 py-24 text-secondary md:flex-row md:items-center md:justify-between">
+      <div className="container-page type-mono-xs-upper relative flex flex-col gap-12 py-24 text-secondary md:flex-row md:items-center md:justify-between">
         <p>© 2026 Matias Peinado Greco</p>
         <div>
           Themed by its own tokens · <TokenInspector />

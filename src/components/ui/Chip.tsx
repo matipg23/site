@@ -8,7 +8,7 @@ export default function Chip({
   as?: "p" | "h2";
 }) {
   return (
-    <Tag className="type-mono-xs-med-caps inline-flex items-center gap-8 bg-overlay-transparent px-12 py-[6px] text-accent">
+    <Tag className="type-mono-xs-med-upper inline-flex w-fit items-center gap-8 bg-overlay-transparent px-12 py-[6px] text-accent">
       <span aria-hidden className="h-[6px] w-[6px] shrink-0 rounded-full bg-current" />
       {children}
     </Tag>

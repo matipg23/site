@@ -1,9 +1,14 @@
 import Link from "next/link";
 import Arrow from "./Arrow";
 
-type Variant = "solid" | "outline" | "link";
+type Variant = "solid" | "outline" | "link" | "cta" | "text";
 
 const styles: Record<Variant, string> = {
+  // Home hero buttons (Figma "Link" at 47px): Mono/MD-Bold, 12 / 16 padding
+  cta:
+    "type-mono-md-bold inline-flex items-center gap-8 bg-action-accent px-16 py-12 text-action-primary-text transition-[opacity,transform] duration-150 ease-out hover:opacity-90 active:scale-[0.98]",
+  text:
+    "type-mono-md-bold group inline-flex items-center gap-8 text-action-accent underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:decoration-current",
   solid:
     "type-mono-sm-bold inline-flex h-[52px] items-center gap-8 bg-action-accent px-24 text-action-primary-text transition-[opacity,transform] duration-150 ease-out hover:opacity-90 active:scale-[0.98]",
   outline:
@@ -22,7 +27,7 @@ export default function Button({
 }: {
   href: string;
   variant?: Variant;
-  arrow?: "right" | "up-right";
+  arrow?: "right" | "up-right" | "down";
   children: React.ReactNode;
   className?: string;
 }) {

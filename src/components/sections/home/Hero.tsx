@@ -1,41 +1,66 @@
 import Button from "@/components/ui/Button";
 import SocialLinks from "@/components/ui/SocialLinks";
 
-// Figma: Home - Revised > Section (hero): fixed 900px tall, py-96, button row pinned to the bottom
+// Figma: Home - Refined > Hero (eyebrow, H1 Display/LG, lead + "Now" card, CTAs + social icons)
 export default function Hero() {
   return (
-    <section className="container-page flex flex-col pb-64 pt-64 md:pb-96 md:pt-96 lg:min-h-[900px]">
-      <p className="type-mono-sm-bold pb-12 text-accent">Matias Peinado Greco</p>
+    <section className="border-b border-default">
+      <div className="container-page flex flex-col gap-40 py-section md:gap-56">
+        <p className="type-mono-lg text-secondary">Staff-level Product Designer · Design Systems</p>
 
-      <h1 className="type-display-md max-w-[1024px] pt-40 text-primary">
-        I design products
-        <br /> and the <span className="text-accent">systems</span>
-        <br /> behind them
-      </h1>
+        <h1 className="type-display-lg text-primary">
+          I design products
+          <br /> and the <span className="text-accent">systems</span>
+          <br /> behind them
+        </h1>
 
-      <div className="max-w-[600px] pt-32">
-        <p className="type-body-md text-primary">
-          6+ years working at the intersection of craft and strategy, building design infrastructure that scales and
-          product experiences used by millions.
-        </p>
-        <p className="type-body-md max-w-[540px] pt-24 text-secondary">
-          Building toward AI-native design systems and exploring what that future looks like in practice.
-        </p>
-      </div>
+        <div className="flex flex-col gap-40 lg:flex-row lg:items-end lg:justify-between lg:gap-80 lg:pb-40">
+          <div className="type-body-lg flex max-w-[693px] flex-col gap-paragraph text-primary lg:gap-[36px]">
+            <p>
+              I help product organisations ship consistent, scalable, multi-brand experiences faster, without losing
+              quality or autonomy, by building the systems and working models teams actually adopt.
+            </p>
+            <p>Now making those systems readable by AI agents as well as people.</p>
+          </div>
 
-      <div className="flex flex-col gap-32 pt-40 sm:flex-row sm:items-center sm:justify-between lg:mt-auto">
-        <div className="flex flex-wrap items-center gap-32">
-          <Button href="/#how-i-work" className="type-mono-md-bold">
-            How I Work
-          </Button>
-          <Button href="/about/" variant="link" arrow="right" className="type-mono-md-bold">
-            About Me
-          </Button>
+          <NowCard />
         </div>
-        <div className="relative flex items-center gap-[28px]">
-          <SocialLinks />
+
+        <div className="flex flex-col gap-32 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-wrap items-center gap-32">
+            <Button href="/#work" variant="cta">
+              See selected work
+            </Button>
+            <Button href="/#how-i-work" variant="text" arrow="down">
+              How I work
+            </Button>
+          </div>
+          <SocialLinks only={["LinkedIn", "Medium"]} />
         </div>
       </div>
     </section>
+  );
+}
+
+// Figma: "Now card": a glass shell around a raised core
+function NowCard() {
+  return (
+    <aside
+      aria-label="Current role"
+      className="w-full shrink-0 rounded-xl border border-default bg-overlay-transparent p-[6px] sm:max-w-[314px]"
+    >
+      <div className="flex flex-col gap-20 rounded-lg bg-page p-24 shadow-2">
+        <div className="flex items-center justify-between gap-8">
+          <p className="type-mono-xs-med-upper inline-flex items-center gap-8 bg-overlay px-12 py-[6px] text-primary">
+            <span aria-hidden className="h-[6px] w-[6px] rounded-full bg-online" />
+            Now
+          </p>
+          <p className="type-mono-xs-upper text-secondary">FanDuel · Remote UK</p>
+        </div>
+        <p className="type-body-md text-primary">
+          Leading Formation, FanDuel’s multi-brand design system, across five product verticals.
+        </p>
+      </div>
+    </aside>
   );
 }

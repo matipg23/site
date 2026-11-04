@@ -98,6 +98,14 @@
   --space-action: 40px;         /* text to button */
   --space-card: 24px;           /* card padding */
   --space-card-stack: 12px;     /* between text lines in a card */
+
+  /* Thesis band: a fixed dark "liquid glass" panel, identical in Light and Dark.
+     Gradient colours are raw values from Figma, not primitives yet. */
+  --band-from: #0b3b34;
+  --band-to: #0e0f0f;
+  --glass-fill: color-mix(in srgb, var(--primitive-white) 4%, transparent);
+  --glass-stroke: color-mix(in srgb, var(--primitive-white) 8%, transparent);
+  --glass-highlight: color-mix(in srgb, var(--primitive-white) 12%, transparent);
 }
 
 [data-theme="dark"] {

@@ -18,10 +18,13 @@ module.exports = {
         shade: "var(--background-shade)",
         action: "var(--background-action)",
         inverse: "var(--background-inverse)",
+        online: "var(--text-online)",
+        glass: "var(--glass-fill)",
         "action-primary": "var(--action-primary)",
         "action-accent": "var(--action-accent)",
         // Swatch strip on the token card uses these as fills, as in Figma
         "text-secondary": "var(--text-secondary)",
+        "border-default": "var(--border-default)",
         "border-subtle": "var(--border-subtle)",
         "border-accent": "var(--border-accent)",
         nav: "var(--nav-background)",
@@ -44,9 +47,14 @@ module.exports = {
         subtle: "var(--border-subtle)",
         strong: "var(--border-strong)",
         accent: "var(--border-accent)",
+        glass: "var(--glass-stroke)",
       },
       outlineColor: {
         accent: "var(--border-accent)",
+      },
+      // Thesis band: radial glow from Figma (centre 67% / 87.5%, radii 42% x 31%)
+      backgroundImage: {
+        band: "radial-gradient(ellipse 41.7% 31.3% at 66.7% 87.5%, var(--band-from) 0%, var(--band-to) 100%)",
       },
       // Primitives kept only for the Intro motion piece (src/components/sections/Intro.tsx)
       colors: {
@@ -139,6 +147,7 @@ module.exports = {
       boxShadow: {
         1: "var(--shadow-1)",
         2: "var(--shadow-2)",
+        glass: "inset 0 1px 0 0 var(--glass-highlight)",
       },
       transitionTimingFunction: {
         out: "cubic-bezier(0.23, 1, 0.32, 1)",
