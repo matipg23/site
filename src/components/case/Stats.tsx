@@ -3,9 +3,9 @@ import CountUp from "@/components/ui/CountUp";
 // Figma: Case > stats row (Highlight/LG number, Caption/MD label)
 export default function Stats({ items }: { items: { value: string; label: string }[] }) {
   return (
-    <dl className="mt-64 grid grid-cols-2 border-t border-default pt-64 lg:grid-cols-4">
+    <dl className="mt-56 grid grid-cols-2 lg:grid-cols-4">
       {items.map((s) => (
-        <div key={s.label} className="flex flex-col-reverse justify-end gap-8 border border-subtle px-24 py-24 md:px-40">
+        <div key={s.label} className="flex flex-col-reverse justify-end gap-8 border-l border-subtle py-24 pl-24 md:pl-40">
           <dt className="type-caption-md uppercase text-secondary">{s.label}</dt>
           <dd className="type-highlight-lg text-accent">
             <CountUp value={s.value} />

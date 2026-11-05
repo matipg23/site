@@ -1,6 +1,7 @@
-import SectionLabel from "@/components/ui/SectionLabel";
+import Chip from "@/components/ui/Chip";
 
-// Figma: Case > Section (mono label over a rule, then content). surface = bg/surface band.
+// Figma: Case > Section (hairline divider, Chip eyebrow, then content). surface = bg/surface band.
+// The divider is skipped on surface bands and right after one, which already draw their own rule.
 export default function CaseSection({
   label,
   surface = false,
@@ -12,10 +13,13 @@ export default function CaseSection({
 }) {
   return (
     // id comes from the label ("The problem" -> "problem") so the case study sub-bar can link to it
-    <section id={label.toLowerCase().replace(/^the /, "").replace(/\s+/g, "-")} className={surface ? "border-y border-default bg-surface" : ""}>
-      <div className="container-page pb-80 pt-64 md:pb-128">
-        <SectionLabel as="h2">{label}</SectionLabel>
-        <div className="pt-48">{children}</div>
+    <section id={label.toLowerCase().replace(/^the /, "").replace(/\s+/g, "-")} className={surface ? "band border-y border-default bg-surface" : ""}>
+      <div className="container-page pb-80 md:pb-128">
+        {!surface && <div aria-hidden className="border-t border-subtle [.band+section_&]:hidden" />}
+        <div className={surface ? "pt-64 md:pt-80" : "pt-48 md:pt-56"}>
+          <Chip as="h2">{label}</Chip>
+        </div>
+        <div className="pt-24">{children}</div>
       </div>
     </section>
   );

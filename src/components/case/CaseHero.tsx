@@ -13,7 +13,7 @@ export default function CaseHero({
   facts: { label: string; value: string }[];
 }) {
   return (
-    <header className="border-b border-subtle">
+    <header>
       <div className="container-page pb-64 pt-64 md:pb-128 md:pt-96">
         <p className="type-mono-sm-bold flex gap-12">
           <span className="text-accent">Case Study</span>
@@ -28,9 +28,9 @@ export default function CaseHero({
             </li>
           ))}
         </ul>
-        <dl className="grid grid-cols-2 border-y border-subtle md:grid-cols-[240fr_441fr_441fr_240fr]">
+        <dl className="grid grid-cols-2 md:grid-cols-[240fr_400fr_400fr_240fr]">
           {facts.map((f) => (
-            <div key={f.label} className="flex flex-col gap-8 border-subtle p-24 [&:not(:last-child)]:md:border-r">
+            <div key={f.label} className="flex flex-col gap-8 border-subtle py-24 md:pl-24 md:first:pl-0 md:[&:not(:first-child)]:border-l">
               <dt className="type-caption-3xs uppercase text-secondary">{f.label}</dt>
               <dd className="type-label-xs text-primary">{f.value}</dd>
             </div>
