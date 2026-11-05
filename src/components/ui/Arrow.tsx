@@ -4,7 +4,7 @@ export default function Arrow({
   size = 16,
   className = "",
 }: {
-  direction?: "right" | "up-right" | "down";
+  direction?: "right" | "up-right" | "down" | "up";
   size?: number;
   className?: string;
 }) {
@@ -13,7 +13,9 @@ export default function Arrow({
       ? "group-hover:translate-x-2"
       : direction === "down"
         ? "group-hover:translate-y-2"
-        : "group-hover:-translate-y-2 group-hover:translate-x-2";
+        : direction === "up"
+          ? "group-hover:-translate-y-2"
+          : "group-hover:-translate-y-2 group-hover:translate-x-2";
   return (
     <svg
       aria-hidden
@@ -29,6 +31,8 @@ export default function Arrow({
         <path d="M3.5 8h9M8.5 3.5 13 8l-4.5 4.5" />
       ) : direction === "down" ? (
         <path d="M8 3.5v9M3.5 8.5 8 13l4.5-4.5" />
+      ) : direction === "up" ? (
+        <path d="M8 12.5v-9M3.5 7.5 8 3l4.5 4.5" />
       ) : (
         <path d="M4.5 11.5l7-7M5.5 4.5h6v6" />
       )}

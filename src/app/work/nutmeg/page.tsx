@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import CaseHero from "@/components/case/CaseHero";
 import CaseNav from "@/components/case/CaseNav";
+import Contact from "@/components/sections/Contact";
+import BackToTop from "@/components/case/BackToTop";
 import ThemeBar from "@/components/case/ThemeBar";
 import CaseSection, { Accent, Prose, Split } from "@/components/case/CaseSection";
 import Figure from "@/components/case/Figure";
@@ -322,6 +324,8 @@ export default function Page() {
       </CaseSection>
 
       <CaseNav slug="nutmeg" />
+      <BackToTop />
+      <Contact />
     </article>
   );
 }
