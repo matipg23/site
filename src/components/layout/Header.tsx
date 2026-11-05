@@ -13,15 +13,14 @@ export default function Header() {
   useEffect(() => setOpen(false), [pathname]);
 
   // Figma nav variants: the Home page has three links, every other page adds "Home" first.
-  // Contact lives on Home, About and the index; case pages send it to the Home section.
+  // Every page renders the Contact section, so the link is always an in-page anchor.
   const path = pathname.replace(/\/$/, "") || "/";
   const showHome = path !== "/";
-  const onCase = path.startsWith("/work/");
   const links = [
     ...(showHome ? [{ href: "/", label: "Home" }] : []),
     { href: "/work/", label: "Work" },
     { href: "/about/", label: "About me" },
-    { href: onCase ? "/#contact" : "#contact", label: "Contact" },
+    { href: "#contact", label: "Contact" },
   ];
   const isCurrent = (href: string) => pathname.replace(/\/$/, "") === href.replace(/\/$/, "");
 
