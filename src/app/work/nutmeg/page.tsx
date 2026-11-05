@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     "Native mobile sign-up for Nutmeg: create an account with an email and a password, and explore portfolio projections while verification runs.",
 };
 
-// Figma: latest iterations > Case 04 - Nutmeg (285:837)
+// Figma: latest iterations > Case 04 - Nutmeg (fixes applied) (415:25255)
 export default function Page() {
   return (
     <article>
@@ -26,7 +26,7 @@ export default function Page() {
       />
       <CaseHero
         client="Nutmeg"
-        title="Improving users onboarding journey for mobile"
+        title="Improving the mobile onboarding journey"
         tags={["Onboarding", "Fintech", "Mobile", "User testing"]}
         facts={[
           { label: "Company", value: "Nutmeg" },
@@ -163,7 +163,7 @@ export default function Page() {
             },
             {
               title: "Map the journey",
-              body: "Week 2. I mapped the journey with product and agreed with engineering what the legacy system could take. The learning hub was cut from launch. I also noticed the flow did not let people open an ISA. We had just implemented that journey in the mobile apps, so leaving it out risked conversion. I raised it with the PM and the tech lead, and the revised flow was approved by Product and Engineering.",
+              body: "Week 2. I mapped the journey with product and agreed with engineering what the legacy system could take. The learning hub was cut from launch. I also spotted that the flow did not let people open an ISA. We had just implemented that journey in the mobile apps, so leaving it out risked conversion. I raised it with the PM and we agreed to add it to the flow.",
               tags: [{ label: "With product + engineering" }],
             },
             {
@@ -196,7 +196,7 @@ export default function Page() {
               },
               {
                 label: "How I built it",
-                body: "Axure was the right tool and new to me. I gave it a full week of tutorials to build the most important conditional flow, tested it with mobile developers, and built a small shared data structure with one of them.",
+                body: "Axure was new to me, so I gave it a week of tutorials, built the most important conditional flow and tested it with mobile developers.",
               },
               {
                 label: "What we left out",
@@ -204,14 +204,24 @@ export default function Page() {
               },
             ]}
             figure={
-              // TODO(content): Figma placeholder "User testing session GIF (export from Notion)"
               <Figure
-                alt="User testing session recording"
-                caption="Interactive Axure prototype: 2qxic8.axshare.com/#c=2."
-                width={682}
-                height={384}
+                video={{ src: "/videos/nutmeg/ut-session.mp4", poster: "/images/nutmeg/poster-ut-session.jpg" }}
+                alt="User testing session recording of a tester using the Axure prototype"
+                caption="Interactive Axure prototype: 2qxic8.axshare.com/#c=2. User testing session recording above."
+                width={1364}
+                height={768}
               />
             }
+          />
+
+          <Interlude
+            kicker="What was going wrong"
+            heading={
+              <>
+                Testers stopped at the draft pot. <Accent>Was it the test or the flow?</Accent>
+              </>
+            }
+            body="The product manager and I read the same drop-off differently, and both readings were reasonable. Round three changed the prototype to test how clearly the draft status came across."
           />
 
           <Story
@@ -234,29 +244,27 @@ export default function Page() {
               },
               {
                 label: "What I did",
-                // TODO(content): Figma note "[HOW DID EACH VERSION PERFORM?]" at the end of this paragraph
-                body: "Round two rewrote the scenario and tasks, and testers still stopped at the draft pot. For round three we ran two versions. One added an extra task prompting testers to carry on until the pot was funded. In the other I proposed a stop screen after the draft pot is created, saying the pot is a draft and one step from investing. It offered two routes: review the pot and start investing, or return to a dashboard showing a 99% complete draft pot and a prompt to finish now or later. A half-way scenario tested how an unfinished account reads when testers come back to it.",
+                body: "Round two rewrote the scenario and tasks, and testers still stopped at the draft pot. For round three we ran two versions. One added an extra task prompting testers to carry on until the pot was funded. In the other I proposed a stop screen after the draft pot is created, saying the pot is a draft and one step from investing. It offered two routes: review the pot and start investing, or return to a dashboard showing a 99% complete draft pot and a prompt to finish now or later. A half-way scenario tested how an unfinished account reads when testers come back to it. I can't recover how each version scored, but the session notes do show the stop was tied to the draft pot screen: one tester did not scroll to the continue button, and another note suggests changing the button placement or copy.",
               },
             ]}
             figure={
-              // TODO(content): Figma placeholder "Flow diagrams for the two round 3 versions and the draft pot created stop screen"
-              <Figure
-                alt="Flow diagrams for the two round three versions, plus the stop screen shown after the draft pot is created"
-                caption="Flow diagrams for the two round three versions, plus the stop screen shown after the draft pot is created."
-                width={720}
-                height={520}
-              />
+              <div className="flex flex-col gap-32">
+                <Figure
+                  src="/images/nutmeg/round3-flows.png"
+                  alt="Round three screens. Extra task version: the draft pot created screen with a View draft pot button, and the extra task prompt. Flow tweak version: the stop screen with two routes, the dashboard with a 99% complete draft pot, and two pot overview screens. Half-way scenario: the welcome back screen with a 40% checklist."
+                  caption="Round three screens: the extra task version, the flow tweak with the stop screen after the draft pot is created, and the half-way scenario."
+                  width={1440}
+                  height={1040}
+                />
+                <Figure
+                  src="/images/nutmeg/onboarding-flowchart.png"
+                  alt="Flowchart of the native mobile onboarding journey, from landing home and sign-up through the pot steps, profile, risk checks, ISA and payments to investor home. Screens are colour coded as existing, existing but needing work, or new, with the backend services behind each step."
+                  caption="The onboarding journey flow I mapped with product and engineering. Green screens existed, yellow needed work, blue were new."
+                  width={2880}
+                  height={1004}
+                />
+              </div>
             }
-          />
-
-          <Interlude
-            kicker="What was going wrong"
-            heading={
-              <>
-                Testers stopped at the draft pot. <Accent>Was it the test or the flow?</Accent>
-              </>
-            }
-            body="The product manager and I read the same drop-off differently, and both readings were reasonable. Round three changed the prototype to test how clearly the draft status came across."
           />
         </div>
       </CaseSection>
@@ -270,10 +278,9 @@ export default function Page() {
             </h3>
             <Prose size="sm" className="max-w-[600px] pt-48">
               <p>
-                Three rounds of remote testing supported the concept. Testers liked starting with only an email and a
-                password, and one said it was a lot better than most apps they knew.
+                Three rounds of remote testing supported the concept, and one tester said it was a lot better than most
+                apps they knew.
               </p>
-              {/* TODO(content): Figma note "[CONFIRM WITH A FORMER COLLEAGUE WHETHER IT SHIPPED]" after this paragraph */}
               <p>
                 The research and prototype went into a delivery brief for native mobile onboarding, with designs for the
                 first mobile version due in May 2020. The brief set one success metric, accounts created on mobile versus
@@ -293,7 +300,7 @@ export default function Page() {
                 items={[
                   {
                     title: "Rule out the test before blaming the flow",
-                    body: "The product manager and I read the same drop-off differently. Rewriting the scenario was a fair first step, and when testers still stopped at the draft pot, it pointed us to the flow.",
+                    body: "Rewriting the scenario was a fair first step. When testers still stopped at the draft pot, it pointed us to the flow.",
                   },
                   {
                     title: "Flexible onboarding needs honest states",
