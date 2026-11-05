@@ -75,7 +75,7 @@ const chapters: { title: string; paragraphs: string[] }[] = [
       "My work is being shaped by one idea: AI-native design systems as infrastructure.",
       "That means design systems that serve people and machines. Structured metadata AI tools can read, MCP so they can work with the system directly, and documentation written for LLMs as well as humans. It also means creating prototyping integrations that don’t turn into a maintenance job.",
       // TODO(content): Figma has no full stop after "components" here. Kept as written, confirm with Mati.
-      "Design systems that will succeed over the next years won’t just organise components The goal is design intent that survives the trip between teams, tools and agents, instead of getting a little worse at every handover.",
+      "Design systems that will succeed over the next years won’t just organise components. The goal is design intent that survives the trip between teams, tools and agents, instead of getting a little worse at every handover.",
     ],
   },
 ];
