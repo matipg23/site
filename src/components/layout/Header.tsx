@@ -27,7 +27,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-default bg-surface shadow-2">
       <div className="grid h-64 grid-cols-[1fr_auto_1fr] items-center px-16 md:px-24">
-        <Link href="/" className="type-mono-sm-bold justify-self-start text-accent">
+        <Link href="/" className="type-display-xs justify-self-start text-accent text-[22px] leading-none">
           MPG
         </Link>
 
