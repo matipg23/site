@@ -1,9 +1,8 @@
 /*
- * Design tokens, generated from the Figma "Portfolio Redesign" variables.
- * Collection "Color": modes Light (default) and Dark. The FD mode is not shipped.
+ * Site tokens. The semantic names below (--background-page, --text-primary, ...) are aliases of the
+ * BRICKS tokens in design-system/bricks, so every theme and mode reaches components through them.
+ * Colour values live in the BRICKS package, never here. Primitives are kept for the Intro and the shadows.
  * Effect styles "Shadow" and "Shadow 2" are --shadow-1 and --shadow-2.
- * Do not edit by hand: change the variable in Figma, then ask Claude to "sync tokens".
- * Names mirror the Figma variable paths (semantic/ prefix dropped).
  */
 
 :root {
@@ -40,33 +39,7 @@
   --primitive-lime-400: #b8f25a;
   --primitive-lime-500: #88d807;
 
-  /* semantic, Light mode */
   color-scheme: light;
-  --background-page: var(--primitive-white);
-  --background-surface: var(--primitive-neutral-100);
-  --background-overlay: var(--primitive-neutral-200);
-  --background-overlay-transparent: color-mix(in srgb, var(--primitive-neutral-200) 30%, transparent);
-  --background-action: var(--primitive-teal-400);
-  --background-inverse: var(--primitive-neutral-900);
-  --background-fog: color-mix(in srgb, var(--primitive-white) 15%, transparent);
-  --background-shade: color-mix(in srgb, var(--primitive-neutral-900) 15%, transparent);
-  --text-primary: var(--primitive-neutral-900);
-  --text-secondary: var(--primitive-neutral-500);
-  --text-muted: var(--primitive-neutral-200);
-  --text-inverse: var(--primitive-white);
-  --text-action: var(--primitive-neutral-900);
-  --text-accent: var(--primitive-teal-500);
-  --text-online: var(--primitive-lime-500);
-  --border-default: var(--primitive-neutral-300);
-  --border-subtle: var(--primitive-teal-200);
-  --border-strong: var(--primitive-neutral-700);
-  --border-accent: var(--primitive-teal-400);
-  --action-primary: var(--primitive-neutral-900);
-  --action-primary-text: var(--primitive-neutral-100);
-  --action-accent: var(--primitive-teal-500);
-  --nav-background: var(--background-page);
-  --nav-text: var(--action-primary);
-  --nav-text-active: var(--action-accent);
 
   /* effect styles (not moded in Figma): "Shadow" and "Shadow 2" */
   --shadow-1: 0 12px 32px 0 color-mix(in srgb, var(--primitive-teal-500) 10%, transparent);
@@ -108,31 +81,46 @@
   --glass-highlight: color-mix(in srgb, var(--primitive-white) 12%, transparent);
 }
 
-[data-theme="dark"] {
+/*
+ * Semantic aliases. var() is resolved on the element that declares it, so this block applies to :root and to
+ * any element that sets its own data-theme or data-mode (a theme chip, a forced dark panel).
+ */
+:root,
+[data-theme],
+[data-mode] {
+  --background-page: var(--bricks-background-base);
+  --background-surface: var(--bricks-background-surface);
+  --background-overlay: var(--bricks-background-layer);
+  --background-overlay-transparent: var(--bricks-extension-background-overlay-transparent);
+  --background-action: var(--bricks-extension-accent-fill);
+  --background-inverse: var(--bricks-extension-background-inverse);
+  --background-fog: var(--bricks-extension-background-fog);
+  --background-shade: var(--bricks-extension-background-shade);
+  --text-primary: var(--bricks-content-default);
+  --text-secondary: var(--bricks-content-subtle);
+  --text-muted: var(--bricks-extension-content-muted);
+  --text-inverse: var(--bricks-extension-content-inverse);
+  --text-action: var(--bricks-extension-content-on-accent);
+  --text-accent: var(--bricks-extension-accent-text);
+  --text-online: var(--bricks-extension-content-online);
+  --border-default: var(--bricks-border-default);
+  --border-subtle: var(--bricks-border-subtle);
+  --border-strong: var(--bricks-extension-border-strong);
+  --border-accent: var(--bricks-extension-accent-border);
+  --action-primary: var(--bricks-background-primary);
+  --action-primary-text: var(--bricks-content-on-dark);
+  --action-accent: var(--bricks-extension-accent-fill);
+  --nav-background: var(--bricks-background-base);
+  --nav-text: var(--bricks-content-subtle);
+  --nav-text-active: var(--bricks-extension-accent-text);
+
+  /* Type families follow the active theme; weights and styles come from --bricks-font-weight-* and -style-* */
+  --font-display: var(--bricks-font-display);
+  --font-highlight: var(--bricks-font-highlight);
+  --font-body: var(--bricks-font-body);
+  --font-mono: var(--bricks-font-mono);
+}
+
+[data-mode="dark"] {
   color-scheme: dark;
-  --background-page: var(--primitive-green-950);
-  --background-surface: var(--primitive-green-900);
-  --background-overlay: var(--primitive-green-800);
-  --background-overlay-transparent: color-mix(in srgb, var(--primitive-green-800) 30%, transparent);
-  --background-action: var(--primitive-lime-400);
-  --background-inverse: var(--primitive-green-100);
-  --background-fog: color-mix(in srgb, var(--primitive-white) 15%, transparent);
-  --background-shade: color-mix(in srgb, var(--primitive-neutral-900) 15%, transparent);
-  --text-primary: var(--primitive-green-100);
-  --text-secondary: var(--primitive-green-400);
-  --text-muted: var(--primitive-green-800);
-  --text-inverse: var(--primitive-green-950);
-  --text-action: var(--primitive-green-950);
-  --text-accent: var(--primitive-lime-400);
-  --text-online: var(--primitive-lime-400);
-  --border-default: var(--primitive-green-800);
-  --border-subtle: var(--primitive-green-700);
-  --border-strong: var(--primitive-green-400);
-  --border-accent: var(--primitive-lime-400);
-  --action-primary: var(--primitive-green-100);
-  --action-primary-text: var(--primitive-green-950);
-  --action-accent: var(--primitive-lime-400);
-  --nav-background: var(--primitive-green-950);
-  --nav-text: var(--primitive-green-400);
-  --nav-text-active: var(--primitive-lime-400);
 }

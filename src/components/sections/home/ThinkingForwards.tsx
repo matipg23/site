@@ -19,13 +19,14 @@ const pillars = [
 ];
 
 // Figma: Home - Refined > Thesis band. A fixed dark glass panel, the same in Light and Dark:
-// data-theme="dark" scopes it to the real Dark tokens (lime accent, green text).
+// data-mode="dark" scopes it to the real Dark tokens (lime accent, green text).
 export default function ThinkingForwards() {
   return (
     <section id="thinking-forwards" className="px-16 py-24 md:px-24">
       <div className="rounded-2xl border border-default bg-fog p-8">
         <div
-          data-theme="dark"
+          data-theme="default"
+          data-mode="dark"
           className="flex flex-col gap-48 rounded-xl bg-band px-24 pb-56 pt-48 text-primary md:gap-[72px] md:px-56 md:pt-80"
         >
           <div className="flex flex-col gap-[28px]">

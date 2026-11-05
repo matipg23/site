@@ -4,7 +4,7 @@ module.exports = {
     "./src/app/**/*.{ts,tsx}",
     "./src/components/**/*.{ts,tsx}",
   ],
-  darkMode: ["selector", '[data-theme="dark"]'],
+  darkMode: ["selector", '[data-mode="dark"]'],
   theme: {
     extend: {
       // Semantic colour tokens. Values live in src/styles/tokens.css (synced from Figma).

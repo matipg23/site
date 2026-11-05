@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "tokens:build": "node design-system/bricks/scripts/build-tokens.mjs design-system/bricks"
   },
   "dependencies": {
     "gsap": "^3.15.0",
