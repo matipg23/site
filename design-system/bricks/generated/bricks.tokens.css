@@ -1024,7 +1024,7 @@
   --bricks-font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
   --bricks-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --bricks-font-weight-display: 900;
-  --bricks-font-style-display: italic;
+  --bricks-font-style-display: normal;
   --bricks-font-weight-highlight: 900;
   --bricks-font-style-highlight: italic;
   --bricks-font-weight-heading: 900;
