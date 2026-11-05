@@ -144,6 +144,7 @@ export default function Page() {
             width={2700}
             height={1118}
             className="md:px-24"
+            imageClassName="!bg-[var(--primitive-neutral-100)]" // transparent PNG with dark labels: keep a light backdrop in every theme and mode
           />
           <figure className="flex flex-col gap-16">
             <div className="grid gap-24 md:grid-cols-3">
