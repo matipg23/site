@@ -63,7 +63,7 @@ function Featured() {
             Scaling trust, not just components. Three embedded specialists, twenty-plus designers, and one adoption
             goal.
           </p>
-          <span className="type-mono-md inline-flex shrink-0 items-center gap-8 whitespace-nowrap">
+          <span className="type-mono-md inline-flex shrink-0 items-center gap-8 whitespace-nowrap underline decoration-transparent underline-offset-4 transition-colors duration-150 group-hover:decoration-current">
             Read case study
             <Arrow />
           </span>
@@ -102,11 +102,11 @@ function SideCard({
         <h3 className="type-label-md max-w-[300px] text-primary transition-colors duration-150 group-hover:text-accent">
           {title}
         </h3>
-        {href && <Arrow className="mb-4 text-primary" />}
+        {href && <Arrow className="mb-4 text-primary transition-colors duration-150 group-hover:text-accent" />}
       </div>
     </>
   );
-  const cls = "flex min-h-[320px] min-w-0 flex-col justify-between gap-24 bg-page p-32";
+  const cls = `flex min-h-[320px] min-w-0 flex-col justify-between gap-24 bg-page p-32${href ? " transition-colors duration-150 hover:bg-surface" : ""}`;
   return href ? (
     <Link href={href} className={`group ${cls}`}>
       {body}
@@ -177,7 +177,11 @@ function WideCard({
 }) {
   return (
     <Link href={href} className="group flex min-w-0 flex-col bg-page">
-      <div className={`flex h-[320px] items-center justify-center overflow-hidden ${visualClass}`}>{visual}</div>
+      <div className={`flex h-[320px] items-center justify-center overflow-hidden ${visualClass}`}>
+        <div className="flex w-full items-center justify-center transition-transform duration-300 ease-out motion-safe:group-hover:scale-[1.03]">
+          {visual}
+        </div>
+      </div>
       <div className="flex flex-1 flex-col gap-[10px] px-32 pb-32 pt-[28px]">
         <p className="type-mono-xs-med-upper text-secondary">{meta}</p>
         <h3 className="type-label-lg max-w-[420px] text-primary transition-colors duration-150 group-hover:text-accent">
@@ -185,7 +189,7 @@ function WideCard({
         </h3>
         <div className="flex items-end justify-between gap-16">
           <p className="type-body-sm max-w-[480px] text-secondary">{body}</p>
-          <Arrow className="mb-4 shrink-0 text-primary" />
+          <Arrow className="mb-4 shrink-0 text-primary transition-colors duration-150 group-hover:text-accent" />
         </div>
       </div>
     </Link>
@@ -235,16 +239,46 @@ function NutmegCard() {
       title="Mobile onboarding and native investing"
       body="New investment journeys from concept to launch, and dark mode foundations across iOS and Android."
       visualClass="bg-overlay"
-      visual={
-        // TODO(content): device recording not exported from Figma yet
-        <div
-          role="img"
-          aria-label="Device recording placeholder"
-          className="flex h-[235px] w-[170px] rotate-[4deg] items-center justify-center border-[1.5px] border-default bg-page"
-        >
-          <span className="type-caption-xs text-secondary">[device recording]</span>
-        </div>
-      }
+      visual={<OnboardingIllustration />}
     />
+  );
+}
+
+// Two overlapping phones: onboarding form in front, investment growth chart behind. Theme tokens only.
+function OnboardingIllustration() {
+  const phone = "absolute h-[236px] w-[148px] overflow-hidden rounded-[20px] border-[1.5px] border-strong bg-page p-12";
+  return (
+    <div aria-hidden className="relative h-[260px] w-[290px]">
+      <div className={`${phone} right-0 top-0 rotate-[5deg] shadow-1`}>
+        <div className="h-[6px] w-[48px] bg-border-subtle" />
+        <div className="mt-12 h-[14px] w-[84px] bg-inverse" />
+        <div className="mt-4 h-[6px] w-[56px] bg-text-secondary" />
+        <svg viewBox="0 0 120 80" className="mt-16 block h-[80px] w-full text-action-accent" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M0 74C24 70 36 60 54 46S92 14 120 4" />
+          <path d="M0 78h120" className="text-border-subtle" />
+        </svg>
+        <div className="mt-16 flex items-end justify-between gap-4">
+          {["h-[14px]", "h-[22px]", "h-[18px]", "h-[30px]", "h-[26px]", "h-[38px]"].map((h) => (
+            <span key={h} className={`${h} w-[12px] bg-action-accent opacity-60`} />
+          ))}
+        </div>
+      </div>
+      <div className={`${phone} bottom-0 left-0 -rotate-[4deg] shadow-2`}>
+        <div className="flex gap-4">
+          <span className="h-[4px] flex-1 bg-action-accent" />
+          <span className="h-[4px] flex-1 bg-action-accent" />
+          <span className="h-[4px] flex-1 bg-border-subtle" />
+        </div>
+        <div className="mt-16 h-[12px] w-[90px] bg-inverse" />
+        <div className="mt-4 h-[6px] w-[100px] bg-text-secondary" />
+        <div className="mt-16 flex flex-col gap-8">
+          <span className="h-[28px] w-full border border-default bg-surface" />
+          <span className="h-[28px] w-full border border-default bg-surface" />
+        </div>
+        <span className="mt-16 flex h-[28px] w-full items-center justify-center rounded-full bg-action-accent">
+          <span className="h-[5px] w-[40px] bg-page" />
+        </span>
+      </div>
+    </div>
   );
 }
