@@ -2,6 +2,7 @@ import Link from "next/link";
 import Arrow from "@/components/ui/Arrow";
 import Chip from "@/components/ui/Chip";
 import Reveal from "@/components/ui/Reveal";
+import Tag from "@/components/ui/Tag";
 import { caseHref } from "@/content/cases";
 
 // Figma: Home - Refined > Selected. A 1px hairline grid: one featured card, two stacked cards, two wide cards.
@@ -89,16 +90,21 @@ function SideCard({
   href,
   meta,
   title,
+  wip,
   children,
 }: {
   href?: string;
   meta: string;
   title: string;
+  wip?: boolean;
   children: React.ReactNode;
 }) {
   const body = (
     <>
-      <p className="type-mono-xs-med-upper text-secondary">{meta}</p>
+      <div className="flex items-start justify-between gap-16">
+        <p className="type-mono-xs-med-upper text-secondary">{meta}</p>
+        {wip && <Tag>WIP</Tag>}
+      </div>
       {children}
       <div className="flex items-end justify-between gap-16">
         <h3 className="type-label-md max-w-[300px] text-primary transition-colors duration-150 group-hover:text-accent">
@@ -147,7 +153,7 @@ function AiCard() {
 
 function ColourCard() {
   return (
-    <SideCard meta="FanDuel / 2022 / Systems" title="Token-powered colour system">
+    <SideCard meta="FanDuel / 2022 / Systems" title="Token-powered colour system" wip>
       {/* Live swatches: these follow the active theme, as in Figma */}
       <div aria-hidden className="grid h-[64px] grid-cols-5">
         <span className="bg-inverse" />
