@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import CaseHero from "@/components/case/CaseHero";
 import CaseNav from "@/components/case/CaseNav";
-import Contact from "@/components/sections/Contact";
-import BackToTop from "@/components/case/BackToTop";
 import ThemeBar from "@/components/case/ThemeBar";
 import CaseSection, { Accent, Prose, Split } from "@/components/case/CaseSection";
+import EngagementFlow from "@/components/case/EngagementFlow";
 import Interlude from "@/components/case/Interlude";
 import Numbered from "@/components/case/Numbered";
 import PhaseTimeline from "@/components/case/PhaseTimeline";
+import ResultsChart from "@/components/case/ResultsChart";
 import Stats from "@/components/case/Stats";
 import Steps from "@/components/case/Steps";
 import Button from "@/components/ui/Button";
@@ -139,12 +139,9 @@ export default function Page() {
               </p>
             </Prose>
           </div>
-          <ImageSlot
-            src="/images/fd-alignment-program/outcomes.png"
-            alt="Per-team System Usability Score, component coverage and NPS before and after each engagement"
-            width={1394}
-            height={978}
-          />
+          <div className="max-w-[616px]">
+            <ResultsChart />
+          </div>
         </div>
         <Interlude
           kicker="Beyond the scores"
@@ -225,42 +222,38 @@ export default function Page() {
           <br /> is people work
           <br /> <Accent>in disguise</Accent>
         </h3>
-        <Prose className="max-w-[900px] pt-64">
-          <p>A few things worth making explicit about how this actually worked.</p>
-          <p>
-            The engagement framework was lightweight by design. Each one started with a kick-off conversation between
-            me, the embedded designer, and the relevant product design director or manager. Not to set rigid
-            deliverables, but to understand their priorities, pain points, and what would actually unblock them. We then
-            aligned with the front-line designers to understand where they felt the gaps in knowledge and confidence.
-            This set expectations for everyone and meant the embedded designer could hit the ground running, rather than
-            spending weeks figuring out what to focus on.
-          </p>
-          <p>
-            The Quality and Coverage sessions were deliberately run as conversations, not evaluations. We&apos;d sit with
-            a designer, open their files, and talk through what we were seeing together. Teams often already knew where
-            the drift had happened: &ldquo;yeah, we know we&apos;re using all different button styles in here.&rdquo;
-            What they needed was the context to understand why it mattered and a partner to fix it with them, not a
-            report telling them they&apos;d done it wrong.
-          </p>
-          <p>
-            Knowledge transfer was built into every exit. Handoff sessions were recorded where possible so future team
-            joiners could benefit too. Slack channels stayed open. Check-ins were scheduled and a governance model was
-            shaped to help teams maintain progress without needing the DS team back in the room.
-          </p>
-        </Prose>
-
-        <EngagementFlow />
-
-        <div className="flex flex-col gap-16">
-          <p className="type-body-md text-primary">
-            I wrote a two-part article with the full breakdown, per-team data, and what each engagement actually looked
-            like.
-          </p>
-          <Button href="https://medium.com/@mpg23" variant="link" arrow="up-right" className="type-mono-xs-bold uppercase">
-            Read it on Medium
-          </Button>
-        </div>
+        <p className="type-body-md pt-64 text-secondary">
+          A few things worth making explicit about how this actually worked.
+        </p>
+        <ol className="grid gap-48 pt-48 md:grid-cols-3 md:gap-24">
+          {[
+            "The engagement framework was lightweight by design. Each one started with a kick-off conversation between me, the embedded designer, and the relevant product design director or manager. Not to set rigid deliverables, but to understand their priorities, pain points, and what would actually unblock them. We then aligned with the front-line designers to understand where they felt the gaps in knowledge and confidence. This set expectations for everyone and meant the embedded designer could hit the ground running, rather than spending weeks figuring out what to focus on.",
+            "The Quality and Coverage sessions were deliberately run as conversations, not evaluations. We’d sit with a designer, open their files, and talk through what we were seeing together. Teams often already knew where the drift had happened: “yeah, we know we’re using all different button styles in here.” What they needed was the context to understand why it mattered and a partner to fix it with them, not a report telling them they’d done it wrong.",
+            "Knowledge transfer was built into every exit. Handoff sessions were recorded where possible so future team joiners could benefit too. Slack channels stayed open. Check-ins were scheduled and a governance model was shaped to help teams maintain progress without needing the DS team back in the room.",
+          ].map((body, i) => (
+            <li key={i} className="flex flex-col gap-16 border-t border-subtle pt-24">
+              <span className="type-mono-sm text-accent">{String(i + 1).padStart(2, "0")}</span>
+              <p className="type-body-sm text-primary">{body}</p>
+            </li>
+          ))}
+        </ol>
       </CaseSection>
+
+      {/* Figma: Case 01 > Details > Stage (surface band: engagement diagram, then the Medium link) */}
+      <div className="border-y border-default bg-surface">
+        <div className="container-page flex flex-col items-center gap-48 py-80">
+          <EngagementFlow />
+          <div className="flex flex-col items-center gap-16 text-center">
+            <p className="type-body-md text-primary">
+              I wrote a two-part article with the full breakdown, per-team data, and what each engagement actually looked
+              like.
+            </p>
+            <Button href="https://medium.com/@mpg23" variant="link" arrow="up-right" className="type-mono-xs-bold uppercase">
+              Read it on Medium
+            </Button>
+          </div>
+        </div>
+      </div>
 
       <CaseSection label="Reflections">
         <div className="grid gap-64 lg:grid-cols-2">
@@ -313,52 +306,6 @@ export default function Page() {
       </CaseSection>
 
       <CaseNav slug="fd-alignment-program" />
-      <BackToTop />
-      <Contact />
     </article>
-  );
-}
-
-// Figma: Case 01 > THE DETAILS > flow. Embedded designer between the core team and the vertical team.
-function EngagementFlow() {
-  const node = "flex flex-col gap-8 border border-default bg-page p-20";
-  return (
-    <figure className="py-64">
-      <div className="grid items-center gap-16 md:grid-cols-[1fr_auto_1fr_auto_1fr]">
-        <div className={node}>
-          <p className="type-label-sm text-primary">Design System Core Team</p>
-          <p className="type-caption-md text-primary">
-            Building global solutions, implementing and sharing design system features
-          </p>
-        </div>
-        <FlowArrows />
-        <div className={`${node} md:-translate-y-8 border-accent`}>
-          <p className="type-label-sm text-primary">Embedded Designer</p>
-          <p className="type-caption-md text-primary">Applies standards, adapts to context, shares insights</p>
-        </div>
-        <FlowArrows />
-        <div className={node}>
-          <p className="type-label-sm text-primary">Vertical Product Team</p>
-          <p className="type-caption-md text-primary">
-            Building products, providing system feedback, sharing learnings
-          </p>
-        </div>
-      </div>
-      <figcaption className="type-label-xs mx-auto mt-32 flex w-fit items-center gap-12 border border-default bg-page px-24 py-16 text-primary">
-        <svg aria-hidden width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-accent">
-          <path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4" />
-        </svg>
-        Continuous improvement
-      </figcaption>
-    </figure>
-  );
-}
-
-function FlowArrows() {
-  return (
-    <div aria-hidden className="type-label-xs flex flex-col items-center gap-4 text-secondary max-md:flex-row max-md:justify-center max-md:gap-16">
-      <span>knowledge →</span>
-      <span>← feedback</span>
-    </div>
   );
 }
