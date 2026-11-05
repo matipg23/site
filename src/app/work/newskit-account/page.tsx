@@ -134,7 +134,7 @@ export default function Page() {
               live on at least two brands. That answers adoption, but it can&apos;t confirm anything about retention.
             </p>
           </Prose>
-          <p className="type-body-md pt-24 text-secondary">*Last checked: The Sun and The Times account - Sep 2026</p>
+          <p className="type-body-md pt-24 text-secondary">*Last checked: The Sun and The Times account - Oct 2026</p>
         </Split>
         <div className="flex flex-col gap-64 pt-64">
           <Figure
@@ -154,7 +154,7 @@ export default function Page() {
             </div>
             <figcaption className="type-mono-xs text-secondary">
               Live today: the account pages on The Times and The Sun, and the Account Solution in the NewsKit
-              documentation. Last checked October, 2026.
+              documentation. Last checked Oct 2026.
             </figcaption>
           </figure>
         </div>
