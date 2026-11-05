@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import CaseHero from "@/components/case/CaseHero";
 import CaseNav from "@/components/case/CaseNav";
 import Contact from "@/components/sections/Contact";
 import BackToTop from "@/components/case/BackToTop";
 import ThemeBar from "@/components/case/ThemeBar";
 import CaseSection, { Accent, Prose, Split } from "@/components/case/CaseSection";
-import Figure from "@/components/case/Figure";
 import AnatomyReport from "@/components/case/ai-readiness/AnatomyReport";
 import AuditReport from "@/components/case/ai-readiness/AuditReport";
 import CostChart from "@/components/case/ai-readiness/CostChart";
 import VisionDiagram from "@/components/case/ai-readiness/VisionDiagram";
-import UiKitDiagram from "@/components/case/ai-readiness/UiKitDiagram";
 import Interlude from "@/components/case/Interlude";
 import Numbered from "@/components/case/Numbered";
 import Stats from "@/components/case/Stats";
@@ -289,7 +288,17 @@ export default function Page() {
           </p>
         </Prose>
         <figure className="flex flex-col gap-16 pt-64">
-          <UiKitDiagram alt="Tokens, components, themes and guidelines feed one design system, which powers a Figma UI kit and a Lovable UI kit that both take themes and modes" />
+          <div className="rounded-2xl border border-default bg-fog p-8">
+            <div data-theme="default" data-mode="dark" className="overflow-hidden rounded-xl bg-band">
+              <Image
+                src="/images/fd-ai-readiness/ui-kits.webp"
+                alt="One source inside all kits for anyone to prototype. One governed design system feeds a Figma UI kit and a Lovable UI kit."
+                width={1671}
+                height={941}
+                className="h-auto w-full"
+              />
+            </div>
+          </div>
           <figcaption className="type-mono-xs text-secondary">
             UI kits in Figma and Lovable, powered by the governed design system data. Live walkthrough available on request.
           </figcaption>
