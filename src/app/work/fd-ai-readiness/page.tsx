@@ -10,6 +10,7 @@ import AnatomyReport from "@/components/case/ai-readiness/AnatomyReport";
 import AuditReport from "@/components/case/ai-readiness/AuditReport";
 import CostChart from "@/components/case/ai-readiness/CostChart";
 import VisionDiagram from "@/components/case/ai-readiness/VisionDiagram";
+import UiKitDiagram from "@/components/case/ai-readiness/UiKitDiagram";
 import Interlude from "@/components/case/Interlude";
 import Numbered from "@/components/case/Numbered";
 import Stats from "@/components/case/Stats";
@@ -287,14 +288,12 @@ export default function Page() {
             make the product decision, fast, inside the system&apos;s rules.
           </p>
         </Prose>
-        <Figure
-          src="/images/fd-ai-readiness/ui-kit.png"
-          alt="UI kit prototype"
-          caption="UI kit prototype built on the governed design system data."
-          width={1280}
-          height={796}
-          className="pt-64"
-        />
+        <figure className="flex flex-col gap-16 pt-64">
+          <UiKitDiagram alt="Tokens, components, themes and guidelines feed one design system, which powers a Figma UI kit and a Lovable UI kit that both take themes and modes" />
+          <figcaption className="type-mono-xs text-secondary">
+            UI kits in Figma and Lovable, powered by the governed design system data. Live walkthrough available on request.
+          </figcaption>
+        </figure>
       </CaseSection>
 
       <CaseSection label="Reflections">
