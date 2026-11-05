@@ -148,9 +148,9 @@ export default function Page() {
           />
           <figure className="flex flex-col gap-16">
             <div className="grid gap-24 md:grid-cols-3">
-              <Panel label="01 / The Times, live" src={img("live-times")} alt="The Times account page, live" width={1643} height={1793} />
-              <Panel label="02 / The Sun, live" src={img("live-sun")} alt="The Sun account page, live" width={1643} height={1791} />
-              <Panel label="03 / NewsKit docs" src={img("live-newskit")} alt="Account Solution in the NewsKit documentation" width={1643} height={1791} />
+              <Panel label="01 / The Times, live" src={img("live-times")} alt="The Times account page, live" width={1643} height={1883} />
+              <Panel label="02 / The Sun, live" src={img("live-sun")} alt="The Sun account page, live" width={1643} height={1883} />
+              <Panel label="03 / NewsKit docs" src={img("live-newskit")} alt="Account Solution in the NewsKit documentation" width={1643} height={1883} />
             </div>
             <figcaption className="type-mono-xs text-secondary">
               Live today: the account pages on The Times and The Sun, and the Account Solution in the NewsKit
