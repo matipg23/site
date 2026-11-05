@@ -1,0 +1,867 @@
+{
+  "note": "Theme-independent type scale, mirrored from the Figma text styles. family is a role (display, highlight, body, mono). weightSource names a theme weight role (display, highlight, heading, label, body); \"fixed\" means the style carries its own weight and italic.",
+  "styles": {
+    "Highlight/2XL": {
+      "figmaName": "Highlight/2XL",
+      "group": "Highlight",
+      "step": "2XL",
+      "family": "highlight",
+      "weightSource": "highlight",
+      "fontSize": 160,
+      "lineHeight": {
+        "unit": "px",
+        "value": 136
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      },
+      "textTransform": "uppercase"
+    },
+    "Highlight/XL": {
+      "figmaName": "Highlight/XL",
+      "group": "Highlight",
+      "step": "XL",
+      "family": "highlight",
+      "weightSource": "highlight",
+      "fontSize": 96,
+      "lineHeight": {
+        "unit": "px",
+        "value": 88
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      },
+      "textTransform": "uppercase"
+    },
+    "Highlight/LG": {
+      "figmaName": "Highlight/LG",
+      "group": "Highlight",
+      "step": "LG",
+      "family": "highlight",
+      "weightSource": "highlight",
+      "fontSize": 80,
+      "lineHeight": {
+        "unit": "px",
+        "value": 72
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      },
+      "textTransform": "uppercase"
+    },
+    "Highlight/MD": {
+      "figmaName": "Highlight/MD",
+      "group": "Highlight",
+      "step": "MD",
+      "family": "highlight",
+      "weightSource": "highlight",
+      "fontSize": 72,
+      "lineHeight": {
+        "unit": "px",
+        "value": 64
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      },
+      "textTransform": "uppercase"
+    },
+    "Display/2XL": {
+      "figmaName": "Display/2XL",
+      "group": "Display",
+      "step": "2XL",
+      "family": "display",
+      "weightSource": "display",
+      "fontSize": 200,
+      "lineHeight": {
+        "unit": "px",
+        "value": 176
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": -6
+      },
+      "textTransform": "uppercase"
+    },
+    "Display/XL": {
+      "figmaName": "Display/XL",
+      "group": "Display",
+      "step": "XL",
+      "family": "display",
+      "weightSource": "display",
+      "fontSize": 160,
+      "lineHeight": {
+        "unit": "px",
+        "value": 136
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": -3.2
+      },
+      "textTransform": "uppercase"
+    },
+    "Display/LG": {
+      "figmaName": "Display/LG",
+      "group": "Display",
+      "step": "LG",
+      "family": "display",
+      "weightSource": "display",
+      "fontSize": 96,
+      "lineHeight": {
+        "unit": "px",
+        "value": 88.32
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": -0.96
+      },
+      "textTransform": "uppercase"
+    },
+    "Display/MD": {
+      "figmaName": "Display/MD",
+      "group": "Display",
+      "step": "MD",
+      "family": "display",
+      "weightSource": "display",
+      "fontSize": 72,
+      "lineHeight": {
+        "unit": "px",
+        "value": 66.24
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": -0.72
+      },
+      "textTransform": "uppercase"
+    },
+    "Display/SM": {
+      "figmaName": "Display/SM",
+      "group": "Display",
+      "step": "SM",
+      "family": "display",
+      "weightSource": "display",
+      "fontSize": 58,
+      "lineHeight": {
+        "unit": "px",
+        "value": 55.1
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": -0.58
+      },
+      "textTransform": "uppercase"
+    },
+    "Display/XS": {
+      "figmaName": "Display/XS",
+      "group": "Display",
+      "step": "XS",
+      "family": "display",
+      "weightSource": "display",
+      "fontSize": 48,
+      "lineHeight": {
+        "unit": "px",
+        "value": 45.6
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": -0.48
+      },
+      "textTransform": "uppercase"
+    },
+    "Display/2XS": {
+      "figmaName": "Display/2XS",
+      "group": "Display",
+      "step": "2XS",
+      "family": "display",
+      "weightSource": "display",
+      "fontSize": 42,
+      "lineHeight": {
+        "unit": "em",
+        "value": 1.1
+      },
+      "letterSpacing": {
+        "unit": "em",
+        "value": -0.01
+      }
+    },
+    "Display/XS-Upper": {
+      "figmaName": "Display/XS-Upper",
+      "group": "Display",
+      "step": "XS-Upper",
+      "family": "display",
+      "weightSource": "display",
+      "fontSize": 48,
+      "lineHeight": {
+        "unit": "px",
+        "value": 45.6
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": -0.48
+      },
+      "textTransform": "uppercase"
+    },
+    "Heading/XL": {
+      "figmaName": "Heading/XL",
+      "group": "Heading",
+      "step": "XL",
+      "family": "display",
+      "weightSource": "heading",
+      "fontSize": 44,
+      "lineHeight": {
+        "unit": "px",
+        "value": 46.2
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": -0.44
+      }
+    },
+    "Heading/LG": {
+      "figmaName": "Heading/LG",
+      "group": "Heading",
+      "step": "LG",
+      "family": "display",
+      "weightSource": "heading",
+      "fontSize": 42,
+      "lineHeight": {
+        "unit": "px",
+        "value": 39.9
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": -0.42
+      }
+    },
+    "Heading/MD": {
+      "figmaName": "Heading/MD",
+      "group": "Heading",
+      "step": "MD",
+      "family": "display",
+      "weightSource": "heading",
+      "fontSize": 38,
+      "lineHeight": {
+        "unit": "px",
+        "value": 36.1
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Heading/SM": {
+      "figmaName": "Heading/SM",
+      "group": "Heading",
+      "step": "SM",
+      "family": "display",
+      "weightSource": "heading",
+      "fontSize": 36,
+      "lineHeight": {
+        "unit": "px",
+        "value": 36
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Heading/XS": {
+      "figmaName": "Heading/XS",
+      "group": "Heading",
+      "step": "XS",
+      "family": "display",
+      "weightSource": "heading",
+      "fontSize": 28,
+      "lineHeight": {
+        "unit": "px",
+        "value": 28
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Label/LG": {
+      "figmaName": "Label/LG",
+      "group": "Label",
+      "step": "LG",
+      "family": "display",
+      "weightSource": "label",
+      "fontSize": 24,
+      "lineHeight": {
+        "unit": "px",
+        "value": 26.4
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Label/MD": {
+      "figmaName": "Label/MD",
+      "group": "Label",
+      "step": "MD",
+      "family": "display",
+      "weightSource": "label",
+      "fontSize": 20,
+      "lineHeight": {
+        "unit": "px",
+        "value": 24.2
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Label/SM": {
+      "figmaName": "Label/SM",
+      "group": "Label",
+      "step": "SM",
+      "family": "display",
+      "weightSource": "label",
+      "fontSize": 18,
+      "lineHeight": {
+        "unit": "px",
+        "value": 22
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Label/XS": {
+      "figmaName": "Label/XS",
+      "group": "Label",
+      "step": "XS",
+      "family": "display",
+      "weightSource": "label",
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "px",
+        "value": 20
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Body/LG": {
+      "figmaName": "Body/LG",
+      "group": "Body",
+      "step": "LG",
+      "family": "body",
+      "weightSource": "body",
+      "fontSize": 22,
+      "lineHeight": {
+        "unit": "px",
+        "value": 34
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Body/MD": {
+      "figmaName": "Body/MD",
+      "group": "Body",
+      "step": "MD",
+      "family": "body",
+      "weightSource": "body",
+      "fontSize": 18,
+      "lineHeight": {
+        "unit": "px",
+        "value": 32
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Body/SM": {
+      "figmaName": "Body/SM",
+      "group": "Body",
+      "step": "SM",
+      "family": "body",
+      "weightSource": "body",
+      "fontSize": 16,
+      "lineHeight": {
+        "unit": "px",
+        "value": 28
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Body/XS": {
+      "figmaName": "Body/XS",
+      "group": "Body",
+      "step": "XS",
+      "family": "body",
+      "weightSource": "body",
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "px",
+        "value": 22
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Body/2XS": {
+      "figmaName": "Body/2XS",
+      "group": "Body",
+      "step": "2XS",
+      "family": "body",
+      "weightSource": "body",
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "px",
+        "value": 18
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Body/SM-Medium": {
+      "figmaName": "Body/SM-Medium",
+      "group": "Body",
+      "step": "SM-Medium",
+      "family": "body",
+      "weightSource": "fixed",
+      "weight": 500,
+      "style": "normal",
+      "figmaStyle": "Medium",
+      "fontSize": 16,
+      "lineHeight": {
+        "unit": "px",
+        "value": 28
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Body/XS-Medium": {
+      "figmaName": "Body/XS-Medium",
+      "group": "Body",
+      "step": "XS-Medium",
+      "family": "body",
+      "weightSource": "fixed",
+      "weight": 500,
+      "style": "normal",
+      "figmaStyle": "Medium",
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "px",
+        "value": 22
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Mono/LG-Bold": {
+      "figmaName": "Mono/LG-Bold",
+      "group": "Mono",
+      "step": "LG-Bold",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 700,
+      "style": "normal",
+      "figmaStyle": "Bold",
+      "fontSize": 18,
+      "lineHeight": {
+        "unit": "px",
+        "value": 29.25
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Mono/LG": {
+      "figmaName": "Mono/LG",
+      "group": "Mono",
+      "step": "LG",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 400,
+      "style": "normal",
+      "figmaStyle": "Regular",
+      "fontSize": 18,
+      "lineHeight": {
+        "unit": "px",
+        "value": 29.25
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Mono/MD-Bold": {
+      "figmaName": "Mono/MD-Bold",
+      "group": "Mono",
+      "step": "MD-Bold",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 700,
+      "style": "normal",
+      "figmaStyle": "Bold",
+      "fontSize": 16,
+      "lineHeight": {
+        "unit": "px",
+        "value": 22.75
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Mono/MD": {
+      "figmaName": "Mono/MD",
+      "group": "Mono",
+      "step": "MD",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 400,
+      "style": "normal",
+      "figmaStyle": "Regular",
+      "fontSize": 16,
+      "lineHeight": {
+        "unit": "px",
+        "value": 22.75
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Mono/SM": {
+      "figmaName": "Mono/SM",
+      "group": "Mono",
+      "step": "SM",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 400,
+      "style": "normal",
+      "figmaStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "px",
+        "value": 20
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 1.4
+      }
+    },
+    "Mono/SM-Bold": {
+      "figmaName": "Mono/SM-Bold",
+      "group": "Mono",
+      "step": "SM-Bold",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 700,
+      "style": "normal",
+      "figmaStyle": "Bold",
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "px",
+        "value": 20
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 1.4
+      }
+    },
+    "Mono/XS": {
+      "figmaName": "Mono/XS",
+      "group": "Mono",
+      "step": "XS",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 400,
+      "style": "normal",
+      "figmaStyle": "Regular",
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "px",
+        "value": 16
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 1.2
+      }
+    },
+    "Mono/XS-Bold": {
+      "figmaName": "Mono/XS-Bold",
+      "group": "Mono",
+      "step": "XS-Bold",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 700,
+      "style": "normal",
+      "figmaStyle": "Bold",
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "px",
+        "value": 16
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0
+      }
+    },
+    "Mono/XS-Med": {
+      "figmaName": "Mono/XS-Med",
+      "group": "Mono",
+      "step": "XS-Med",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 500,
+      "style": "normal",
+      "figmaStyle": "Medium",
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "px",
+        "value": 16
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 1.2
+      }
+    },
+    "Mono/XS-Upper": {
+      "figmaName": "Mono/XS-Upper",
+      "group": "Mono",
+      "step": "XS-Upper",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 400,
+      "style": "normal",
+      "figmaStyle": "Regular",
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "px",
+        "value": 16
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 1.2
+      },
+      "textTransform": "uppercase"
+    },
+    "Mono/XS-Med-Upper": {
+      "figmaName": "Mono/XS-Med-Upper",
+      "group": "Mono",
+      "step": "XS-Med-Upper",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 500,
+      "style": "normal",
+      "figmaStyle": "Medium",
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "px",
+        "value": 16
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 1.2
+      },
+      "textTransform": "uppercase"
+    },
+    "Mono/XS-Med-Caps": {
+      "figmaName": "Mono/XS-Med-Caps",
+      "group": "Mono",
+      "step": "XS-Med-Caps",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 500,
+      "style": "normal",
+      "figmaStyle": "Medium",
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "px",
+        "value": 16
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 1.2
+      },
+      "textTransform": "uppercase"
+    },
+    "Mono/XS-Caps": {
+      "figmaName": "Mono/XS-Caps",
+      "group": "Mono",
+      "step": "XS-Caps",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 400,
+      "style": "normal",
+      "figmaStyle": "Regular",
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "px",
+        "value": 16
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 1.2
+      },
+      "textTransform": "uppercase"
+    },
+    "Caption/MD": {
+      "figmaName": "Caption/MD",
+      "group": "Caption",
+      "step": "MD",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 500,
+      "style": "normal",
+      "figmaStyle": "Medium",
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "px",
+        "value": 19.5
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": -0.26
+      }
+    },
+    "Caption/SM": {
+      "figmaName": "Caption/SM",
+      "group": "Caption",
+      "step": "SM",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 400,
+      "style": "normal",
+      "figmaStyle": "Regular",
+      "fontSize": 12,
+      "lineHeight": {
+        "unit": "px",
+        "value": 16.5
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 1.54
+      }
+    },
+    "Caption/XS": {
+      "figmaName": "Caption/XS",
+      "group": "Caption",
+      "step": "XS",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 400,
+      "style": "normal",
+      "figmaStyle": "Regular",
+      "fontSize": 10,
+      "lineHeight": {
+        "unit": "px",
+        "value": 16.5
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0.44
+      }
+    },
+    "Caption/2XS": {
+      "figmaName": "Caption/2XS",
+      "group": "Caption",
+      "step": "2XS",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 400,
+      "style": "normal",
+      "figmaStyle": "Regular",
+      "fontSize": 9,
+      "lineHeight": {
+        "unit": "px",
+        "value": 15
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 1.8
+      }
+    },
+    "Caption/3XS": {
+      "figmaName": "Caption/3XS",
+      "group": "Caption",
+      "step": "3XS",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 400,
+      "style": "normal",
+      "figmaStyle": "Regular",
+      "fontSize": 8,
+      "lineHeight": {
+        "unit": "px",
+        "value": 13.5
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 1.62
+      }
+    },
+    "Tag/MD": {
+      "figmaName": "Tag/MD",
+      "group": "Tag",
+      "step": "MD",
+      "family": "mono",
+      "weightSource": "fixed",
+      "weight": 400,
+      "style": "normal",
+      "figmaStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": {
+        "unit": "px",
+        "value": 16.5
+      },
+      "letterSpacing": {
+        "unit": "px",
+        "value": 0.22
+      }
+    },
+    "Title/LG": {
+      "figmaName": "Title/LG",
+      "group": "Title",
+      "step": "LG",
+      "family": "display",
+      "weightSource": "label",
+      "fontSize": 24,
+      "lineHeight": {
+        "unit": "px",
+        "value": 26.4
+      },
+      "letterSpacing": {
+        "unit": "em",
+        "value": -0.02
+      }
+    },
+    "Title/MD": {
+      "figmaName": "Title/MD",
+      "group": "Title",
+      "step": "MD",
+      "family": "display",
+      "weightSource": "label",
+      "fontSize": 20,
+      "lineHeight": {
+        "unit": "px",
+        "value": 24.2
+      },
+      "letterSpacing": {
+        "unit": "em",
+        "value": -0.02
+      }
+    }
+  }
+}

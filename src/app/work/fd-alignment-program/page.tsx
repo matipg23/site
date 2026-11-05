@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CaseHero from "@/components/case/CaseHero";
 import CaseNav from "@/components/case/CaseNav";
+import ThemeBar from "@/components/case/ThemeBar";
 import CaseSection, { Accent, Prose, Split } from "@/components/case/CaseSection";
 import Interlude from "@/components/case/Interlude";
 import Numbered from "@/components/case/Numbered";
@@ -20,6 +21,10 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <article>
+      <ThemeBar
+        theme="bluefield"
+        anchors={[{ id: "problem", label: "Problem" }, { id: "outcomes", label: "Outcomes" }, { id: "approach", label: "Approach" }]}
+      />
       <CaseHero
         client="FanDuel"
         title="Design system alignment program"

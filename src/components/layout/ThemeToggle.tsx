@@ -10,14 +10,14 @@ export default function ThemeToggle() {
   const [theme, setTheme] = useState<Theme | null>(null);
 
   useEffect(() => {
-    setTheme(document.documentElement.dataset.theme === "dark" ? "dark" : "light");
+    setTheme(document.documentElement.dataset.mode === "dark" ? "dark" : "light");
   }, []);
 
   function toggle() {
     const next: Theme = theme === "dark" ? "light" : "dark";
-    document.documentElement.dataset.theme = next;
+    document.documentElement.dataset.mode = next;
     try {
-      localStorage.setItem("theme", next);
+      localStorage.setItem("bricks-mode", next);
     } catch {}
     setTheme(next);
   }

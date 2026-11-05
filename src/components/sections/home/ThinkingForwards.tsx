@@ -82,7 +82,8 @@ export default function ThinkingForwards() {
     <section id="thinking-forwards" className="container-page py-24">
       <div className="rounded-2xl border border-default bg-fog p-8">
         <div
-          data-theme="dark"
+          data-theme="default"
+          data-mode="dark"
           className="flex flex-col gap-48 rounded-xl bg-band px-24 pb-56 pt-48 text-primary md:gap-[72px] md:px-56 md:pt-80"
         >
           <div className="flex flex-col gap-[28px]">

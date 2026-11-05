@@ -1,0 +1,258 @@
+{
+ "categories": {
+  "background": "Surface colors for page, containers, layers, and interactive states. Use for fills behind content, not for text or borders.",
+  "content": "Text and icon foreground colors. 'default' for body text, 'strong' for headings and emphasis, 'subtle' for secondary text, 'disabled' for inactive content, and 'on-dark' or 'on-light' when text sits on a contrasting background.",
+  "brand": "Core accent palette: primary blue family, navy secondary, and yellow tertiary. Brand values are the same in both variants.",
+  "status": "Status colors. 'critical' is error (red), 'alert' is notification (yellow). Each status has a solid background, a subtle background, a border, and a content accent. Dark variant uses deeper fills and lighter accents.",
+  "status.positive": "Success (green).",
+  "status.critical": "Error and critical (red).",
+  "status.warning": "Warning (orange).",
+  "status.alert": "Notification (yellow).",
+  "status.info": "Informational (blue).",
+  "status.neutral": "Neutral, non-status states (grey).",
+  "border": "Outline and divider colors for inputs, cards, dividers, and focus states.",
+  "link": "Hyperlink colors for default, hover, destructive, and inverse contexts."
+ },
+ "tokens": {
+  "background.base": {
+   "css": "--bricks-background-base",
+   "desc": "Main page background."
+  },
+  "background.surface": {
+   "css": "--bricks-background-surface",
+   "desc": "Cards and raised containers on the base background."
+  },
+  "background.layer": {
+   "css": "--bricks-background-layer",
+   "desc": "Secondary layered area within a surface."
+  },
+  "background.accent": {
+   "css": "--bricks-background-accent",
+   "desc": "Subtle translucent tint overlay (black at ~5% in light, white at ~5% in dark)."
+  },
+  "background.primary": {
+   "css": "--bricks-background-primary",
+   "desc": "Solid primary-blue background for emphasis areas."
+  },
+  "background.secondary": {
+   "css": "--bricks-background-secondary",
+   "desc": "Navy background for secondary emphasis areas."
+  },
+  "background.promotional": {
+   "css": "--bricks-background-promotional",
+   "desc": "Deep navy background for banners and promotional areas."
+  },
+  "background.hover": {
+   "css": "--bricks-background-hover",
+   "desc": "Background shown when a surface or item is hovered."
+  },
+  "background.active": {
+   "css": "--bricks-background-active",
+   "desc": "Background shown when a surface or item is pressed or selected."
+  },
+  "background.disabled": {
+   "css": "--bricks-background-disabled",
+   "desc": "Background for disabled controls and areas."
+  },
+  "background.transparent": {
+   "css": "--bricks-background-transparent",
+   "desc": "Fully transparent background (alpha 00)."
+  },
+  "content.default": {
+   "css": "--bricks-content-default",
+   "desc": "Default body text and icons."
+  },
+  "content.strong": {
+   "css": "--bricks-content-strong",
+   "desc": "Headings and emphasized text."
+  },
+  "content.subtle": {
+   "css": "--bricks-content-subtle",
+   "desc": "Secondary, helper, and metadata text."
+  },
+  "content.disabled": {
+   "css": "--bricks-content-disabled",
+   "desc": "Text and icons on disabled controls (translucent)."
+  },
+  "content.onDark": {
+   "css": "--bricks-content-on-dark",
+   "desc": "Text on dark or saturated backgrounds."
+  },
+  "content.onLight": {
+   "css": "--bricks-content-on-light",
+   "desc": "Text on light backgrounds that need navy emphasis."
+  },
+  "brand.primary": {
+   "css": "--bricks-brand-primary",
+   "desc": "Primary blue. Used for links, active borders, and emphasis."
+  },
+  "brand.primaryL1": {
+   "css": "--bricks-brand-primary-l-1",
+   "desc": "Primary blue, lightness step 1."
+  },
+  "brand.primaryL2": {
+   "css": "--bricks-brand-primary-l-2",
+   "desc": "Primary blue, lightness step 2."
+  },
+  "brand.primaryD1": {
+   "css": "--bricks-brand-primary-d-1",
+   "desc": "Primary blue, darkness step 1."
+  },
+  "brand.primaryD2": {
+   "css": "--bricks-brand-primary-d-2",
+   "desc": "Primary blue, darkness step 2."
+  },
+  "brand.secondary": {
+   "css": "--bricks-brand-secondary",
+   "desc": "Navy secondary brand color."
+  },
+  "brand.tertiary": {
+   "css": "--bricks-brand-tertiary",
+   "desc": "Yellow tertiary brand color."
+  },
+  "brand.tertiaryTint": {
+   "css": "--bricks-brand-tertiary-tint",
+   "desc": "Very light yellow tint for highlight backgrounds."
+  },
+  "brand.tertiaryShade": {
+   "css": "--bricks-brand-tertiary-shade",
+   "desc": "Orange-brown shade of the tertiary yellow."
+  },
+  "brand.gradient": {
+   "css": "--bricks-brand-gradient",
+   "desc": "Brand gradient from blue d-1 to blue d-3."
+  },
+  "status.positive.backgroundDefault": {
+   "css": "--bricks-status-positive-background-default",
+   "desc": "Solid success fill."
+  },
+  "status.positive.backgroundSubtle": {
+   "css": "--bricks-status-positive-background-subtle",
+   "desc": "Light success tint for banners and containers."
+  },
+  "status.positive.borderDefault": {
+   "css": "--bricks-status-positive-border-default",
+   "desc": "Success border."
+  },
+  "status.positive.contentAccent": {
+   "css": "--bricks-status-positive-content-accent",
+   "desc": "Success text and icon accent."
+  },
+  "status.critical.backgroundDefault": {
+   "css": "--bricks-status-critical-background-default",
+   "desc": "Solid error fill."
+  },
+  "status.critical.backgroundSubtle": {
+   "css": "--bricks-status-critical-background-subtle",
+   "desc": "Light error tint for banners and containers."
+  },
+  "status.critical.borderDefault": {
+   "css": "--bricks-status-critical-border-default",
+   "desc": "Error border."
+  },
+  "status.critical.contentAccent": {
+   "css": "--bricks-status-critical-content-accent",
+   "desc": "Error text and icon accent."
+  },
+  "status.warning.backgroundDefault": {
+   "css": "--bricks-status-warning-background-default",
+   "desc": "Solid warning fill."
+  },
+  "status.warning.backgroundSubtle": {
+   "css": "--bricks-status-warning-background-subtle",
+   "desc": "Light warning tint for banners and containers."
+  },
+  "status.warning.borderDefault": {
+   "css": "--bricks-status-warning-border-default",
+   "desc": "Warning border."
+  },
+  "status.warning.contentAccent": {
+   "css": "--bricks-status-warning-content-accent",
+   "desc": "Warning text and icon accent."
+  },
+  "status.alert.backgroundDefault": {
+   "css": "--bricks-status-alert-background-default",
+   "desc": "Solid notification fill."
+  },
+  "status.alert.backgroundSubtle": {
+   "css": "--bricks-status-alert-background-subtle",
+   "desc": "Light notification tint for banners and containers."
+  },
+  "status.alert.borderDefault": {
+   "css": "--bricks-status-alert-border-default",
+   "desc": "Notification border."
+  },
+  "status.alert.contentAccent": {
+   "css": "--bricks-status-alert-content-accent",
+   "desc": "Notification text and icon accent."
+  },
+  "status.info.backgroundDefault": {
+   "css": "--bricks-status-info-background-default",
+   "desc": "Solid info fill."
+  },
+  "status.info.backgroundSubtle": {
+   "css": "--bricks-status-info-background-subtle",
+   "desc": "Light info tint for banners and containers."
+  },
+  "status.info.borderDefault": {
+   "css": "--bricks-status-info-border-default",
+   "desc": "Info border."
+  },
+  "status.info.contentAccent": {
+   "css": "--bricks-status-info-content-accent",
+   "desc": "Info text and icon accent."
+  },
+  "status.neutral.backgroundDefault": {
+   "css": "--bricks-status-neutral-background-default",
+   "desc": "Solid neutral fill."
+  },
+  "status.neutral.backgroundSubtle": {
+   "css": "--bricks-status-neutral-background-subtle",
+   "desc": "Light neutral tint."
+  },
+  "status.neutral.borderDefault": {
+   "css": "--bricks-status-neutral-border-default",
+   "desc": "Neutral border."
+  },
+  "border.default": {
+   "css": "--bricks-border-default",
+   "desc": "Standard border for inputs and cards."
+  },
+  "border.subtle": {
+   "css": "--bricks-border-subtle",
+   "desc": "Low-emphasis divider lines."
+  },
+  "border.active": {
+   "css": "--bricks-border-active",
+   "desc": "Border for focused or selected items."
+  },
+  "border.disabled": {
+   "css": "--bricks-border-disabled",
+   "desc": "Border on disabled controls (translucent)."
+  },
+  "border.inverse": {
+   "css": "--bricks-border-inverse",
+   "desc": "Border used on dark or saturated surfaces."
+  },
+  "link.defaultBase": {
+   "css": "--bricks-link-default-base",
+   "desc": "Default link text."
+  },
+  "link.defaultHover": {
+   "css": "--bricks-link-default-hover",
+   "desc": "Default link text on hover."
+  },
+  "link.destructiveBase": {
+   "css": "--bricks-link-destructive-base",
+   "desc": "Link text for destructive actions."
+  },
+  "link.inverseDefault": {
+   "css": "--bricks-link-inverse-default-base",
+   "desc": "Link text on dark or saturated backgrounds."
+  },
+  "link.inverseHover": {
+   "css": "--bricks-link-inverse-default-hover",
+   "desc": "Inverse link text on hover."
+  }
+ }
+}

@@ -1,0 +1,32 @@
+/*
+ * Points the --bricks-font-* family variables at the next/font families loaded in layout.tsx.
+ * next/font renames families, so the plain names in the generated CSS do not resolve on their own.
+ * Selectors repeat the generated ones so this file wins by source order. Weights and styles stay generated.
+ * RangerGreen body and mono are system fonts and need no override.
+ */
+:root:not([data-theme]),
+[data-theme="default"] {
+  --bricks-font-display: "Zalando Sans Expanded", system-ui, sans-serif;
+  --bricks-font-highlight: var(--font-barlow), system-ui, sans-serif;
+  --bricks-font-body: var(--font-public-sans), system-ui, sans-serif;
+  --bricks-font-mono: var(--font-kode-mono), ui-monospace, Menlo, monospace;
+}
+
+[data-theme="bluefield"] {
+  --bricks-font-display: var(--font-oswald), system-ui, sans-serif;
+  --bricks-font-highlight: var(--font-archivo), system-ui, sans-serif;
+  --bricks-font-body: var(--font-figtree), system-ui, sans-serif;
+  --bricks-font-mono: var(--font-plex-mono), ui-monospace, Menlo, monospace;
+}
+
+[data-theme="paperboy"] {
+  --bricks-font-display: var(--font-poppins), system-ui, sans-serif;
+  --bricks-font-highlight: var(--font-bitter), Georgia, serif;
+  --bricks-font-body: var(--font-dm-sans), system-ui, sans-serif;
+  --bricks-font-mono: var(--font-dm-mono), ui-monospace, Menlo, monospace;
+}
+
+[data-theme="rangergreen"] {
+  --bricks-font-display: var(--font-noto-serif), Georgia, serif;
+  --bricks-font-highlight: var(--font-montserrat), system-ui, sans-serif;
+}
