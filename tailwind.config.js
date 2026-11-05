@@ -48,6 +48,7 @@ module.exports = {
         strong: "var(--border-strong)",
         accent: "var(--border-accent)",
         glass: "var(--glass-stroke)",
+        fog: "var(--background-fog)",
       },
       outlineColor: {
         accent: "var(--border-accent)",

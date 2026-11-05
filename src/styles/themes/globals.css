@@ -141,6 +141,9 @@
   .type-mono-xs-upper     { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; text-transform: uppercase; }
   .type-mono-xs-med-upper { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; font-weight: 500; text-transform: uppercase; }
 
+  /* Code blocks (Thesis band, Written for AI): Figma has these unbound, 14 / 22 Kode Mono Regular */
+  .type-mono-code { font-family: var(--font-mono), monospace; font-size: 14px; line-height: 22px; font-weight: 400; }
+
   .type-caption-md  { font-size: 14px; line-height: 19.5px; letter-spacing: -0.26px; font-weight: 500; }
   .type-caption-sm  { font-size: 12px; line-height: 16.5px; letter-spacing: 1.54px; }
   .type-caption-xs  { font-size: 10px; line-height: 16.5px; letter-spacing: 0.44px; }
