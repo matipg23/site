@@ -204,12 +204,12 @@ export default function Page() {
               },
             ]}
             figure={
-              // TODO(content): Figma placeholder "User testing session GIF (export from Notion)"
               <Figure
-                alt="User testing session recording"
+                video={{ src: "/videos/nutmeg/ut-session.mp4", poster: "/images/nutmeg/poster-ut-session.jpg" }}
+                alt="User testing session recording of a tester using the Axure prototype"
                 caption="Interactive Axure prototype: 2qxic8.axshare.com/#c=2. User testing session recording above."
-                width={682}
-                height={384}
+                width={1364}
+                height={768}
               />
             }
           />
@@ -248,13 +248,22 @@ export default function Page() {
               },
             ]}
             figure={
-              // TODO(content): Figma placeholder "Flow diagrams for the two round 3 versions and the draft pot created stop screen"
-              <Figure
-                alt="Flow diagrams for the two round three versions, plus the stop screen shown after the draft pot is created"
-                caption="Flow diagrams for the two round three versions, plus the stop screen shown after the draft pot is created."
-                width={720}
-                height={520}
-              />
+              <div className="flex flex-col gap-32">
+                <Figure
+                  src="/images/nutmeg/round3-flows.png"
+                  alt="Round three screens. Extra task version: the draft pot created screen with a View draft pot button, and the extra task prompt. Flow tweak version: the stop screen with two routes, the dashboard with a 99% complete draft pot, and two pot overview screens. Half-way scenario: the welcome back screen with a 40% checklist."
+                  caption="Round three screens: the extra task version, the flow tweak with the stop screen after the draft pot is created, and the half-way scenario."
+                  width={1440}
+                  height={1040}
+                />
+                <Figure
+                  src="/images/nutmeg/onboarding-flowchart.png"
+                  alt="Flowchart of the native mobile onboarding journey, from landing home and sign-up through the pot steps, profile, risk checks, ISA and payments to investor home. Screens are colour coded as existing, existing but needing work, or new, with the backend services behind each step."
+                  caption="The onboarding journey flow I mapped with product and engineering. Green screens existed, yellow needed work, blue were new."
+                  width={2880}
+                  height={1004}
+                />
+              </div>
             }
           />
         </div>
