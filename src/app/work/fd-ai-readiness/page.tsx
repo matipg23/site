@@ -6,6 +6,10 @@ import BackToTop from "@/components/case/BackToTop";
 import ThemeBar from "@/components/case/ThemeBar";
 import CaseSection, { Accent, Prose, Split } from "@/components/case/CaseSection";
 import Figure from "@/components/case/Figure";
+import AnatomyReport from "@/components/case/ai-readiness/AnatomyReport";
+import AuditReport from "@/components/case/ai-readiness/AuditReport";
+import CostChart from "@/components/case/ai-readiness/CostChart";
+import VisionDiagram from "@/components/case/ai-readiness/VisionDiagram";
 import Interlude from "@/components/case/Interlude";
 import Numbered from "@/components/case/Numbered";
 import Stats from "@/components/case/Stats";
@@ -119,13 +123,9 @@ export default function Page() {
             already worked.
           </p>
         </Prose>
-        <Figure
-          src="/images/fd-ai-readiness/vision.png"
-          alt="User prompt to AI agent, reading from an AI-ready design system of foundations, guidelines, components and tokens, producing DS-driven output"
-          width={2722}
-          height={832}
-          className="pt-64 [&_img]:border-0 [&_img]:bg-transparent"
-        />
+        <div className="pt-64">
+          <VisionDiagram alt="User prompt to AI agent, reading from an AI-ready design system of foundations, guidelines, components and tokens, producing DS-driven output" />
+        </div>
         <p className="type-heading-md mx-auto max-w-[900px] pt-48 text-center text-accent">
           A well-structured design system doesn&apos;t get forced into AI workflows. It gets pulled in.
         </p>
@@ -203,15 +203,7 @@ export default function Page() {
                 body: "I turned the manual catch into a standing report, checking every rendered part of a component against the real package and tokens, automatically. The next version doesn't depend on me remembering to ask.",
               },
             ]}
-            figure={
-              <Figure
-                src="/images/fd-ai-readiness/anatomy-report.png"
-                alt="FloatingBanner anatomy report"
-                caption="FloatingBanner anatomy report, the standing check that came out of the first run."
-                width={1568}
-                height={1804}
-              />
-            }
+            figure={<AnatomyReport />}
           />
 
           <Interlude
@@ -248,15 +240,7 @@ export default function Page() {
                 body: "A field to say, explicitly, whether a piece of anatomy is structural or visual. That one addition closed the gap, and gave any future check, mine or anyone else's, the one signal it had been missing.",
               },
             ]}
-            figure={
-              <Figure
-                src="/images/fd-ai-readiness/audit-report.png"
-                alt="FloatingBanner audit report"
-                caption="FloatingBanner audit report: hallucinated vs corrected output, the three critical fixes, and the root cause."
-                width={1492}
-                height={2112}
-              />
-            }
+            figure={<AuditReport />}
           />
         </div>
       </CaseSection>
@@ -267,12 +251,7 @@ export default function Page() {
           <br /> is sub-linear
         </h3>
         <div className="grid gap-24 pt-64 lg:grid-cols-[535fr_802fr]">
-          <Figure
-            src="/images/fd-ai-readiness/cost-curve.png"
-            alt="Chart: relative effort to add each component to the schema drops from days for the first to minutes by the fortieth"
-            width={1070}
-            height={704}
-          />
+          <CostChart alt="Chart: relative effort to add each component to the schema drops from days for the first to minutes by the fortieth" />
           <Prose>
             <p>
               Getting the schema to produce the first component output right took days. Every one after that took
@@ -312,8 +291,8 @@ export default function Page() {
           src="/images/fd-ai-readiness/ui-kit.png"
           alt="UI kit prototype"
           caption="UI kit prototype built on the governed design system data."
-          width={2042}
-          height={1304}
+          width={1280}
+          height={796}
           className="pt-64"
         />
       </CaseSection>
