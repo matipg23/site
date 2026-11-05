@@ -13,7 +13,7 @@ import Stats from "@/components/case/Stats";
 import Steps from "@/components/case/Steps";
 
 export const metadata: Metadata = {
-  title: "One Account, Three Brands · News UK",
+  title: "One Account, Multiple Brands · News UK",
   description:
     "One configurable account pattern for The Sun, The Times and Virgin Radio, built on NewsKit: three sections, nine edit flows and thirteen subscription and billing states.",
 };
@@ -34,7 +34,7 @@ export default function Page() {
         title={
           <>
             One account,
-            <br /> three brands
+            <br /> multiple brands
           </>
         }
         tags={["Product design", "Multi-brand", "Design systems"]}
@@ -50,10 +50,7 @@ export default function Page() {
         <Split
           heading={
             <>
-              Managing a<br /> subscription
-              <br /> should not depend
-              <br /> on which brand
-              <br /> <Accent>sold it</Accent>
+              Managing a subscription should not depend on which brand <Accent>sold it</Accent>
             </>
           }
         >
@@ -193,7 +190,7 @@ export default function Page() {
             {
               title: "Document it for engineering",
               body: "28 components, 9 forms and 24 inputs, each with validation rules, error messages and success states mapped, so engineering could implement directly and had only one reference to look for.",
-              tags: [{ label: "With the UX designer", muted: true }],
+              tags: [{ label: "With the UX designer" }],
             },
           ]}
         />
@@ -232,7 +229,7 @@ export default function Page() {
       <CaseSection label="The details">
         <div className="flex flex-col gap-96">
           <div className="flex flex-col gap-20">
-            <h3 className="type-heading-lg text-primary">
+            <h3 className="type-display-xs text-primary">
               Every user story
               <br /> before any screen
             </h3>
@@ -269,7 +266,7 @@ export default function Page() {
             </Prose>
             <figure className="flex flex-col gap-16">
               <div className="grid gap-24 md:grid-cols-2 md:gap-64">
-                <Panel label="01 / Reset password" src={img("flow-reset-password", "jpg")} alt="Reset password flow and screens" width={2200} height={1444} />
+                <Panel label="01 / Reset password" src={img("flow-reset-password", "jpg")} alt="Reset password flow and screens" width={2200} height={1484} />
                 <Panel label="02 / Edit email" src={img("flow-edit-email", "jpg")} alt="Edit email flow and screens" width={2200} height={1484} />
               </div>
               <figcaption className="type-mono-xs text-secondary">
@@ -334,7 +331,7 @@ export default function Page() {
           </div>
 
           <div className="flex flex-col gap-20">
-            <h3 className="type-heading-lg text-primary">
+            <h3 className="type-display-xs text-primary">
               Different themes,
               <br /> <Accent>live-action prototyping</Accent>
             </h3>

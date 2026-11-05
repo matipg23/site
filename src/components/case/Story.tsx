@@ -19,7 +19,7 @@ export default function Story({
     <div className="grid gap-48 lg:grid-cols-[577fr_720fr] lg:gap-64">
       <div className="flex flex-col gap-20">
         <p className="type-mono-xs-med uppercase text-accent">{kicker}</p>
-        <h3 className="type-heading-lg text-primary">{heading}</h3>
+        <h3 className="type-heading-lg uppercase text-primary">{heading}</h3>
         <p className="type-body-lg font-medium italic text-accent">{lead}</p>
         {notes.map((n, i) => (
           <Reveal key={n.label} delay={i} className="flex flex-col gap-8 border-t border-default pt-16">

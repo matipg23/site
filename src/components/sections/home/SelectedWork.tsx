@@ -45,11 +45,13 @@ function Featured() {
   return (
     <Link
       href={caseHref("fd-alignment-program")}
-      className="group flex min-w-0 flex-col justify-between gap-64 bg-action-accent p-24 text-inverse md:p-48"
+      className="group flex min-w-0 flex-col justify-between gap-64 bg-action-accent p-24 text-inverse transition-colors duration-150 hover:bg-[color-mix(in_srgb,var(--action-accent),black_12%)] md:p-48"
     >
       <div className="flex flex-col gap-24">
         <p className="type-mono-xs-med-upper">FanDuel / 2024–25 / Systems, leadership</p>
-        <h3 className="type-display-xs">Design system alignment program</h3>
+        <h3 className="type-display-xs transition-transform duration-300 ease-out motion-safe:group-hover:translate-x-[4px]">
+          Design system alignment program
+        </h3>
       </div>
       <div className="flex flex-col gap-40">
         <div className="grid grid-cols-2 gap-24 border-t border-current pt-24 xl:grid-cols-[2fr_2fr_2fr_auto] xl:gap-x-0">
@@ -119,9 +121,9 @@ function SideCard({
 function AiCard() {
   return (
     <SideCard href={caseHref("fd-ai-readiness")} meta="FanDuel / 2026 / Systems, AI" title="The system becomes shared AI infrastructure">
-      {/* Diagram: one parent node fanning out to four parts, as in Figma */}
-      <div aria-hidden className="relative">
-        <div className="mx-auto flex w-[291px] max-w-full flex-col items-center gap-8 rounded-sm border border-subtle bg-surface px-12 py-8 shadow-1">
+      {/* Simple diagram: one parent node fanning out to four parts, text-free like the other card visuals */}
+      <div aria-hidden>
+        <div className="mx-auto flex w-[240px] max-w-full flex-col items-center gap-8 rounded-sm border border-subtle bg-surface px-12 py-12 shadow-1">
           <svg width="18" height="18" viewBox="0 0 18 18" className="text-action-accent" fill="currentColor">
             <rect x="1" y="1" width="7" height="9" />
             <rect x="10" y="1" width="7" height="5" />
@@ -130,14 +132,12 @@ function AiCard() {
           </svg>
           <span className="type-label-xs text-primary">AI-READY DESIGN SYSTEM</span>
         </div>
-        <svg viewBox="0 0 296 45" className="mx-auto block h-[45px] w-[296px] max-w-full text-secondary" fill="none" stroke="currentColor" strokeDasharray="1.5 2.5">
-          <path d="M148 0C148 22 33 20 33 45M148 0C148 22 105 20 105 45M148 0C148 22 188 20 188 45M148 0C148 22 270 20 270 45" />
+        <svg viewBox="0 0 296 20" preserveAspectRatio="none" className="mx-auto block h-[20px] w-[296px] max-w-full text-secondary" fill="none" stroke="currentColor">
+          <path vectorEffect="non-scaling-stroke" d="M148 0V10M34 10H262M34 10V20M110 10V20M186 10V20M262 10V20" />
         </svg>
-        <div className="flex flex-wrap justify-between gap-y-8">
-          {["foundations", "guidelines", "components", "tokens"].map((t) => (
-            <span key={t} className="type-mono-xs-bold border border-subtle bg-surface px-4 py-2 text-primary">
-              {t}
-            </span>
+        <div className="mx-auto flex w-[296px] max-w-full gap-8">
+          {[0, 1, 2, 3].map((i) => (
+            <span key={i} className="h-[24px] flex-1 border border-subtle bg-surface" />
           ))}
         </div>
       </div>

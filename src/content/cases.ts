@@ -5,7 +5,7 @@ import type { CaseStudy } from "./types";
 export const cases: CaseStudy[] = [
   { slug: "fd-alignment-program", title: "Design System Alignment Program", meta: "FanDuel · 2024–25 · Systems" },
   { slug: "fd-ai-readiness", title: "The System Becomes Shared AI Infrastructure", meta: "FanDuel · 2026" },
-  { slug: "newskit-account", title: "One Account, Three Brands", meta: "News UK · 2021–22 · Product" },
+  { slug: "newskit-account", title: "One Account, Multiple Brands", meta: "News UK · 2021–22 · Product" },
   { slug: "nutmeg", title: "Improving the Mobile Onboarding Journey", meta: "Nutmeg · 2019–20" },
 ];
 
