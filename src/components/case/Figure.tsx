@@ -10,7 +10,6 @@ export default function Figure({
   width,
   height,
   className = "",
-  imageClassName = "",
 }: {
   src?: string;
   video?: { src: string; poster?: string };
@@ -19,14 +18,13 @@ export default function Figure({
   width: number;
   height: number;
   className?: string;
-  imageClassName?: string;
 }) {
   return (
     <figure className={`flex flex-col gap-16 ${className}`}>
       {video ? (
         <Video src={video.src} poster={video.poster} label={alt} width={width} height={height} />
       ) : (
-        <ImageSlot src={src} alt={alt} caption={src ? undefined : alt} width={width} height={height} className={imageClassName} />
+        <ImageSlot src={src} alt={alt} caption={src ? undefined : alt} width={width} height={height} />
       )}
       {caption && <figcaption className="type-mono-xs text-secondary">{caption}</figcaption>}
     </figure>

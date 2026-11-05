@@ -141,10 +141,9 @@ export default function Page() {
             src={img("overview")}
             alt="Wireframes, the NewsKit theme, and the Sun, Times and Virgin Radio versions of the same account page"
             caption="Wireframes, the NewsKit theme, and the Sun, Times and Virgin Radio versions of the same account page."
-            width={2700}
-            height={1118}
+            width={2711}
+            height={944}
             className="md:px-24"
-            imageClassName="!bg-[var(--primitive-neutral-100)]" // transparent PNG with dark labels: keep a light backdrop in every theme and mode
           />
           <figure className="flex flex-col gap-16">
             <div className="grid gap-24 md:grid-cols-3">
