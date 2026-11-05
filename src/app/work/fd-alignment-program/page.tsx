@@ -248,7 +248,7 @@ export default function Page() {
               I wrote a two-part article with the full breakdown, per-team data, and what each engagement actually looked
               like.
             </p>
-            <Button href="https://medium.com/@mpg23" variant="link" arrow="up-right" className="type-mono-xs-bold uppercase">
+            <Button href="https://medium.com/@mpg23/transforming-design-system-adoption-from-centralized-to-hybrid-operations-d3c64b9b4afb" variant="link" arrow="up-right" className="type-mono-xs-bold uppercase">
               Read it on Medium
             </Button>
           </div>
