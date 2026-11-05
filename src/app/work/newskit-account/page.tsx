@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CaseHero from "@/components/case/CaseHero";
 import CaseNav from "@/components/case/CaseNav";
+import ThemeBar from "@/components/case/ThemeBar";
 import CaseSection, { Accent, Prose, Split } from "@/components/case/CaseSection";
 import Figure from "@/components/case/Figure";
 import Gallery from "@/components/case/Gallery";
@@ -22,6 +23,10 @@ const vid = (name: string) => `/videos/newskit-account/${name}.mp4`;
 export default function Page() {
   return (
     <article>
+      <ThemeBar
+        theme="paperboy"
+        anchors={[{ id: "problem", label: "Problem" }, { id: "outcomes", label: "Outcomes" }, { id: "approach", label: "Approach" }]}
+      />
       <CaseHero
         client="News UK"
         title={

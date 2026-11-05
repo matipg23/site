@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CaseHero from "@/components/case/CaseHero";
 import CaseNav from "@/components/case/CaseNav";
+import ThemeBar from "@/components/case/ThemeBar";
 import CaseSection, { Accent, Prose, Split } from "@/components/case/CaseSection";
 import Figure from "@/components/case/Figure";
 import Interlude from "@/components/case/Interlude";
@@ -19,6 +20,10 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <article>
+      <ThemeBar
+        theme="rangergreen"
+        anchors={[{ id: "problem", label: "Problem" }, { id: "idea", label: "Idea" }, { id: "approach", label: "Approach" }]}
+      />
       <CaseHero
         client="Nutmeg"
         title="Improving the mobile onboarding journey"

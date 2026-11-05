@@ -11,7 +11,8 @@ export default function CaseSection({
   children: React.ReactNode;
 }) {
   return (
-    <section className={surface ? "border-y border-default bg-surface" : ""}>
+    // id comes from the label ("The problem" -> "problem") so the case study sub-bar can link to it
+    <section id={label.toLowerCase().replace(/^the /, "").replace(/\s+/g, "-")} className={surface ? "border-y border-default bg-surface" : ""}>
       <div className="container-page pb-80 pt-64 md:pb-128">
         <SectionLabel as="h2">{label}</SectionLabel>
         <div className="pt-48">{children}</div>

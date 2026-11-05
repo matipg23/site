@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 type Row = {
   name: string; // CSS variable, e.g. --background-page
@@ -22,17 +22,22 @@ const groups: { title: string; prefix: string; kind: Row["kind"]; cols: Group["c
   { title: "Spacing", prefix: "--space-", kind: "plain", cols: "value" },
 ];
 
-// Font families come from the Figma "Fonts" collection (mode Zalando)
-const fonts: Row[] = [
-  { name: "--font-display", maps: "Zalando Sans Expanded", value: "", kind: "plain" },
-  { name: "--font-highlight", maps: "Barlow Semi Condensed", value: "", kind: "plain" },
-  { name: "--font-body", maps: "Public Sans", value: "", kind: "plain" },
-  { name: "--font-mono", maps: "Kode Mono", value: "", kind: "plain" },
-];
+// Font families follow the active BRICKS theme (--bricks-font-*), shown as the first family in the stack
+function fontRows(): Row[] {
+  const cs = getComputedStyle(document.documentElement);
+  return ["display", "highlight", "body", "mono"].map((n) => ({
+    name: `--font-${n}`,
+    maps: cs.getPropertyValue(`--bricks-font-${n}`).split(",")[0].replace(/["']/g, "").trim(),
+    value: "",
+    kind: "plain" as const,
+  }));
+}
 
-// Declared (unresolved) value of a custom property for the active theme: Dark block first when dark, then :root
-function declared(name: string, dark: boolean): string {
-  let fallback = "";
+// Declared (unresolved) value of a custom property for the active theme and mode.
+// BRICKS variables live in per-theme blocks (light, then a dark override); site aliases live on :root.
+function declared(name: string, theme: string, dark: boolean): string {
+  let light = "";
+  let darkValue = "";
   for (const sheet of Array.from(document.styleSheets)) {
     let rules: CSSRuleList;
     try {
@@ -44,23 +49,30 @@ function declared(name: string, dark: boolean): string {
       if (!(rule instanceof CSSStyleRule)) continue;
       const v = rule.style.getPropertyValue(name).trim();
       if (!v) continue;
-      if (dark && rule.selectorText.includes('data-theme="dark"')) return v;
-      if (rule.selectorText === ":root") fallback = v;
+      const sel = rule.selectorText;
+      if (name.startsWith("--bricks-")) {
+        if (!sel.includes(`[data-theme="${theme}"]`)) continue;
+        if (sel.includes('[data-mode="dark"]')) darkValue = v;
+        else light = v;
+      } else if (sel.startsWith(":root")) {
+        light = v;
+      }
     }
   }
-  return fallback;
+  return dark && darkValue ? darkValue : light;
 }
 
-// Follow var() aliases down to a primitive: "var(--nav-text)" -> action-primary -> neutral-900
-function describe(name: string, dark: boolean): string {
-  let v = declared(name, dark);
-  for (let hops = 0; hops < 5; hops++) {
+// Follow var() aliases down to a core palette step: "var(--nav-text)" -> bricks-content-subtle -> core-neutral-500
+function describe(name: string, theme: string, dark: boolean): string {
+  let v = declared(name, theme, dark);
+  for (let hops = 0; hops < 6; hops++) {
     const mix = v.match(/^color-mix\(.*var\((--[\w-]+)\)\s+(\d+)%/);
     if (mix) return `${mix[1].replace("--primitive-", "")} ${mix[2]}%`;
     const alias = v.match(/^var\((--[\w-]+)\)$/);
     if (!alias) return v;
     if (alias[1].startsWith("--primitive-")) return alias[1].replace("--primitive-", "");
-    v = declared(alias[1], dark);
+    if (alias[1].startsWith("--bricks-core-")) return alias[1].replace("--bricks-", "");
+    v = declared(alias[1], theme, dark);
   }
   return v;
 }
@@ -73,7 +85,8 @@ function shown(v: string): string {
 }
 
 function readGroups(): Group[] {
-  const dark = document.documentElement.dataset.theme === "dark";
+  const theme = document.documentElement.dataset.theme ?? "default";
+  const dark = document.documentElement.dataset.mode === "dark";
   const computed = getComputedStyle(document.documentElement);
   const names = new Set<string>();
   for (const sheet of Array.from(document.styleSheets)) {
@@ -85,7 +98,7 @@ function readGroups(): Group[] {
     }
     for (const rule of Array.from(rules)) {
       if (!(rule instanceof CSSStyleRule)) continue;
-      if (rule.selectorText !== ":root" && !rule.selectorText.includes('data-theme="dark"')) continue;
+      if (!rule.selectorText.startsWith(":root")) continue;
       for (const prop of Array.from(rule.style)) if (prop.startsWith("--") && !prop.startsWith("--primitive-")) names.add(prop);
     }
   }
@@ -96,18 +109,20 @@ function readGroups(): Group[] {
       .filter((n) => n.startsWith(g.prefix))
       .map((name) => ({
         name,
-        maps: g.cols === "both" ? describe(name, dark) : "",
-        value: g.cols === "both" ? shown(computed.getPropertyValue(name)) : describe(name, dark),
+        maps: g.cols === "both" ? describe(name, theme, dark) : "",
+        value: g.cols === "both" ? shown(computed.getPropertyValue(name)) : describe(name, theme, dark),
         kind: g.kind,
       })),
   }));
-  out.push({ title: "Type", cols: "maps", rows: fonts });
+  out.push({ title: "Type", cols: "maps", rows: fontRows() });
   return out.filter((g) => g.rows.length > 0);
 }
 
 // Figma: "Sidebar - Token proof", opened from "Inspect" in the footer ("Themed by its own tokens · Inspect").
 // Lists every semantic token with what it points at, read live from tokens.css for the active theme.
-export default function TokenInspector() {
+// label and down let a second trigger reuse the panel: the case study sub-bar opens it downwards.
+export default function TokenInspector({ label = "Inspect", down = false }: { label?: string; down?: boolean }) {
+  const panelId = useId();
   const [open, setOpen] = useState(false);
   const [data, setData] = useState<Group[]>([]);
   const ref = useRef<HTMLSpanElement>(null);
@@ -122,7 +137,7 @@ export default function TokenInspector() {
     if (!open) return;
     setData(readGroups());
     const themeWatch = new MutationObserver(() => setData(readGroups()));
-    themeWatch.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    themeWatch.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme", "data-mode"] });
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
     const onClick = (e: MouseEvent) => {
       if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
@@ -143,22 +158,22 @@ export default function TokenInspector() {
         ref={trigger}
         type="button"
         aria-expanded={open}
-        aria-controls="token-inspector"
-        aria-label="Inspect design tokens"
+        aria-controls={panelId}
+        aria-label={label === "Inspect" ? "Inspect design tokens" : undefined}
         onClick={() => setOpen((o) => !o)}
         className={`lg:uppercase underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:text-accent hover:decoration-current ${
           open ? "text-accent decoration-current" : ""
         }`}
       >
-        Inspect
+        {label}
       </button>
 
-      {/* Opens upwards: the trigger sits in the footer */}
+      {/* Opens upwards by default (the trigger sits in the footer); down opens it below a sticky bar */}
       <div
-        id="token-inspector"
+        id={panelId}
         role="region"
         aria-label="Design tokens"
-        className={`${open ? "flex" : "hidden"} absolute bottom-[calc(100%+12px)] right-16 z-30 max-h-[min(calc(100svh-240px),720px)] w-[min(607px,calc(100vw-32px))] flex-col border border-default bg-surface normal-case tracking-normal text-primary shadow-2 md:right-32`}
+        className={`${open ? "flex" : "hidden"} absolute ${down ? "top-[calc(100%+12px)]" : "bottom-[calc(100%+12px)]"} right-16 z-30 max-h-[min(calc(100svh-240px),720px)] w-[min(607px,calc(100vw-32px))] flex-col border border-default bg-surface normal-case tracking-normal text-primary shadow-2 md:right-32`}
       >
         <div className="flex items-start justify-between gap-16 p-24 pb-16">
           <div>

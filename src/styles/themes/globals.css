@@ -3,11 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    /* Not in next/font's list, loaded by <link> in layout.tsx */
-    --font-display: "Zalando Sans Expanded";
-  }
-
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 96px;
@@ -15,7 +10,8 @@
   }
 
   body {
-    @apply bg-page text-primary font-sans font-light antialiased;
+    @apply bg-page text-primary font-sans antialiased;
+    font-weight: var(--bricks-font-weight-body);
     transition: background-color 200ms ease, color 200ms ease;
   }
 
@@ -49,11 +45,11 @@
  * display and heading sizes scale down with the viewport.
  */
 @layer components {
-  /* Highlight: Barlow Semi Condensed Black Italic, uppercase */
+  /* Highlight: family, weight and style come from the active BRICKS theme (default: Barlow Semi Condensed Black Italic), uppercase */
   .type-highlight-2xl, .type-highlight-xl, .type-highlight-lg, .type-highlight-md {
     font-family: var(--font-highlight), sans-serif;
-    font-weight: 900;
-    font-style: italic;
+    font-weight: var(--bricks-font-weight-highlight);
+    font-style: var(--bricks-font-style-highlight);
     text-transform: uppercase;
   }
   .type-highlight-2xl { font-size: clamp(72px, 11.1vw, 160px); line-height: 0.85; }
@@ -65,8 +61,8 @@
   .type-display-2xl, .type-display-xl, .type-display-lg,
   .type-display-md, .type-display-sm, .type-display-xs {
     font-family: var(--font-display), sans-serif;
-    font-weight: 900;
-    font-style: italic;
+    font-weight: var(--bricks-font-weight-display);
+    font-style: var(--bricks-font-style-display);
     text-transform: uppercase;
     overflow-wrap: break-word;
   }
@@ -81,8 +77,8 @@
   /* Heading: Zalando Sans Expanded Black (upright, as in Figma) */
   .type-heading-xl, .type-heading-lg, .type-heading-md, .type-heading-sm, .type-heading-xs {
     font-family: var(--font-display), sans-serif;
-    font-weight: 900;
-    font-style: normal;
+    font-weight: var(--bricks-font-weight-heading);
+    font-style: var(--bricks-font-style-heading);
   }
   .type-heading-xl { font-size: clamp(30px, 3.06vw, 44px); line-height: 1.05; letter-spacing: -0.01em; }
   .type-heading-lg { font-size: clamp(30px, 2.92vw, 42px); line-height: 0.95; letter-spacing: -0.01em; }
@@ -93,8 +89,8 @@
   /* Label: Zalando Sans Expanded Bold */
   .type-label-lg, .type-label-md, .type-label-sm, .type-label-xs {
     font-family: var(--font-display), sans-serif;
-    font-weight: 700;
-    font-style: normal;
+    font-weight: var(--bricks-font-weight-label);
+    font-style: var(--bricks-font-style-label);
   }
   .type-label-lg { font-size: 24px; line-height: 26.4px; }
   .type-label-md { font-size: 20px; line-height: 24.2px; }
@@ -104,8 +100,8 @@
   /* Title: Zalando Sans Expanded Bold, tight tracking */
   .type-title-lg, .type-title-md {
     font-family: var(--font-display), sans-serif;
-    font-weight: 700;
-    font-style: normal;
+    font-weight: var(--bricks-font-weight-label);
+    font-style: var(--bricks-font-style-label);
     letter-spacing: -0.02em;
   }
   .type-title-lg { font-size: 24px; line-height: 26.4px; }
@@ -114,7 +110,7 @@
   /* Body: Public Sans Light / Medium */
   .type-body-lg, .type-body-md, .type-body-sm, .type-body-xs, .type-body-2xs {
     font-family: var(--font-body), sans-serif;
-    font-weight: 300;
+    font-weight: var(--bricks-font-weight-body);
   }
   .type-body-lg  { font-size: 22px; line-height: 34px; }
   .type-body-md  { font-size: 18px; line-height: 32px; }
@@ -144,6 +140,9 @@
   .type-mono-xs-med  { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; font-weight: 500; }
   .type-mono-xs-upper     { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; text-transform: uppercase; }
   .type-mono-xs-med-upper { font-size: 12px; line-height: 16px; letter-spacing: 1.2px; font-weight: 500; text-transform: uppercase; }
+
+  /* Code blocks (Thesis band, Written for AI): Figma has these unbound, 14 / 22 Kode Mono Regular */
+  .type-mono-code { font-family: var(--font-mono), monospace; font-size: 14px; line-height: 22px; font-weight: 400; }
 
   .type-caption-md  { font-size: 14px; line-height: 19.5px; letter-spacing: -0.26px; font-weight: 500; }
   .type-caption-sm  { font-size: 12px; line-height: 16.5px; letter-spacing: 1.54px; }
