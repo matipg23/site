@@ -1055,8 +1055,8 @@ export const typography = {
     "weights": {
       "display": {
         "weight": 900,
-        "style": "italic",
-        "figmaStyle": "Black Italic"
+        "style": "normal",
+        "figmaStyle": "Black"
       },
       "highlight": {
         "weight": 900,
