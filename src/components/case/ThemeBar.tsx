@@ -55,48 +55,53 @@ export default function ThemeBar({
   return (
     <div className="sticky top-64 z-30 h-0">
       <div className="absolute inset-x-0 top-0 bg-page">
-        <div className="relative flex h-56 items-center justify-between border-b border-default px-16 md:px-40">
-          <nav aria-label="On this page" className="hidden md:block">
-            <ul className="type-mono-xs-upper flex items-center gap-32">
-              {anchors.map((a) => (
-                <li key={a.id}>
-                  <a
-                    href={`#${a.id}`}
-                    aria-current={active === a.id ? "location" : undefined}
-                    className="text-secondary transition-colors duration-150 hover:text-primary aria-[current=location]:type-mono-xs-med-upper aria-[current=location]:text-accent"
-                  >
-                    {a.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+        <div className="border-b border-default">
+          <div className="container-page relative flex h-56 items-center justify-between">
+            <nav aria-label="On this page" className="hidden md:block">
+              <ul className="type-mono-xs-upper flex items-center gap-32">
+                {anchors.map((a) => (
+                  <li key={a.id}>
+                    <a
+                      href={`#${a.id}`}
+                      aria-current={active === a.id ? "location" : undefined}
+                      className="text-secondary transition-colors duration-150 hover:text-primary aria-[current=location]:type-mono-xs-med-upper aria-[current=location]:text-accent"
+                    >
+                      {a.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
 
-          <div className="ml-auto flex items-center gap-20">
-            {on && (
-              // The panel trigger underlines on hover in the footer; here it is always underlined, as in Figma
-              <span className="type-mono-xs-med-upper text-accent [&_button]:decoration-current">
-                <TokenInspector label="Inspect tokens ↗" down />
-              </span>
-            )}
-            <button
-              type="button"
-              aria-pressed={on}
-              onClick={() => setOn((v) => !v)}
-              className={`type-mono-xs-med-upper flex items-center gap-[10px] border border-default px-[14px] py-8 text-primary transition-colors duration-150 hover:border-accent ${
-                on ? "bg-surface" : ""
-              }`}
-            >
-              {chip}
-              {on ? "Reset theme" : "Apply product theme"}
-            </button>
+            <div className="ml-auto flex items-center gap-20">
+              {on && (
+                // The panel trigger underlines on hover in the footer; here it is always underlined, as in Figma
+                <span className="type-mono-xs-med-upper text-accent [&_button]:decoration-current">
+                  <TokenInspector label="Inspect tokens ↗" down />
+                </span>
+              )}
+              <button
+                type="button"
+                aria-pressed={on}
+                onClick={() => setOn((v) => !v)}
+                className={`type-mono-xs-med-upper flex items-center gap-[10px] border border-default px-[14px] py-8 text-primary transition-colors duration-150 hover:border-accent ${
+                  on ? "bg-surface" : ""
+                }`}
+              >
+                {chip}
+                {on ? "Reset theme" : "Apply product theme"}
+              </button>
+            </div>
           </div>
         </div>
 
         {on && (
-          <p className="type-mono-xs-upper bg-surface px-16 py-8 text-secondary md:px-40">
-            Product theme reference applied. Unofficial recreation, built from tokens. This page only.
-          </p>
+          <div className="bg-surface">
+            <p className="type-mono-xs-upper container-page py-8 text-secondary">
+              Product theme reference applied. Unofficial recreation, built from
+              tokens. This page only.
+            </p>
+          </div>
         )}
       </div>
     </div>
