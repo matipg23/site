@@ -1,5 +1,5 @@
 // Section eyebrow chip: accent dot + Mono/XS-Med-Caps label on overlay-transparent.
-// Figma: "Chip" on Home and About. Case pages keep SectionLabel.
+// Figma: "Chip" on Home and About. Also the case study section eyebrow (CaseSection).
 export default function Chip({
   children,
   as: Tag = "p",

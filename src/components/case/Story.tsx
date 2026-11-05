@@ -16,7 +16,7 @@ export default function Story({
   figure: React.ReactNode;
 }) {
   return (
-    <div className="grid gap-48 lg:grid-cols-[577fr_720fr] lg:gap-64">
+    <div className="grid grid-cols-[minmax(0,1fr)] gap-48 lg:grid-cols-[577fr_720fr] lg:gap-64">
       <div className="flex flex-col gap-20">
         <p className="type-mono-xs-med uppercase text-accent">{kicker}</p>
         <h3 className="type-heading-lg uppercase text-primary">{heading}</h3>
