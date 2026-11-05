@@ -85,7 +85,6 @@ const facts = [
   ["Based in", "Reading, United Kingdom, remote-first"],
   ["Now", "Formation Design System, FanDuel"],
   ["Languages", "English, Spanish, Portuguese"],
-  ["Open to", "Staff-level IC roles"],
 ];
 
 // Figma: WIP > About Me - Revised (review) (375:89) at lg and up: left rail 260 + body 635, content column 1151.
