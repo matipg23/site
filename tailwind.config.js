@@ -28,6 +28,12 @@ module.exports = {
         "border-subtle": "var(--border-subtle)",
         "border-accent": "var(--border-accent)",
         nav: "var(--nav-background)",
+        positive: "var(--bricks-status-positive-background-default)",
+        "positive-subtle": "var(--bricks-status-positive-background-subtle)",
+        critical: "var(--bricks-status-critical-background-default)",
+        "critical-subtle": "var(--bricks-status-critical-background-subtle)",
+        info: "var(--bricks-status-info-background-default)",
+        "info-subtle": "var(--bricks-status-info-background-subtle)",
       },
       textColor: {
         primary: "var(--text-primary)",
@@ -41,6 +47,9 @@ module.exports = {
         "action-primary-text": "var(--action-primary-text)",
         nav: "var(--nav-text)",
         "nav-active": "var(--nav-text-active)",
+        positive: "var(--bricks-status-positive-content-accent)",
+        critical: "var(--bricks-status-critical-content-accent)",
+        info: "var(--bricks-status-info-content-accent)",
       },
       borderColor: {
         default: "var(--border-default)",
@@ -48,6 +57,9 @@ module.exports = {
         strong: "var(--border-strong)",
         accent: "var(--border-accent)",
         glass: "var(--glass-stroke)",
+        positive: "var(--bricks-status-positive-border-default)",
+        critical: "var(--bricks-status-critical-border-default)",
+        info: "var(--bricks-status-info-border-default)",
         fog: "var(--background-fog)",
       },
       outlineColor: {
