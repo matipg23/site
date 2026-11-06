@@ -272,6 +272,147 @@
       animation: none;
     }
   }
+
+  /*
+   * Home "Thinking forwards" motion (ThinkingForwards.tsx): chip, card glow, typing caret and the "Signal"
+   * illustrations. Colour is --text-accent. Motion is gated on no-preference, so reduced motion gets none of it.
+   */
+  .tf-card {
+    --mx: 50%;
+    --my: 50%;
+    --on: 0;
+    --glow-fill: 14%;
+    --glow-edge: 80%;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    -webkit-backdrop-filter: blur(14px) saturate(130%);
+    backdrop-filter: blur(14px) saturate(130%);
+  }
+  [data-mode="dark"] .tf-card {
+    --glow-fill: 9%;
+    --glow-edge: 75%;
+  }
+  .tf-card:hover,
+  .tf-card:focus-within {
+    --on: 1;
+  }
+  /* spotlight under the cursor: negative z-index paints above the card's own background */
+  .tf-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(
+      320px circle at var(--mx) var(--my),
+      color-mix(in srgb, var(--text-accent) var(--glow-fill), transparent),
+      transparent 65%
+    );
+    opacity: var(--on);
+    transition: opacity 500ms ease;
+    pointer-events: none;
+  }
+  /* border light under the cursor: a 1px ring */
+  .tf-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(
+      200px circle at var(--mx) var(--my),
+      color-mix(in srgb, var(--text-accent) var(--glow-edge), transparent),
+      transparent 70%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    opacity: var(--on);
+    transition: opacity 500ms ease;
+    pointer-events: none;
+  }
+
+  .tf-caret {
+    display: inline-block;
+    width: 0.6em;
+    height: 1.1em;
+    margin-left: 1px;
+    vertical-align: -0.2em;
+    background: var(--text-accent);
+  }
+  .tf-bar {
+    transform-box: fill-box;
+    transform-origin: right center;
+  }
+  .tf-node {
+    transform-box: fill-box;
+    transform-origin: center;
+  }
+  .tf-net line {
+    stroke-linecap: round;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    /* chip: the text slides right and fades, returns from the left; the dot nudges forward and back */
+    .tf-chip.is-moving .tf-chip__track {
+      animation: tf-chip-forward 700ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+    .tf-chip.is-moving .tf-chip__dot {
+      animation: tf-dot-nudge 700ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+    }
+    @keyframes tf-chip-forward {
+      0%   { transform: translateX(0);     opacity: 1; }
+      45%  { transform: translateX(105%);  opacity: 0; }
+      46%  { transform: translateX(-105%); opacity: 0; }
+      100% { transform: translateX(0);     opacity: 1; }
+    }
+    @keyframes tf-dot-nudge {
+      0%, 100% { transform: translateX(0); }
+      40%      { transform: translateX(3px); }
+    }
+
+    .tf-caret {
+      animation: tf-caret 1s steps(1) infinite;
+    }
+    @keyframes tf-caret {
+      50% { opacity: 0; }
+    }
+
+    /* "Signal": plays once per card hover */
+    .tf-card:hover .tf-bar {
+      animation: tf-bar-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .tf-card:hover .tf-bar:nth-child(2) { animation-delay: 80ms; }
+    .tf-card:hover .tf-bar:nth-child(3) { animation-delay: 160ms; }
+    @keyframes tf-bar-in {
+      0%   { transform: translateX(14px) scaleX(0.4); opacity: 0; }
+      100% { transform: none; opacity: 1; }
+    }
+
+    .tf-card:hover .tf-net line {
+      stroke-dasharray: 90;
+      animation: tf-line-draw 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .tf-card:hover .tf-net line:nth-of-type(2) { animation-delay: 80ms; }
+    .tf-card:hover .tf-net line:nth-of-type(3) { animation-delay: 160ms; }
+    .tf-card:hover .tf-node {
+      animation: tf-node-pop 500ms cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-delay: 450ms;
+    }
+    /* the hub is the first circle, so the three nodes are circles 2 to 4 */
+    .tf-card:hover .tf-node:nth-of-type(3) { animation-delay: 550ms; }
+    .tf-card:hover .tf-node:nth-of-type(4) { animation-delay: 650ms; }
+    @keyframes tf-line-draw {
+      from { stroke-dashoffset: 90; }
+      to   { stroke-dashoffset: 0; }
+    }
+    @keyframes tf-node-pop {
+      0%   { transform: scale(0); }
+      70%  { transform: scale(1.5); }
+      100% { transform: scale(1); }
+    }
+  }
 }
 
 @layer utilities {
