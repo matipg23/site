@@ -161,6 +161,8 @@
   --bricks-extension-accent-text: var(--bricks-core-teal-500);
   --bricks-extension-accent-fill: var(--bricks-core-teal-500);
   --bricks-extension-accent-border: var(--bricks-core-teal-400);
+  --bricks-extension-accent-highlight-fill: var(--bricks-core-transparent);
+  --bricks-extension-accent-highlight-text: var(--bricks-core-teal-500);
   --bricks-extension-content-on-accent: var(--bricks-core-neutral-900);
   --bricks-extension-content-inverse: var(--bricks-core-white);
   --bricks-extension-content-muted: var(--bricks-core-neutral-200);
@@ -170,6 +172,8 @@
   --bricks-extension-background-fog: #ffffff26;
   --bricks-extension-background-shade: #1c1c1c26;
   --bricks-extension-border-strong: var(--bricks-core-neutral-700);
+  --bricks-extension-data-primary: var(--bricks-core-teal-500);
+  --bricks-extension-data-secondary: var(--bricks-core-teal-300);
 }
 
 :root:not([data-theme])[data-mode="dark"],
@@ -238,6 +242,8 @@
   --bricks-extension-accent-text: var(--bricks-core-lime-400);
   --bricks-extension-accent-fill: var(--bricks-core-lime-400);
   --bricks-extension-accent-border: var(--bricks-core-lime-400);
+  --bricks-extension-accent-highlight-fill: var(--bricks-core-transparent);
+  --bricks-extension-accent-highlight-text: var(--bricks-core-lime-400);
   --bricks-extension-content-on-accent: var(--bricks-core-green-950);
   --bricks-extension-content-inverse: var(--bricks-core-green-950);
   --bricks-extension-content-muted: var(--bricks-core-green-800);
@@ -247,6 +253,8 @@
   --bricks-extension-background-fog: #ffffff26;
   --bricks-extension-background-shade: #1c1c1c26;
   --bricks-extension-border-strong: var(--bricks-core-green-400);
+  --bricks-extension-data-primary: var(--bricks-core-lime-400);
+  --bricks-extension-data-secondary: var(--bricks-core-lime-600);
 }
 
 /* ===== BlueField (bluefield) =====
@@ -337,6 +345,7 @@
   --bricks-core-extra-red-ea6875: #ea6875;
   --bricks-core-extra-yellow-fff8d9: #fff8d9;
   --bricks-core-extra-yellow-4b3f00: #4b3f00;
+  --bricks-core-extra-navy-0b1438: #0b1438;
   --bricks-background-layer: var(--bricks-core-neutral-100);
   --bricks-background-accent: var(--bricks-core-alpha-black-050);
   --bricks-background-primary: var(--bricks-core-blue-500);
@@ -400,6 +409,8 @@
   --bricks-extension-accent-text: var(--bricks-core-blue-600);
   --bricks-extension-accent-fill: var(--bricks-core-blue-500);
   --bricks-extension-accent-border: var(--bricks-core-blue-500);
+  --bricks-extension-accent-highlight-fill: var(--bricks-core-yellow-400);
+  --bricks-extension-accent-highlight-text: var(--bricks-core-navy-800);
   --bricks-extension-content-on-accent: var(--bricks-core-white);
   --bricks-extension-content-inverse: var(--bricks-core-white);
   --bricks-extension-content-muted: var(--bricks-core-neutral-200);
@@ -409,6 +420,8 @@
   --bricks-extension-background-fog: #ffffff26;
   --bricks-extension-background-shade: #1c1d1d26;
   --bricks-extension-border-strong: var(--bricks-core-neutral-700);
+  --bricks-extension-data-primary: var(--bricks-core-yellow-400);
+  --bricks-extension-data-secondary: var(--bricks-core-yellow-300);
 }
 
 [data-theme="bluefield"][data-mode="dark"] {
@@ -422,14 +435,14 @@
   --bricks-background-active: var(--bricks-core-blue-500);
   --bricks-background-disabled: var(--bricks-core-neutral-700);
   --bricks-background-transparent: var(--bricks-core-transparent);
-  --bricks-background-base: var(--bricks-core-navy-900);
-  --bricks-background-surface: var(--bricks-core-blue-950);
+  --bricks-background-base: var(--bricks-core-extra-navy-0b1438);
+  --bricks-background-surface: var(--bricks-core-navy-800);
   --bricks-content-strong: var(--bricks-core-white);
   --bricks-content-disabled: var(--bricks-core-alpha-white-200);
   --bricks-content-on-dark: var(--bricks-core-white);
   --bricks-content-on-light: var(--bricks-core-navy-800);
-  --bricks-content-default: var(--bricks-core-neutral-200);
-  --bricks-content-subtle: var(--bricks-core-neutral-400);
+  --bricks-content-default: var(--bricks-core-white);
+  --bricks-content-subtle: var(--bricks-core-neutral-200);
   --bricks-brand-primary: var(--bricks-core-blue-500);
   --bricks-brand-primary-l-1: var(--bricks-core-blue-400);
   --bricks-brand-primary-l-2: var(--bricks-core-blue-300);
@@ -473,9 +486,11 @@
   --bricks-link-destructive-base: var(--bricks-core-extra-red-ea6875);
   --bricks-link-inverse-default-base: var(--bricks-core-white);
   --bricks-link-inverse-default-hover: var(--bricks-core-blue-100);
-  --bricks-extension-accent-text: var(--bricks-core-blue-300);
-  --bricks-extension-accent-fill: var(--bricks-core-blue-300);
-  --bricks-extension-accent-border: var(--bricks-core-blue-300);
+  --bricks-extension-accent-text: var(--bricks-core-yellow-400);
+  --bricks-extension-accent-fill: var(--bricks-core-yellow-400);
+  --bricks-extension-accent-border: var(--bricks-core-yellow-400);
+  --bricks-extension-accent-highlight-fill: var(--bricks-core-transparent);
+  --bricks-extension-accent-highlight-text: var(--bricks-core-yellow-400);
   --bricks-extension-content-on-accent: var(--bricks-core-neutral-900);
   --bricks-extension-content-inverse: var(--bricks-core-neutral-900);
   --bricks-extension-content-muted: var(--bricks-core-neutral-700);
@@ -485,6 +500,8 @@
   --bricks-extension-background-fog: #ffffff26;
   --bricks-extension-background-shade: #1c1d1d26;
   --bricks-extension-border-strong: var(--bricks-core-neutral-400);
+  --bricks-extension-data-primary: var(--bricks-core-yellow-400);
+  --bricks-extension-data-secondary: var(--bricks-core-yellow-700);
 }
 
 /* ===== Paperboy (paperboy) =====
@@ -635,6 +652,8 @@
   --bricks-extension-accent-text: var(--bricks-core-blue-500);
   --bricks-extension-accent-fill: var(--bricks-core-blue-500);
   --bricks-extension-accent-border: var(--bricks-core-blue-400);
+  --bricks-extension-accent-highlight-fill: var(--bricks-core-transparent);
+  --bricks-extension-accent-highlight-text: var(--bricks-core-blue-500);
   --bricks-extension-content-on-accent: var(--bricks-core-white);
   --bricks-extension-content-inverse: var(--bricks-core-white);
   --bricks-extension-content-muted: var(--bricks-core-neutral-200);
@@ -644,6 +663,8 @@
   --bricks-extension-background-fog: #ffffff26;
   --bricks-extension-background-shade: #0a0a0a26;
   --bricks-extension-border-strong: var(--bricks-core-neutral-600);
+  --bricks-extension-data-primary: var(--bricks-core-blue-500);
+  --bricks-extension-data-secondary: var(--bricks-core-blue-200);
 }
 
 [data-theme="paperboy"][data-mode="dark"] {
@@ -711,6 +732,8 @@
   --bricks-extension-accent-text: var(--bricks-core-blue-300);
   --bricks-extension-accent-fill: var(--bricks-core-blue-300);
   --bricks-extension-accent-border: var(--bricks-core-blue-300);
+  --bricks-extension-accent-highlight-fill: var(--bricks-core-transparent);
+  --bricks-extension-accent-highlight-text: var(--bricks-core-blue-300);
   --bricks-extension-content-on-accent: var(--bricks-core-neutral-900);
   --bricks-extension-content-inverse: var(--bricks-core-neutral-900);
   --bricks-extension-content-muted: var(--bricks-core-neutral-700);
@@ -720,6 +743,8 @@
   --bricks-extension-background-fog: #ffffff26;
   --bricks-extension-background-shade: #0a0a0a26;
   --bricks-extension-border-strong: var(--bricks-core-neutral-400);
+  --bricks-extension-data-primary: var(--bricks-core-blue-300);
+  --bricks-extension-data-secondary: var(--bricks-core-blue-600);
 }
 
 /* ===== RangerGreen (rangergreen) =====
@@ -860,6 +885,8 @@
   --bricks-extension-accent-text: var(--bricks-core-mint-600);
   --bricks-extension-accent-fill: var(--bricks-core-mint-600);
   --bricks-extension-accent-border: var(--bricks-core-mint-500);
+  --bricks-extension-accent-highlight-fill: var(--bricks-core-transparent);
+  --bricks-extension-accent-highlight-text: var(--bricks-core-mint-600);
   --bricks-extension-content-on-accent: var(--bricks-core-white);
   --bricks-extension-content-inverse: var(--bricks-core-white);
   --bricks-extension-content-muted: var(--bricks-core-neutral-200);
@@ -869,6 +896,8 @@
   --bricks-extension-background-fog: #ffffff26;
   --bricks-extension-background-shade: #1c1c1c26;
   --bricks-extension-border-strong: var(--bricks-core-neutral-600);
+  --bricks-extension-data-primary: var(--bricks-core-mint-600);
+  --bricks-extension-data-secondary: var(--bricks-core-mint-300);
   --bricks-extension-risk-10: #e6304a;
   --bricks-extension-risk-01: #a7d6ed;
   --bricks-extension-risk-02: #68bed6;
@@ -946,6 +975,8 @@
   --bricks-extension-accent-text: var(--bricks-core-mint-300);
   --bricks-extension-accent-fill: var(--bricks-core-mint-300);
   --bricks-extension-accent-border: var(--bricks-core-mint-300);
+  --bricks-extension-accent-highlight-fill: var(--bricks-core-transparent);
+  --bricks-extension-accent-highlight-text: var(--bricks-core-mint-300);
   --bricks-extension-content-on-accent: var(--bricks-core-neutral-900);
   --bricks-extension-content-inverse: var(--bricks-core-neutral-900);
   --bricks-extension-content-muted: var(--bricks-core-neutral-700);
@@ -955,6 +986,8 @@
   --bricks-extension-background-fog: #ffffff26;
   --bricks-extension-background-shade: #1c1c1c26;
   --bricks-extension-border-strong: var(--bricks-core-neutral-400);
+  --bricks-extension-data-primary: var(--bricks-core-mint-300);
+  --bricks-extension-data-secondary: var(--bricks-core-mint-600);
   --bricks-extension-risk-10: #e6304a;
   --bricks-extension-risk-01: #a7d6ed;
   --bricks-extension-risk-02: #68bed6;
@@ -987,17 +1020,17 @@
   --bricks-font-style-body: normal;
 }
 [data-theme="bluefield"] {
-  --bricks-font-display: Oswald, system-ui, sans-serif;
-  --bricks-font-highlight: Archivo, system-ui, sans-serif;
+  --bricks-font-display: Anton, system-ui, sans-serif;
+  --bricks-font-highlight: Anton, system-ui, sans-serif;
   --bricks-font-body: Figtree, system-ui, sans-serif;
   --bricks-font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
-  --bricks-font-weight-display: 700;
+  --bricks-font-weight-display: 400;
   --bricks-font-style-display: normal;
-  --bricks-font-weight-highlight: 900;
-  --bricks-font-style-highlight: italic;
-  --bricks-font-weight-heading: 700;
+  --bricks-font-weight-highlight: 400;
+  --bricks-font-style-highlight: normal;
+  --bricks-font-weight-heading: 400;
   --bricks-font-style-heading: normal;
-  --bricks-font-weight-label: 700;
+  --bricks-font-weight-label: 400;
   --bricks-font-style-label: normal;
   --bricks-font-weight-body: 300;
   --bricks-font-style-body: normal;

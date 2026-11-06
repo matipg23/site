@@ -143,6 +143,7 @@ for (const [name, info] of Object.entries(THEMES)) {
   };
   const EXT_GROUP_DESC = {
     accent: 'Accent role used for emphasis text, fills and borders. Falls back to the brand colour in themes that have no separate accent.',
+    data: 'Data visualisation roles for chart and timeline bars. Kept apart from accent so buttons and links can change independently.',
     content: 'Extra foreground roles that sit outside the 60-token contract.',
     background: 'Extra background roles that sit outside the 60-token contract.',
     border: 'Extra border roles that sit outside the 60-token contract.',
@@ -152,6 +153,10 @@ for (const [name, info] of Object.entries(THEMES)) {
     'extension.accent.text': 'Accent-coloured text.',
     'extension.accent.fill': 'Accent solid fill (buttons, chips, highlights).',
     'extension.accent.border': 'Accent border.',
+    'extension.accent.highlightFill': 'Marker fill behind highlighted words. Transparent in themes and modes with no marker.',
+    'extension.accent.highlightText': 'Text colour of highlighted words, readable on the highlight fill.',
+    'extension.data.primary': 'Primary data mark: chart bars and timeline bars.',
+    'extension.data.secondary': 'Secondary data mark: second chart series and faded timeline segments.',
     'extension.content.onAccent': 'Text and icons on an accent fill.',
     'extension.content.inverse': 'Text on an inverse background.',
     'extension.content.muted': 'Muted, low-emphasis foreground.',

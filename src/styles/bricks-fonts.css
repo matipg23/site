@@ -13,8 +13,8 @@
 }
 
 [data-theme="bluefield"] {
-  --bricks-font-display: var(--font-oswald), system-ui, sans-serif;
-  --bricks-font-highlight: var(--font-archivo), system-ui, sans-serif;
+  --bricks-font-display: var(--font-anton), system-ui, sans-serif;
+  --bricks-font-highlight: var(--font-anton), system-ui, sans-serif;
   --bricks-font-body: var(--font-figtree), system-ui, sans-serif;
   --bricks-font-mono: var(--font-plex-mono), ui-monospace, Menlo, monospace;
 }

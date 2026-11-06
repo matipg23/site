@@ -70,7 +70,7 @@ Three layers, all mirrored in Figma.
 
 1. Core palette, mode independent. `--bricks-core-{hue}-{step}`, steps `050` to `900` (BlueField blue also has `950`). Also `core-white`, `core-black`, `core-transparent`, `core-alpha-{black|white}-{050|100|200}` and a few `core-extra-*` one-offs. Emitted in each theme's own block, so `--bricks-core-blue-500` is a different blue per theme.
 2. Semantic tokens, 60 in `contract.json`, light and dark values that alias the core palette with `var()`. Components use only these. Categories: background, content, brand, status, border, link. Status groups: positive, critical, warning, alert, info, neutral.
-3. Extension tokens, outside the contract, defined by every theme: `extension.accent.{text,fill,border}`, `extension.content.{onAccent,inverse,muted,online}`, `extension.background.{inverse,overlayTransparent,fog,shade}`, `extension.border.strong`. RangerGreen also has `extension.risk.01` to `10`. CSS names are `--bricks-extension-...`. Shared components may use the 12 common extensions. Risk tokens are RangerGreen only.
+3. Extension tokens, outside the contract, defined by every theme: `extension.accent.{text,fill,border}`, `extension.content.{onAccent,inverse,muted,online}`, `extension.background.{inverse,overlayTransparent,fog,shade}`, `extension.border.strong`, `extension.accent.{highlightFill,highlightText}`, `extension.data.{primary,secondary}`. RangerGreen also has `extension.risk.01` to `10`. CSS names are `--bricks-extension-...`. Shared components may use the 16 common extensions. `build-tokens.mjs` fails if any theme lacks an extension the default theme defines, so a new shared extension must be added to every theme in Figma. Risk tokens are RangerGreen only.
 
 `brand.gradient` is derived by the importer: `linear-gradient(125deg, core-{primaryHue}-600, core-{primaryHue}-800)`. It is not a Figma variable.
 
@@ -82,7 +82,7 @@ Per theme, set in the `BRICKS DS` collection and in `theme.typography` of each t
 |---|---|---|---|---|
 | default | Zalando Sans Expanded | Barlow Semi Condensed | Public Sans | Kode Mono |
 | paperboy | Poppins | Bitter | DM Sans | DM Mono |
-| bluefield | Oswald | Archivo | Figtree | IBM Plex Mono |
+| bluefield | Anton | Anton | Figtree | IBM Plex Mono |
 | rangergreen | Noto Serif | Montserrat | system-ui | ui-monospace |
 
 Each theme also sets a weight and italic per role (`display`, `highlight`, `heading`, `label`, `body`), emitted as `--bricks-font-weight-{role}` and `--bricks-font-style-{role}`. Font families are emitted as `--bricks-font-{display|highlight|body|mono}` with a fallback stack.

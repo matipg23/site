@@ -113,6 +113,10 @@
   --nav-background: var(--bricks-background-base);
   --nav-text: var(--bricks-content-subtle);
   --nav-text-active: var(--bricks-extension-accent-text);
+  --data-primary: var(--bricks-extension-data-primary);
+  --data-secondary: var(--bricks-extension-data-secondary);
+  --accent-highlight-fill: var(--bricks-extension-accent-highlight-fill);
+  --accent-highlight-text: var(--bricks-extension-accent-highlight-text);
 
   /* Type families follow the active theme; weights and styles come from --bricks-font-weight-* and -style-* */
   --font-display: var(--bricks-font-display);

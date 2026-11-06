@@ -34,11 +34,11 @@ export default function PhaseTimeline({
       </ol>
       {/* The bar thins out at the end: the step back after handoff */}
       <div aria-hidden className="mt-24 flex h-[26px] gap-4">
-        <span className="flex-[1081] bg-border-accent" />
-        <span className="flex-[248] bg-border-accent opacity-80" />
-        <span className="flex-[8] bg-border-accent opacity-60" />
-        <span className="flex-[8] bg-border-accent opacity-40" />
-        <span className="flex-[6] bg-border-accent opacity-20" />
+        <span className="flex-[1081] bg-data-primary" />
+        <span className="flex-[248] bg-data-primary opacity-80" />
+        <span className="flex-[8] bg-data-primary opacity-60" />
+        <span className="flex-[8] bg-data-primary opacity-40" />
+        <span className="flex-[6] bg-data-primary opacity-20" />
       </div>
     </div>
   );

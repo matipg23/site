@@ -100,11 +100,11 @@ two match exactly.
 | `ui/TokenInspector` | HOME > "Sidebar - Token proof", opened from the hero "/>" button; values read live from `tokens.css` |
 | `layout/Header`, `layout/Footer`, `layout/ThemeToggle` | Home - Revised > Header / Footer |
 | `case/CaseHero` | Case > Hero (eyebrow, title, tags, facts row) |
-| `case/CaseSection`, `Split`, `Prose`, `Accent` | Case > Section, "Frame 15" two-column layout |
+| `case/CaseSection`, `Split`, `Prose`, `Accent` | Case > Section, "Frame 15" two-column layout. `Accent` uses the `.accent-mark` class, driven by `extension.accent.highlight-*` |
 | `case/Stats` | Case > stats row |
 | `case/Interlude` | Case > Interlude band |
 | `case/Steps` | Case > Track > Steps (with owner tags; muted = someone else's work) |
-| `case/PhaseTimeline` | Case 01 > timeline |
+| `case/PhaseTimeline` | Case 01 > timeline. Bar colour is `bg-data-primary` (`extension.data.primary`) |
 | `case/Story` | Case 02/04 > "01 / The first run" blocks |
 | `case/Numbered` | Case > Learnings |
 | `case/Figure`, `case/Panel` | Captioned and labelled images |
