@@ -24,7 +24,7 @@ export default function Page() {
     <article>
       <ThemeBar
         theme="rangergreen"
-        anchors={[{ id: "problem", label: "Problem" }, { id: "idea", label: "Idea" }, { id: "approach", label: "Approach" }]}
+        anchors={[{ id: "problem", label: "Problem" }, { id: "idea", label: "Idea" }, { id: "approach", label: "Approach" }, { id: "reflections", label: "Reflections" }]}
       />
       <CaseHero
         client="Nutmeg"
