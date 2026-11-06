@@ -1,5 +1,6 @@
 import Button from "@/components/ui/Button";
 import SocialLinks from "@/components/ui/SocialLinks";
+import NowCard from "./NowCard";
 
 // Figma: Home - Refined > Hero (eyebrow + social icons, H1 Display/LG, lead, then CTAs and the "Now" card)
 export default function Hero() {
@@ -41,27 +42,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  );
-}
-// Figma: "Now card": a glass shell around a raised core
-function NowCard() {
-  return (
-    <aside
-      aria-label="Current role"
-      className="w-full shrink-0 rounded-xl border border-default bg-overlay-transparent p-[6px] sm:max-w-[314px]"
-    >
-      <div className="flex flex-col gap-20 rounded-lg bg-page p-24 shadow-2">
-        <div className="flex items-center justify-between gap-8">
-          <p className="type-mono-xs-med-upper inline-flex items-center gap-8 bg-overlay px-12 py-[6px] text-primary">
-            <span aria-hidden className="h-[6px] w-[6px] rounded-full bg-online" />
-            Now
-          </p>
-          <p className="type-mono-xs-upper text-secondary">FanDuel · Remote UK</p>
-        </div>
-        <p className="type-body-md text-primary">
-          Leading Formation, FanDuel’s multi-brand design system, across five product verticals.
-        </p>
-      </div>
-    </aside>
   );
 }

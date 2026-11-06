@@ -168,6 +168,110 @@
   .container-page {
     @apply mx-auto w-full max-w-content px-16 md:px-32;
   }
+
+  /*
+   * Home hero "Now card" hover. The card never moves: a spotlight in the core and a lit edge on the shell follow
+   * the cursor (--mx / --my, set by NowCard.tsx), and the dot glows and pulses. Colour is --text-online, the same
+   * token as the dot, so every theme and mode carries it. Strengths are the two --glow-* values.
+   */
+  .now-card {
+    --mx: 50%;
+    --my: 50%;
+    --on: 0; /* 0 to 1 on hover or focus, drives every effect */
+    --glow-fill: 12%;
+    --glow-edge: 70%;
+    --glow-dot: color-mix(in srgb, var(--text-online) 55%, transparent);
+    position: relative;
+    backdrop-filter: blur(18px) saturate(140%);
+  }
+  [data-mode="dark"] .now-card {
+    --glow-fill: 10%;
+    --glow-edge: 85%;
+  }
+  .now-card:hover,
+  .now-card:focus-within {
+    --on: 1;
+  }
+
+  /* lit edge: a 1px ring on the shell border */
+  .now-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(
+      220px circle at var(--mx) var(--my),
+      color-mix(in srgb, var(--text-online) var(--glow-edge), transparent),
+      transparent 70%
+    );
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    opacity: var(--on);
+    transition: opacity 500ms ease;
+    pointer-events: none;
+  }
+
+  /* spotlight inside the core: negative z-index paints above the core's own background */
+  .now-card__core {
+    position: relative;
+    isolation: isolate;
+  }
+  .now-card__core::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: radial-gradient(
+      320px circle at var(--mx) var(--my),
+      color-mix(in srgb, var(--text-online) var(--glow-fill), transparent),
+      transparent 65%
+    );
+    opacity: var(--on);
+    transition: opacity 500ms ease;
+    pointer-events: none;
+  }
+
+  .now-card__dot {
+    position: relative;
+    transition: box-shadow 600ms ease;
+  }
+  .now-card__dot::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: var(--text-online);
+    opacity: 0;
+  }
+  .now-card:hover .now-card__dot,
+  .now-card:focus-within .now-card__dot {
+    box-shadow: 0 0 10px 2px var(--glow-dot);
+    animation: now-dot-breathe 2400ms ease infinite;
+  }
+  .now-card:hover .now-card__dot::after,
+  .now-card:focus-within .now-card__dot::after {
+    animation: now-dot-ring 2400ms ease infinite;
+  }
+  @keyframes now-dot-breathe {
+    0%, 100% { box-shadow: 0 0 6px 1px color-mix(in srgb, var(--text-online) 35%, transparent); }
+    50%      { box-shadow: 0 0 14px 4px color-mix(in srgb, var(--text-online) 70%, transparent); }
+  }
+  @keyframes now-dot-ring {
+    0%       { transform: scale(1);   opacity: 0.55; }
+    70%, 100% { transform: scale(3.2); opacity: 0; }
+  }
+  /* reduced motion: the dot glows without pulsing (the global rule already stops the animations) */
+  @media (prefers-reduced-motion: reduce) {
+    .now-card:hover .now-card__dot,
+    .now-card:focus-within .now-card__dot,
+    .now-card:hover .now-card__dot::after,
+    .now-card:focus-within .now-card__dot::after {
+      animation: none;
+    }
+  }
 }
 
 @layer utilities {
