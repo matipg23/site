@@ -26,14 +26,14 @@ export default function SelectedWork() {
       </div>
 
       <Reveal className="mt-56 flex flex-col gap-1 border border-default bg-border-default p-1">
-        <div className="grid gap-1 lg:grid-cols-[852fr_425fr]">
+        <div className="grid grid-cols-1 gap-1 lg:grid-cols-[852fr_425fr]">
           <Featured />
           <div className="flex flex-col gap-1">
             <AiCard />
             <ColourCard />
           </div>
         </div>
-        <div className="grid gap-1 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-1 md:grid-cols-2">
           <NewsUkCard />
           <NutmegCard />
         </div>
