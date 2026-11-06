@@ -1,5 +1,6 @@
 import Button from "@/components/ui/Button";
 import SocialLinks from "@/components/ui/SocialLinks";
+import { caseHref, featuredCaseSlug } from "@/content/cases";
 import NowCard from "./NowCard";
 
 // Figma: Home - Refined > Hero (eyebrow + social icons, H1 Display/LG, lead, then CTAs and the "Now" card)
@@ -30,8 +31,8 @@ export default function Hero() {
           {/* Figma: buttons bottom-left, Now card bottom-right */}
           <div className="flex flex-col gap-40 lg:flex-row lg:items-end lg:justify-between">
             <div className="flex flex-wrap items-center gap-32">
-              <Button href="/#work" variant="cta">
-                See selected work
+              <Button href={caseHref(featuredCaseSlug)} variant="cta">
+                Recent work
               </Button>
               <Button href="/#how-i-work" variant="text" arrow="down">
                 How I work
