@@ -4,22 +4,27 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 type Row = {
   name: string; // CSS variable, e.g. --background-page
-  maps: string; // what it points at, e.g. "white" or "white 15%" or "10px"
+  maps: string; // what it points at, e.g. "core-neutral-500" or "white 15%"
   value: string; // resolved value, e.g. #ffffff
-  kind: "colour" | "radius" | "plain";
+  kind: "colour" | "plain";
 };
-// both: Maps to + Value. value: Value only. maps: Maps to only.
-type Group = { title: string; cols: "both" | "value" | "maps"; rows: Row[] };
+// both: Maps to + Value. maps: Maps to only.
+type Group = { title: string; cols: "both" | "maps"; rows: Row[] };
 
-// Groups are read from tokens.css by prefix, so new semantic tokens (and, later, brand themes) appear without edits here.
-const groups: { title: string; prefix: string; kind: Row["kind"]; cols: Group["cols"] }[] = [
-  { title: "Background", prefix: "--background-", kind: "colour", cols: "both" },
-  { title: "Text", prefix: "--text-", kind: "colour", cols: "both" },
-  { title: "Border", prefix: "--border-", kind: "colour", cols: "both" },
-  { title: "Action", prefix: "--action-", kind: "colour", cols: "both" },
-  { title: "Nav", prefix: "--nav-", kind: "colour", cols: "both" },
-  { title: "Radius", prefix: "--radius-", kind: "radius", cols: "value" },
-  { title: "Spacing", prefix: "--space-", kind: "plain", cols: "value" },
+// A short list on purpose: the tokens that change most between themes, so the panel fits without scrolling.
+// Radius, spacing and nav are left out (identical across themes, or aliases of tokens listed here).
+const colourTokens = [
+  "--background-page",
+  "--background-surface",
+  "--text-primary",
+  "--text-secondary",
+  "--text-accent",
+  "--border-default",
+  "--action-primary",
+  "--action-accent",
+  "--accent-highlight-fill",
+  "--accent-highlight-text",
+  "--data-primary",
 ];
 
 // Font families follow the active BRICKS theme (--bricks-font-*), shown as the first family in the stack
@@ -88,44 +93,36 @@ function readGroups(): Group[] {
   const theme = document.documentElement.dataset.theme ?? "default";
   const dark = document.documentElement.dataset.mode === "dark";
   const computed = getComputedStyle(document.documentElement);
-  const names = new Set<string>();
-  for (const sheet of Array.from(document.styleSheets)) {
-    let rules: CSSRuleList;
-    try {
-      rules = sheet.cssRules;
-    } catch {
-      continue;
-    }
-    for (const rule of Array.from(rules)) {
-      if (!(rule instanceof CSSStyleRule)) continue;
-      if (!rule.selectorText.startsWith(":root")) continue;
-      for (const prop of Array.from(rule.style)) if (prop.startsWith("--") && !prop.startsWith("--primitive-")) names.add(prop);
-    }
-  }
-  const out: Group[] = groups.map((g) => ({
-    title: g.title,
-    cols: g.cols,
-    rows: [...names]
-      .filter((n) => n.startsWith(g.prefix))
-      .map((name) => ({
+  return [
+    {
+      title: "Colour",
+      cols: "both",
+      rows: colourTokens.map((name) => ({
         name,
-        maps: g.cols === "both" ? describe(name, theme, dark) : "",
-        value: g.cols === "both" ? shown(computed.getPropertyValue(name)) : describe(name, theme, dark),
-        kind: g.kind,
+        maps: describe(name, theme, dark),
+        value: shown(computed.getPropertyValue(name)),
+        kind: "colour" as const,
       })),
-  }));
-  out.push({ title: "Type", cols: "maps", rows: fontRows() });
-  return out.filter((g) => g.rows.length > 0);
+    },
+    { title: "Type", cols: "maps", rows: fontRows() },
+  ];
 }
 
 // Figma: "Sidebar - Token proof", opened from "Inspect" in the footer ("Themed by its own tokens · Inspect").
-// Lists every semantic token with what it points at, read live from tokens.css for the active theme.
+// Lists a short set of semantic tokens (colour and type) with what each points at, read live for the active theme.
 // label and down let a second trigger reuse the panel: the case study sub-bar opens it downwards.
-export default function TokenInspector({ label = "Inspect", down = false }: { label?: string; down?: boolean }) {
+export default function TokenInspector({
+  label = "Inspect",
+  down = false,
+  showTrigger = true,
+}: {
+  label?: string;
+  down?: boolean;
+  showTrigger?: boolean; // false hides the trigger but keeps an already open panel (case bar after Reset theme)
+}) {
   const panelId = useId();
   const [open, setOpen] = useState(false);
   const [data, setData] = useState<Group[]>([]);
-  const ref = useRef<HTMLSpanElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
 
   const close = useCallback(() => {
@@ -138,22 +135,19 @@ export default function TokenInspector({ label = "Inspect", down = false }: { la
     setData(readGroups());
     const themeWatch = new MutationObserver(() => setData(readGroups()));
     themeWatch.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme", "data-mode"] });
+    // Closes only with the trigger, the X or Escape. Clicking elsewhere (mode toggle, Reset theme) keeps it open,
+    // so a visitor can watch the values change.
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && close();
-    const onClick = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
-    };
     document.addEventListener("keydown", onKey);
-    document.addEventListener("mousedown", onClick);
     return () => {
       themeWatch.disconnect();
       document.removeEventListener("keydown", onKey);
-      document.removeEventListener("mousedown", onClick);
     };
   }, [open, close]);
 
   return (
     // Not positioned: the panel anchors to the footer container so it stays on screen at every width
-    <span ref={ref}>
+    <span>
       <button
         ref={trigger}
         type="button"
@@ -161,7 +155,7 @@ export default function TokenInspector({ label = "Inspect", down = false }: { la
         aria-controls={panelId}
         aria-label={label === "Inspect" ? "Inspect design tokens" : undefined}
         onClick={() => setOpen((o) => !o)}
-        className={`lg:uppercase underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:text-accent hover:decoration-current ${
+        className={`${showTrigger ? "" : "hidden "}lg:uppercase underline decoration-transparent underline-offset-4 transition-colors duration-150 hover:text-accent hover:decoration-current ${
           open ? "text-accent decoration-current" : ""
         }`}
       >
@@ -193,9 +187,8 @@ export default function TokenInspector({ label = "Inspect", down = false }: { la
           </button>
         </div>
 
-        <details open className="min-h-0 overflow-y-auto overflow-x-hidden px-24 pb-24">
-          <summary className="type-mono-sm cursor-pointer select-none text-primary">See the mapping</summary>
-          <div className="type-mono-xs pt-16 tracking-normal">
+        <div className="min-h-0 overflow-y-auto overflow-x-hidden px-24 pb-24">
+          <div className="type-mono-xs tracking-normal">
             {data.map((g) => {
               // One data column (value or maps): right-aligned. Colour groups: Maps to + Value, Value hidden on phones.
               const grid =
@@ -203,7 +196,7 @@ export default function TokenInspector({ label = "Inspect", down = false }: { la
                   ? "grid-cols-[minmax(0,1fr)_minmax(0,136px)] sm:grid-cols-[minmax(0,1fr)_136px_100px]"
                   : "grid-cols-[minmax(0,1fr)_auto]";
               return (
-              <section key={g.title} className="pb-16">
+              <section key={g.title} className="pb-12">
                 <div className={`grid ${grid} gap-x-16 border-b border-default pb-8 text-primary`}>
                   <h3 className="type-mono-xs-bold uppercase">{g.title}</h3>
                   {g.cols === "both" && <span>Maps to</span>}
@@ -215,7 +208,7 @@ export default function TokenInspector({ label = "Inspect", down = false }: { la
                   {g.rows.map((r) => (
                     <li
                       key={r.name}
-                      className={`grid ${grid} items-center gap-x-16 border-b border-default py-8`}
+                      className={`grid ${grid} items-center gap-x-16 border-b border-default py-4`}
                     >
                       <span className="flex min-w-0 items-center gap-8">
                         {r.kind === "colour" && (
@@ -224,13 +217,6 @@ export default function TokenInspector({ label = "Inspect", down = false }: { la
                             aria-hidden
                             className="h-[14px] w-[14px] shrink-0 rounded-xs border border-default"
                             style={{ background: `var(${r.name})` }}
-                          />
-                        )}
-                        {r.kind === "radius" && (
-                          <span
-                            aria-hidden
-                            className="h-[14px] w-[14px] shrink-0 border border-strong"
-                            style={{ borderRadius: `var(${r.name})` }}
                           />
                         )}
                         <span className="truncate">{r.name}</span>
@@ -246,7 +232,7 @@ export default function TokenInspector({ label = "Inspect", down = false }: { la
               );
             })}
           </div>
-        </details>
+        </div>
       </div>
     </span>
   );

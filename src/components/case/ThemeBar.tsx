@@ -76,12 +76,11 @@ export default function ThemeBar({
             </nav>
 
             <div className="flex w-full items-center justify-between gap-20 md:ml-auto md:w-auto md:justify-end">
-              {on && (
-                // The panel trigger underlines on hover in the footer; here it is always underlined, as in Figma
-                <span className="type-mono-xs-med-upper text-accent [&_button]:decoration-current">
-                  <TokenInspector label="Inspect tokens ↗" down />
-                </span>
-              )}
+              {/* Always mounted so an open panel survives Reset theme; the trigger shows only while the theme is on.
+                  The trigger underlines on hover in the footer; here it is always underlined, as in Figma */}
+              <span className="type-mono-xs-med-upper text-accent [&_button]:decoration-current">
+                <TokenInspector label="Inspect tokens ↗" down showTrigger={on} />
+              </span>
               <button
                 type="button"
                 aria-pressed={on}

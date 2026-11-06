@@ -463,7 +463,7 @@ function ReadItAs({ mode, onChange }: { mode: Mode; onChange: (m: Mode) => void 
 
   // Always right-aligned, so the control stays in the same place at every width.
   return (
-    <div className="flex items-center justify-end gap-[14px]">
+    <div className="flex flex-col items-end gap-8 sm:flex-row sm:items-center sm:justify-end sm:gap-[14px]">
       <span aria-hidden className="type-mono-xs-upper shrink-0 whitespace-nowrap opacity-[0.55]">
         Read it as
       </span>
