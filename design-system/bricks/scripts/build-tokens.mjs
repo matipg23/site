@@ -74,6 +74,15 @@ const themes = themeDirs.map((dir) => {
   return { dir, meta, semantic, core, byPath, extensions };
 });
 
+// Every theme must define every extension the default theme defines, so shared components never read an undefined variable.
+// Theme-only extensions (for example RangerGreen risk) are allowed.
+const defaultTheme = themes.find((t) => t.dir === 'default');
+for (const th of themes) {
+  for (const e of defaultTheme?.extensions ?? []) {
+    if (!th.byPath.has(e.path.join('.'))) errors.push(`[${th.meta.name}] missing extension ${e.path.join('.')} (defined by the default theme)`);
+  }
+}
+
 if (!themes.length) errors.push('No themes found in themes/<name>/tokens.json');
 if (errors.length) {
   console.error(errors.join('\n'));

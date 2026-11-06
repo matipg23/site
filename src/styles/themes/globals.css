@@ -45,6 +45,18 @@
  * display and heading sizes scale down with the viewport.
  */
 @layer components {
+  /* Accent word in case study headings. The marker fill and text come from BRICKS extension.accent.highlight-*;
+     in themes and modes without a marker the fill is transparent and the text is the accent colour.
+     Padding is cancelled by the negative margin so the line length never changes. */
+  .accent-mark {
+    color: var(--accent-highlight-text);
+    background: linear-gradient(var(--accent-highlight-fill), var(--accent-highlight-fill)) 0 58% / 100% 0.8em no-repeat;
+    padding-inline: 0.1em;
+    margin-inline: -0.1em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
   /* Highlight: family, weight and style come from the active BRICKS theme (default: Barlow Semi Condensed Black Italic), uppercase */
   .type-highlight-2xl, .type-highlight-xl, .type-highlight-lg, .type-highlight-md {
     font-family: var(--font-highlight), sans-serif;

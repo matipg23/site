@@ -22,6 +22,8 @@ module.exports = {
         glass: "var(--glass-fill)",
         "action-primary": "var(--action-primary)",
         "action-accent": "var(--action-accent)",
+        "data-primary": "var(--data-primary)",
+        "data-secondary": "var(--data-secondary)",
         // Swatch strip on the token card uses these as fills, as in Figma
         "text-secondary": "var(--text-secondary)",
         "border-default": "var(--border-default)",

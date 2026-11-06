@@ -80,8 +80,7 @@ Load the fonts below with `next/font/google`, and expose each as a CSS variable.
 | Bitter | paperboy highlight | 700 |
 | DM Sans | paperboy body | 400, 500 |
 | DM Mono | paperboy mono | 400, 500 |
-| Oswald | bluefield display | 700 |
-| Archivo | bluefield highlight | 900 italic |
+| Anton | bluefield display, highlight, heading, label | 400 |
 | Figtree | bluefield body | 300, 400, 500 |
 | IBM Plex Mono | bluefield mono | 400, 500, 700 |
 | Noto Serif | rangergreen display | 900 italic, 900 normal |

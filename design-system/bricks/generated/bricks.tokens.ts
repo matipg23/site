@@ -382,8 +382,8 @@ export const tokenValues = {
     },
     "dark": {
       "background": {
-        "base": "#020719",
-        "surface": "#000633",
+        "base": "#0b1438",
+        "surface": "#14204c",
         "layer": "#2b2d2e",
         "accent": "#ffffff0d",
         "primary": "#4169e1",
@@ -395,9 +395,9 @@ export const tokenValues = {
         "transparent": "#ffffff00"
       },
       "content": {
-        "default": "#ced2db",
+        "default": "#ffffff",
         "strong": "#ffffff",
-        "subtle": "#969da3",
+        "subtle": "#ced2db",
         "disabled": "#ffffff33",
         "onDark": "#ffffff",
         "onLight": "#14204c"
@@ -823,48 +823,8 @@ export const extensions = {
     "extension.accent.text": "var(--bricks-extension-accent-text)",
     "extension.accent.fill": "var(--bricks-extension-accent-fill)",
     "extension.accent.border": "var(--bricks-extension-accent-border)",
-    "extension.content.onAccent": "var(--bricks-extension-content-on-accent)",
-    "extension.content.inverse": "var(--bricks-extension-content-inverse)",
-    "extension.content.muted": "var(--bricks-extension-content-muted)",
-    "extension.content.online": "var(--bricks-extension-content-online)",
-    "extension.background.inverse": "var(--bricks-extension-background-inverse)",
-    "extension.background.overlayTransparent": "var(--bricks-extension-background-overlay-transparent)",
-    "extension.background.fog": "var(--bricks-extension-background-fog)",
-    "extension.background.shade": "var(--bricks-extension-background-shade)",
-    "extension.border.strong": "var(--bricks-extension-border-strong)"
-  },
-  "bluefield": {
-    "extension.accent.text": "var(--bricks-extension-accent-text)",
-    "extension.accent.fill": "var(--bricks-extension-accent-fill)",
-    "extension.accent.border": "var(--bricks-extension-accent-border)",
-    "extension.content.onAccent": "var(--bricks-extension-content-on-accent)",
-    "extension.content.inverse": "var(--bricks-extension-content-inverse)",
-    "extension.content.muted": "var(--bricks-extension-content-muted)",
-    "extension.content.online": "var(--bricks-extension-content-online)",
-    "extension.background.inverse": "var(--bricks-extension-background-inverse)",
-    "extension.background.overlayTransparent": "var(--bricks-extension-background-overlay-transparent)",
-    "extension.background.fog": "var(--bricks-extension-background-fog)",
-    "extension.background.shade": "var(--bricks-extension-background-shade)",
-    "extension.border.strong": "var(--bricks-extension-border-strong)"
-  },
-  "paperboy": {
-    "extension.accent.text": "var(--bricks-extension-accent-text)",
-    "extension.accent.fill": "var(--bricks-extension-accent-fill)",
-    "extension.accent.border": "var(--bricks-extension-accent-border)",
-    "extension.content.onAccent": "var(--bricks-extension-content-on-accent)",
-    "extension.content.inverse": "var(--bricks-extension-content-inverse)",
-    "extension.content.muted": "var(--bricks-extension-content-muted)",
-    "extension.content.online": "var(--bricks-extension-content-online)",
-    "extension.background.inverse": "var(--bricks-extension-background-inverse)",
-    "extension.background.overlayTransparent": "var(--bricks-extension-background-overlay-transparent)",
-    "extension.background.fog": "var(--bricks-extension-background-fog)",
-    "extension.background.shade": "var(--bricks-extension-background-shade)",
-    "extension.border.strong": "var(--bricks-extension-border-strong)"
-  },
-  "rangergreen": {
-    "extension.accent.text": "var(--bricks-extension-accent-text)",
-    "extension.accent.fill": "var(--bricks-extension-accent-fill)",
-    "extension.accent.border": "var(--bricks-extension-accent-border)",
+    "extension.accent.highlightFill": "var(--bricks-extension-accent-highlight-fill)",
+    "extension.accent.highlightText": "var(--bricks-extension-accent-highlight-text)",
     "extension.content.onAccent": "var(--bricks-extension-content-on-accent)",
     "extension.content.inverse": "var(--bricks-extension-content-inverse)",
     "extension.content.muted": "var(--bricks-extension-content-muted)",
@@ -874,6 +834,62 @@ export const extensions = {
     "extension.background.fog": "var(--bricks-extension-background-fog)",
     "extension.background.shade": "var(--bricks-extension-background-shade)",
     "extension.border.strong": "var(--bricks-extension-border-strong)",
+    "extension.data.primary": "var(--bricks-extension-data-primary)",
+    "extension.data.secondary": "var(--bricks-extension-data-secondary)"
+  },
+  "bluefield": {
+    "extension.accent.text": "var(--bricks-extension-accent-text)",
+    "extension.accent.fill": "var(--bricks-extension-accent-fill)",
+    "extension.accent.border": "var(--bricks-extension-accent-border)",
+    "extension.accent.highlightFill": "var(--bricks-extension-accent-highlight-fill)",
+    "extension.accent.highlightText": "var(--bricks-extension-accent-highlight-text)",
+    "extension.content.onAccent": "var(--bricks-extension-content-on-accent)",
+    "extension.content.inverse": "var(--bricks-extension-content-inverse)",
+    "extension.content.muted": "var(--bricks-extension-content-muted)",
+    "extension.content.online": "var(--bricks-extension-content-online)",
+    "extension.background.inverse": "var(--bricks-extension-background-inverse)",
+    "extension.background.overlayTransparent": "var(--bricks-extension-background-overlay-transparent)",
+    "extension.background.fog": "var(--bricks-extension-background-fog)",
+    "extension.background.shade": "var(--bricks-extension-background-shade)",
+    "extension.border.strong": "var(--bricks-extension-border-strong)",
+    "extension.data.primary": "var(--bricks-extension-data-primary)",
+    "extension.data.secondary": "var(--bricks-extension-data-secondary)"
+  },
+  "paperboy": {
+    "extension.accent.text": "var(--bricks-extension-accent-text)",
+    "extension.accent.fill": "var(--bricks-extension-accent-fill)",
+    "extension.accent.border": "var(--bricks-extension-accent-border)",
+    "extension.accent.highlightFill": "var(--bricks-extension-accent-highlight-fill)",
+    "extension.accent.highlightText": "var(--bricks-extension-accent-highlight-text)",
+    "extension.content.onAccent": "var(--bricks-extension-content-on-accent)",
+    "extension.content.inverse": "var(--bricks-extension-content-inverse)",
+    "extension.content.muted": "var(--bricks-extension-content-muted)",
+    "extension.content.online": "var(--bricks-extension-content-online)",
+    "extension.background.inverse": "var(--bricks-extension-background-inverse)",
+    "extension.background.overlayTransparent": "var(--bricks-extension-background-overlay-transparent)",
+    "extension.background.fog": "var(--bricks-extension-background-fog)",
+    "extension.background.shade": "var(--bricks-extension-background-shade)",
+    "extension.border.strong": "var(--bricks-extension-border-strong)",
+    "extension.data.primary": "var(--bricks-extension-data-primary)",
+    "extension.data.secondary": "var(--bricks-extension-data-secondary)"
+  },
+  "rangergreen": {
+    "extension.accent.text": "var(--bricks-extension-accent-text)",
+    "extension.accent.fill": "var(--bricks-extension-accent-fill)",
+    "extension.accent.border": "var(--bricks-extension-accent-border)",
+    "extension.accent.highlightFill": "var(--bricks-extension-accent-highlight-fill)",
+    "extension.accent.highlightText": "var(--bricks-extension-accent-highlight-text)",
+    "extension.content.onAccent": "var(--bricks-extension-content-on-accent)",
+    "extension.content.inverse": "var(--bricks-extension-content-inverse)",
+    "extension.content.muted": "var(--bricks-extension-content-muted)",
+    "extension.content.online": "var(--bricks-extension-content-online)",
+    "extension.background.inverse": "var(--bricks-extension-background-inverse)",
+    "extension.background.overlayTransparent": "var(--bricks-extension-background-overlay-transparent)",
+    "extension.background.fog": "var(--bricks-extension-background-fog)",
+    "extension.background.shade": "var(--bricks-extension-background-shade)",
+    "extension.border.strong": "var(--bricks-extension-border-strong)",
+    "extension.data.primary": "var(--bricks-extension-data-primary)",
+    "extension.data.secondary": "var(--bricks-extension-data-secondary)",
     "extension.risk.10": "var(--bricks-extension-risk-10)",
     "extension.risk.01": "var(--bricks-extension-risk-01)",
     "extension.risk.02": "var(--bricks-extension-risk-02)",
@@ -940,12 +956,12 @@ export const typography = {
   "bluefield": {
     "families": {
       "display": {
-        "family": "Oswald",
-        "stack": "Oswald, system-ui, sans-serif"
+        "family": "Anton",
+        "stack": "Anton, system-ui, sans-serif"
       },
       "highlight": {
-        "family": "Archivo",
-        "stack": "Archivo, system-ui, sans-serif"
+        "family": "Anton",
+        "stack": "Anton, system-ui, sans-serif"
       },
       "body": {
         "family": "Figtree",
@@ -958,24 +974,24 @@ export const typography = {
     },
     "weights": {
       "display": {
-        "weight": 700,
+        "weight": 400,
         "style": "normal",
-        "figmaStyle": "Bold"
+        "figmaStyle": "Regular"
       },
       "highlight": {
-        "weight": 900,
-        "style": "italic",
-        "figmaStyle": "Black Italic"
+        "weight": 400,
+        "style": "normal",
+        "figmaStyle": "Regular"
       },
       "heading": {
-        "weight": 700,
+        "weight": 400,
         "style": "normal",
-        "figmaStyle": "Bold"
+        "figmaStyle": "Regular"
       },
       "label": {
-        "weight": 700,
+        "weight": 400,
         "style": "normal",
-        "figmaStyle": "Bold"
+        "figmaStyle": "Regular"
       },
       "body": {
         "weight": 300,

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import {
-  Archivo,
+  Anton,
   Barlow_Semi_Condensed,
   Bitter,
   DM_Mono,
@@ -10,7 +10,6 @@ import {
   Kode_Mono,
   Montserrat,
   Noto_Serif,
-  Oswald,
   Poppins,
   Public_Sans,
 } from "next/font/google";
@@ -49,8 +48,7 @@ const poppins = Poppins({ preload: false, display: "swap", subsets: ["latin"], w
 const bitter = Bitter({ preload: false, display: "swap", subsets: ["latin"], weight: ["700"], variable: "--font-bitter" });
 const dmSans = DM_Sans({ preload: false, display: "swap", subsets: ["latin"], weight: ["400", "500"], variable: "--font-dm-sans" });
 const dmMono = DM_Mono({ preload: false, display: "swap", subsets: ["latin"], weight: ["400", "500"], variable: "--font-dm-mono" });
-const oswald = Oswald({ preload: false, display: "swap", subsets: ["latin"], weight: ["700"], variable: "--font-oswald" });
-const archivo = Archivo({ preload: false, display: "swap", subsets: ["latin"], weight: ["900"], style: ["italic"], variable: "--font-archivo" });
+const anton = Anton({ preload: false, display: "swap", subsets: ["latin"], weight: ["400"], variable: "--font-anton" });
 const figtree = Figtree({ preload: false, display: "swap", subsets: ["latin"], weight: ["300", "400", "500"], variable: "--font-figtree" });
 const plexMono = IBM_Plex_Mono({ preload: false, display: "swap", subsets: ["latin"], weight: ["400", "500", "700"], variable: "--font-plex-mono" });
 const notoSerif = Noto_Serif({ preload: false, display: "swap", subsets: ["latin"], weight: ["900"], style: ["normal", "italic"], variable: "--font-noto-serif" });
@@ -58,7 +56,7 @@ const montserrat = Montserrat({ preload: false, display: "swap", subsets: ["lati
 
 const fontVariables = [
   publicSans, kodeMono, barlowSemiCondensed,
-  poppins, bitter, dmSans, dmMono, oswald, archivo, figtree, plexMono, notoSerif, montserrat,
+  poppins, bitter, dmSans, dmMono, anton, figtree, plexMono, notoSerif, montserrat,
 ].map((f) => f.variable).join(" ");
 
 export const metadata: Metadata = {

@@ -53,5 +53,5 @@ export function Prose({
 }
 
 export function Accent({ children }: { children: React.ReactNode }) {
-  return <span className="text-accent">{children}</span>;
+  return <span className="accent-mark">{children}</span>;
 }

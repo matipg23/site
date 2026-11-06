@@ -114,11 +114,11 @@ export default function ResultsChart() {
 
         <div className="type-mono-xs flex flex-wrap items-center gap-20 text-secondary">
           <span className="flex items-center gap-8">
-            <span className="h-[6px] w-[16px] bg-action-accent" />
+            <span className="h-[6px] w-[16px] bg-data-primary" />
             Usability (after)
           </span>
           <span className="flex items-center gap-8">
-            <span className="h-[6px] w-[16px] bg-action-accent opacity-60" />
+            <span className="h-[6px] w-[16px] bg-data-secondary" />
             Coverage (after)
           </span>
           <span className="flex items-center gap-8">
@@ -190,7 +190,7 @@ function Metric({
       <div className="relative h-[14px]">
         <div className="absolute left-0 top-[4px] h-[6px] w-full bg-overlay" />
         <div
-          className={`absolute left-0 top-[4px] h-[6px] bg-action-accent ${muted ? "opacity-60" : ""}`}
+          className={`absolute left-0 top-[4px] h-[6px] ${muted ? "bg-data-secondary" : "bg-data-primary"}`}
           style={{ width: `${value}%` }}
         />
         <div className="absolute top-0 h-[14px] w-[1.5px] bg-inverse" style={{ left: `calc(${base}% - 0.75px)` }} />
