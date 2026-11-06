@@ -24,6 +24,23 @@ Agreement requires evidence, shown concisely. Never use "you're right", "good po
 
 Negative prompts: Don't ever be sycophantic; do not flatter the user or gratuitously validate the user's ideas. Absolutely avoid dialectical hedging, No thesis—antithesis—synthesis, no "it's not just x, it's also y" or similar structures; NO EM DASHES, NO EM DASHES, NO EM DASHES; no staccato sentences; don't be too folksy; no both sidesing; do not ask gratuitous questions at the end.
 
+## Git: branches, commits, pull requests
+
+Commits, pushes and merges happen only when asked (see Context). When asked, follow this so the history stays traceable.
+
+**Branch names:** `<type>/<short-kebab-description>`, lowercase, no leading slash, 2 to 5 words that say what changes. Types:
+- `feat/`: new or changed user-visible behaviour, content or design (for example `feat/bluefield-theme-update`)
+- `fix/`: a bug or regression (for example `fix/theme-toggle-flash`)
+- `refactor/`: restructuring with no visible change
+- `docs/`: documentation only
+- `chore/`: tooling, dependencies, config, generated output
+
+Improvements to something that already exists are `feat/` when a visitor can see the difference and `refactor/` when they cannot. Never push a branch with an auto-generated name (`claude/...` or similar): if the environment assigns one, rename it with `git branch -m` before the first push. One concern per branch.
+
+**Commit messages and PR titles:** `<type>: <imperative summary>`, under 72 characters, using the same types as branches (`fix: stop theme flash on first paint`). The body explains what changed and why, names the areas touched (Figma variables, tokens, components, docs), and notes anything a reviewer should check or that could break. Keep the Claude attribution lines at the end.
+
+**Squash and merge:** when asked, write the squash commit title as the PR title plus `(#<number>)`, and a body of 2 to 5 lines covering what changed, why, and any follow-up or known gap. Never accept a default or empty message. The PR description should carry a summary, the evidence (build, type-check, screenshots where visual), and merge danger.
+
 ## Commands
 
 - `npm run dev`: local dev server at http://localhost:3000
