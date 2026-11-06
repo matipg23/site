@@ -275,15 +275,28 @@ function Title({ text, ai }: { text: string; ai: boolean }) {
     };
   }, [ai, text]);
 
+  // The display and mono versions wrap onto different numbers of lines. Both are laid out invisibly in the same
+  // grid cell as the real title, so the title always takes the taller height and the card never changes size.
+  // The cell is also never shorter than two lines, so a one-line title in either font leaves the body and the
+  // code where they are, and the bodies line up across the three cards.
   return (
-    <h3
-      ref={ref}
-      className={`type-title-md ${ai ? "font-mono font-semibold tracking-[-0.01em] before:text-accent before:content-['#_']" : ""}`}
-    >
-      {text}
-    </h3>
+    <div className={`${titleBase} grid min-h-[2lh]`}>
+      <span aria-hidden className={`${titleBase} ${titleHuman} invisible col-start-1 row-start-1`}>
+        {text}
+      </span>
+      <span aria-hidden className={`${titleBase} ${titleAi} invisible col-start-1 row-start-1`}>
+        {text}
+      </span>
+      <h3 ref={ref} className={`${titleBase} col-start-1 row-start-1 ${ai ? titleAi : titleHuman}`}>
+        {text}
+      </h3>
+    </div>
   );
 }
+
+const titleBase = "type-title-md";
+const titleHuman = "";
+const titleAi = "font-mono font-semibold tracking-[-0.01em] before:text-accent before:content-['#_']";
 
 // Two layers in one grid cell: the height is the taller of the two, so nothing jumps.
 // The hidden layer is inert and aria-hidden, so keyboard and screen readers only meet the visible one.
@@ -421,21 +434,22 @@ function Code({
   );
 }
 
-// A pair of toggle buttons (aria-pressed), not a switch: two named views of the same content.
-// The accent indicator slides between them; its width and offset are measured from the active button.
+// One switch, two states: the whole container is the click target and flips between Human and Written for AI.
+// The accent indicator slides under the active label; its width and offset are measured from that label.
 function ReadItAs({ mode, onChange }: { mode: Mode; onChange: (m: Mode) => void }) {
+  const ai = mode === "ai";
   const options: { value: Mode; label: string }[] = [
     { value: "human", label: "Human" },
     { value: "ai", label: "Written for AI" },
   ];
-  const buttons = useRef<Record<string, HTMLButtonElement | null>>({});
+  const labels = useRef<Record<string, HTMLSpanElement | null>>({});
   const [box, setBox] = useState<{ w: number; x: number } | null>(null);
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
     const measure = () => {
-      const b = buttons.current[mode];
-      if (b) setBox({ w: b.offsetWidth, x: b.offsetLeft });
+      const l = labels.current[mode];
+      if (l) setBox({ w: l.offsetWidth, x: l.offsetLeft });
     };
     measure();
     addEventListener("resize", measure);
@@ -447,12 +461,20 @@ function ReadItAs({ mode, onChange }: { mode: Mode; onChange: (m: Mode) => void 
     };
   }, [mode]);
 
+  // Always right-aligned, so the control stays in the same place at every width.
   return (
-    <div role="group" aria-label="Read it as" className="flex items-center gap-[14px] lg:justify-end">
-      <span aria-hidden className="type-mono-xs-upper opacity-[0.55]">
+    <div className="flex items-center justify-end gap-[14px]">
+      <span aria-hidden className="type-mono-xs-upper shrink-0 whitespace-nowrap opacity-[0.55]">
         Read it as
       </span>
-      <div className="relative flex gap-2 rounded-md border border-fog bg-glass p-[3px]">
+      <button
+        type="button"
+        role="switch"
+        aria-checked={ai}
+        aria-label="Written for AI"
+        onClick={() => onChange(ai ? "human" : "ai")}
+        className="group relative flex shrink-0 cursor-pointer gap-2 rounded-md border border-fog bg-glass p-[3px]"
+      >
         <span
           aria-hidden
           className={`absolute bottom-[3px] left-0 top-[3px] rounded-md bg-action-accent ${
@@ -461,25 +483,23 @@ function ReadItAs({ mode, onChange }: { mode: Mode; onChange: (m: Mode) => void 
           style={{ width: box?.w ?? 0, transform: `translateX(${box?.x ?? 0}px)` }}
         />
         {options.map((o) => {
-          const pressed = mode === o.value;
+          const active = mode === o.value;
           return (
-            <button
+            <span
               key={o.value}
               ref={(el) => {
-                buttons.current[o.value] = el;
+                labels.current[o.value] = el;
               }}
-              type="button"
-              aria-pressed={pressed}
-              onClick={() => onChange(o.value)}
-              className={`type-mono-xs-upper relative z-10 rounded-md px-[14px] py-8 transition-colors duration-200 ${
-                pressed ? "text-action" : "opacity-70 hover:opacity-100"
-              } ${pressed && !box ? "bg-action-accent" : ""}`}
+              aria-hidden
+              className={`type-mono-xs-upper relative z-10 whitespace-nowrap rounded-md px-[14px] py-8 transition-[color,opacity] duration-200 ${
+                active ? "text-action" : "opacity-70 group-hover:opacity-100"
+              } ${active && !box ? "bg-action-accent" : ""}`}
             >
               {o.label}
-            </button>
+            </span>
           );
         })}
-      </div>
+      </button>
     </div>
   );
 }
