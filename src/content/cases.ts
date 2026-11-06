@@ -58,6 +58,10 @@ export const caseIndex: CaseIndexItem[] = [
   },
 ];
 
+// The case study the Home hero button opens. Change this slug to feature a different one.
+// Kept apart from the list order above, which sets the "Next case study" links.
+export const featuredCaseSlug = "fd-alignment-program";
+
 export function caseHref(slug: string) {
   return `/work/${slug}/`;
 }
