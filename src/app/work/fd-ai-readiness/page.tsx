@@ -28,7 +28,7 @@ export default function Page() {
     <article>
       <ThemeBar
         theme="bluefield"
-        anchors={[{ id: "problem", label: "Problem" }, { id: "vision", label: "Vision" }, { id: "approach", label: "Approach" }]}
+        anchors={[{ id: "problem", label: "Problem" }, { id: "vision", label: "Vision" }, { id: "approach", label: "Approach" }, { id: "reflections", label: "Reflections" }]}
       />
       <CaseHero
         client="FanDuel"

@@ -14,7 +14,7 @@ export default function CaseHero({
 }) {
   return (
     <header>
-      <div className="container-page pb-64 pt-64 md:pb-128 md:pt-96">
+      <div className="container-page pb-64 pt-32 md:pb-128 md:pt-96">
         <p className="type-mono-sm-bold flex gap-12">
           <span className="text-accent">Case Study</span>
           <span aria-hidden className="text-secondary">/</span>

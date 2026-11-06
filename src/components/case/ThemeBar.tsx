@@ -6,8 +6,10 @@ import TokenInspector from "@/components/ui/TokenInspector";
 type Guest = "bluefield" | "paperboy" | "rangergreen";
 
 // Figma: components > theme-bar (state off / on, theme bluefield / paperboy / rangergreen).
-// A sticky sub-bar for case studies: section anchors on the left, a switch that applies the case's own theme on the
-// right. It is zero height in flow (absolute inside a sticky wrapper), so it never shifts the hero.
+// A sub-bar for case studies: section anchors on the left, a switch that applies the case's own theme on the
+// right. From md up it is sticky and zero height in flow (absolute inside a sticky wrapper), so it never shifts the
+// hero. Below md the anchors are hidden, so the bar sits in normal flow and scrolls away with the page: Inspect tokens
+// on the left, Reset theme on the right, and the disclaimer under them.
 // The theme goes on <html> so the whole page, header and footer included, follows it. It is not stored and is
 // reset to "default" when the page is left. The mode (light or dark) is never touched here.
 export default function ThemeBar({
@@ -53,10 +55,10 @@ export default function ThemeBar({
   );
 
   return (
-    <div className="sticky top-64 z-30 h-0">
-      <div className="absolute inset-x-0 top-0 bg-page">
+    <div className="relative z-30 md:sticky md:top-64 md:h-0">
+      <div className="bg-page md:absolute md:inset-x-0 md:top-0">
         <div className="border-b border-default">
-          <div className="container-page relative flex h-56 items-center justify-between">
+          <div className="container-page relative flex items-center justify-between py-8 md:h-56 md:py-0">
             <nav aria-label="On this page" className="hidden md:block">
               <ul className="type-mono-xs-upper flex items-center gap-32">
                 {anchors.map((a) => (
@@ -73,7 +75,7 @@ export default function ThemeBar({
               </ul>
             </nav>
 
-            <div className="ml-auto flex items-center gap-20">
+            <div className="flex w-full items-center justify-between gap-20 md:ml-auto md:w-auto md:justify-end">
               {on && (
                 // The panel trigger underlines on hover in the footer; here it is always underlined, as in Figma
                 <span className="type-mono-xs-med-upper text-accent [&_button]:decoration-current">
@@ -84,7 +86,7 @@ export default function ThemeBar({
                 type="button"
                 aria-pressed={on}
                 onClick={() => setOn((v) => !v)}
-                className={`type-mono-xs-med-upper flex items-center gap-[10px] border border-default px-[14px] py-8 text-primary transition-colors duration-150 hover:border-accent ${
+                className={`type-mono-xs-med-upper ml-auto flex items-center gap-[10px] border border-default px-[14px] py-8 text-primary transition-colors duration-150 hover:border-accent ${
                   on ? "bg-surface" : ""
                 }`}
               >
@@ -97,7 +99,7 @@ export default function ThemeBar({
 
         {on && (
           <div className="bg-surface">
-            <p className="type-mono-xs-upper container-page py-8 text-secondary">
+            <p className="type-caption-xs md:type-mono-xs-upper container-page py-8 uppercase text-secondary">
               Product theme reference applied. Unofficial recreation, built from
               tokens. This page only.
             </p>
