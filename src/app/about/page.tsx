@@ -4,6 +4,7 @@ import Contact from "@/components/sections/Contact";
 import Chip from "@/components/ui/Chip";
 import Reveal from "@/components/ui/Reveal";
 import SocialLinks from "@/components/ui/SocialLinks";
+import StickyRail from "@/components/ui/StickyRail";
 
 export const metadata: Metadata = {
   title: "About",
@@ -84,7 +85,6 @@ const chapters: { title: string; paragraphs: string[] }[] = [
 const facts = [
   ["Based in", "Reading, United Kingdom, remote-first"],
   ["Now", "Formation Design System, FanDuel"],
-  ["Languages", "English, Spanish, Portuguese"],
 ];
 
 // Figma: WIP > About Me - Revised (review) (375:89) at lg and up: left rail 260 + body 635, content column 1151.
@@ -109,22 +109,18 @@ export default function AboutPage() {
               <li>SHAPED ACROSS THE WORLD</li>
             </ul>
           </div>
-          <dl className="border-y border-subtle">
-            {[facts.slice(0, 2), facts.slice(2)].map((row, i) => (
-              <div key={i} className={`grid grid-cols-2 gap-16 py-16 ${i > 0 ? "border-t border-subtle" : ""}`}>
-                {row.map(([label, value]) => (
-                  <div key={label} className="flex flex-col gap-4">
-                    <dt className="type-mono-xs-upper text-secondary">{label}</dt>
-                    <dd className="type-body-sm text-primary">{value}</dd>
-                  </div>
-                ))}
+          <dl className="grid grid-cols-2 gap-16 border-y border-subtle py-16">
+            {facts.map(([label, value]) => (
+              <div key={label} className="flex flex-col gap-4">
+                <dt className="type-mono-xs-upper text-secondary">{label}</dt>
+                <dd className="type-body-sm text-primary">{value}</dd>
               </div>
             ))}
           </dl>
         </div>
 
         <div className="grid gap-64 lg:grid-cols-[260px_minmax(0,1fr)] lg:gap-96">
-          <aside className="hidden lg:block">
+          <StickyRail className="hidden lg:block">
             <div className="flex flex-col gap-24 pb-48">
               <Image
                 src="/images/about/portrait.jpg"
@@ -135,7 +131,7 @@ export default function AboutPage() {
                 className="h-[160px] w-[160px] object-cover"
               />
               <div className="flex flex-col gap-[10px]">
-                <p aria-hidden className="type-display-sm text-accent">
+                <p aria-hidden data-rail-anchor className="type-display-sm text-accent">
                   MPG
                 </p>
                 <ul className="type-body-2xs flex flex-col gap-[6px] text-secondary">
@@ -159,7 +155,7 @@ export default function AboutPage() {
                 </section>
               ))}
             </div>
-          </aside>
+          </StickyRail>
 
           <article className="lg:max-w-[795px] lg:pr-160">
             <div className="pt-40 lg:border-b lg:border-subtle lg:pb-48 lg:pt-0">
